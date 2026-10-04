@@ -1,0 +1,11 @@
+# Build outputs. Everything under here is reproducible from the committed
+# sources, so none of it belongs in history.
+zig-out/
+.zig-out/
+.zig-cache/
+.zig-cache-*/
+
+# Generated per-target C bindings. tools/regen-c.sh recreates these on demand;
+# only the native src/c.zig is committed, because it is the one `zig build` uses
+# without extra flags.
+bindings/

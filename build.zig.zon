@@ -1,0 +1,21 @@
+.{
+    .name = .satori,
+    .version = "0.1.0",
+    .fingerprint = 0x1697f96f60e5580d,
+    .minimum_zig_version = "0.17.0",
+
+    // Deliberately empty. satori's whole design rests on the default path
+    // touching no package manager code: every dependency is a build-time or
+    // startup-time tax we have measured and refused. CI asserts this stays empty.
+    .dependencies = .{},
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "logos",
+        "tools",
+        "LICENSE",
+        "README.md",
+    },
+}
