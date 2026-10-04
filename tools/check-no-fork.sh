@@ -30,12 +30,43 @@ if [ ! -f "$BIN" ]; then
   exit 1
 fi
 
-# macOS: nm -u lists undefined symbols. Linux: -D --undefined-only on the
-# dynamic symbol table. Both fall back to plain nm on stripped binaries.
-case "$(uname -s)" in
-  Darwin) syms() { nm -u "$BIN" 2>/dev/null | awk '{print $NF}'; } ;;
-  Linux)  syms() { nm -D --undefined-only "$BIN" 2>/dev/null | awk '{print $NF}'; } ;;
-  *)      echo "unsupported host $(uname -s)"; exit 1 ;;
+# --- can this host's nm even read this binary? -------------------------------
+#
+# Every assertion in this script is a "symbol X is absent" test, so they all pass
+# trivially when SYMS is empty. That makes "could nm read the file?" the most
+# important question in the script, and the answer is not always yes:
+#
+#   * macOS nm given an ELF prints "no symbols" to stderr and exits 0 — exactly
+#     what it prints for a genuinely symbol-less binary. Exit status alone cannot
+#     tell "wrong format" from "statically linked".
+#   * A statically linked binary really does have no undefined symbols, because
+#     libc is inside it.
+#
+# So the object format is read directly from the file header and matched against
+# the host, rather than inferred from nm's behaviour. A mismatch is reported as
+# the broken check it is, instead of being allowed to look like a clean binary.
+host="$(uname -s)"
+magic="$(od -An -tx1 -N4 "$BIN" 2>/dev/null | tr -d ' \n')"
+
+case "$magic" in
+  7f454c46)                                                        fmt=elf   ;;
+  cffaedfe|cefaedfe|feedface|feedfacf|cafebabe|bebafeca|cefaedfe)   fmt=macho ;;
+  *)
+    echo "FAIL: $BIN is not a recognised Mach-O or ELF binary (magic '$magic')."
+    echo "      Nothing was inspected, so nothing was proven."
+    exit 1
+    ;;
+esac
+
+case "$fmt/$host" in
+  macho/Darwin) syms() { nm -u "$BIN" 2>/dev/null | awk '{print $NF}'; } ;;
+  elf/Linux)    syms() { nm -D --undefined-only "$BIN" 2>/dev/null | awk '{print $NF}'; } ;;
+  *)
+    echo "FAIL: $BIN is a $fmt binary but this host is $host, whose nm cannot read it."
+    echo "      Run this check on a matching host. Checking here would report a"
+    echo "      pass having measured nothing at all."
+    exit 1
+    ;;
 esac
 
 SYMS="$(syms | sort -u)"
@@ -77,6 +108,40 @@ fi
 # Print the surface so a reviewer can eyeball it. On a correct build this is a
 # short list, and it is the most useful output of the whole check.
 count="$(printf '%s\n' "$SYMS" | grep -c . || true)"
+
+# Guard against the check succeeding because it read nothing at all.
+#
+# The format check above rules out the two ways this could happen by accident, so
+# an empty list here means a statically linked binary, which is a genuine result
+# and not a clean bill of health: with libc linked in, fork and malloc are
+# internal symbols, not undefined ones, so "no undefined fork" is vacuously true
+# and proves nothing. It is reported as inconclusive rather than as a pass.
+if [ "$count" -eq 0 ]; then
+  echo "INCONCLUSIVE: $BIN exposes no dynamic symbols."
+  if [ "${SATORI_ALLOW_STATIC:-0}" = "1" ]; then
+    echo "  SATORI_ALLOW_STATIC=1 set, so treating this as acceptable."
+  else
+    echo "  This is what a statically linked binary looks like: libc is inside"
+    echo "  it, so there is nothing undefined left to inspect and the checks"
+    echo "  above are vacuously true."
+    echo "  No-fork is not disproven, but it is also not proven. Verify a static"
+    echo "  build by other means, or set SATORI_ALLOW_STATIC=1 to accept it."
+    exit 1
+  fi
+fi
+
+# satori links libc and calls it for uname, gethostname, getenv, write and a few
+# more, so a real dynamic binary always has some undefined symbols. A floor well
+# below the observed 17-20 tolerates platforms and link modes while still
+# catching a partially-read symbol table.
+if [ "$count" -lt 5 ]; then
+  echo "FAIL: found only $count external symbols in $BIN."
+  echo "      Too few to be a real dynamically linked satori; the symbol table"
+  echo "      was probably only partly read, which would make the checks above"
+  echo "      unreliable in the other direction."
+  exit 1
+fi
+
 echo "ok: no fork/exec/dlopen symbols, no allocator symbols"
 echo "    $count external symbols in total:"
 printf '%s\n' "$SYMS" | sed 's|^|      |'

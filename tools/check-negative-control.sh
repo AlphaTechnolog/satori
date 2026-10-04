@@ -11,8 +11,18 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 ZIG="${ZIG:-zig}"
+
+# Emit to a real file in a temp dir, not to /dev/null. Writing an object to
+# /dev/null is rejected on Linux ("failed to open output binary: NonResizable"),
+# and because the script then looked for its own marker in the error text and did
+# not find it, this surfaced as "negative control failed for the wrong reason" —
+# the right conclusion reached for entirely the wrong reason, which is exactly
+# the kind of confusing failure worth eliminating.
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+
 out="$("$ZIG" build-obj --dep c -Mroot=test/negative_control.zig -Mc=src/c.zig \
-      -lc --cache-dir .zig-cache -femit-bin=/dev/null 2>&1 || true)"
+      -lc --cache-dir "$tmp/cache" -femit-bin="$tmp/out.o" 2>&1 || true)"
 
 if [ -z "$out" ]; then
   echo "FAIL: test/negative_control.zig compiled successfully."

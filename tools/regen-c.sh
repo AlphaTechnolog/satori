@@ -42,18 +42,31 @@ trap 'rm -rf "$tmp"' EXIT
 
 MODE="write"
 TARGET="${SATORI_TARGET:-}"
+OUT=""
 
 # Resolve a default native triple from uname, never from zig's own native
 # detection, for the reason in rule 1 above.
+#
+# Linux defaults to *gnu*, not musl. The host libc is the one whose headers the
+# generated code must describe, and defaulting an unknown architecture to musl
+# produced bindings that disagreed with the very libc the binary would link
+# against — x86_64 Linux silently got musl's 1292-line bindings instead of
+# glibc's 2743, which then failed test/layout.zig with struct_statvfs missing.
 if [ -z "$TARGET" ]; then
   case "$(uname -s)" in
-    Darwin) TARGET="aarch64-macos"; [ "$(uname -m)" = "x86_64" ] && TARGET="x86_64-macos" ;;
+    Darwin)
+      TARGET="aarch64-macos"
+      [ "$(uname -m)" = "x86_64" ] && TARGET="x86_64-macos"
+      ;;
     Linux)
       TARGET="x86_64-linux-gnu"
       case "$(uname -m)" in
         aarch64|arm64) TARGET="aarch64-linux-gnu" ;;
-        *)             TARGET="x86_64-linux-musl" ;;
       esac
+      ;;
+    *)
+      echo "FAIL: cannot infer a target for host $(uname -s); pass one explicitly" >&2
+      exit 1
       ;;
   esac
 fi
@@ -64,6 +77,8 @@ while [ $# -gt 0 ]; do
     --gen) MODE="gen"; shift ;;
     --matrix) MODE="matrix"; shift ;;
     -h|--help) sed -n '2,40p' "$0"; exit 0 ;;
+    --out) OUT="$2"; shift 2 ;;
+    --out=*) OUT="${1#*=}"; shift ;;
     --target) TARGET="$2"; shift 2 ;;
     --target=*) TARGET="${1#*=}"; shift ;;
     *) TARGET="$1"; shift ;;
@@ -144,7 +159,17 @@ if [ -n "$missing" ]; then
 fi
 echo "ok: all required symbols present"
 
-# --gen: generation succeeded and is usable. Stop before any diff or write.
+# --gen: generation succeeded and is usable. Stop before any diff or write,
+# unless an explicit destination was requested — `zig build matrix` generates
+# each target's bindings into zig-out/ so the cross-compile can run against them
+# without the committed src/c.zig ever being touched.
+if [ -n "$OUT" ]; then
+  mkdir -p "$(dirname "$OUT")"
+  cp "$tmp/c.zig" "$OUT"
+  echo "wrote $OUT ($TARGET)"
+  exit 0
+fi
+
 if [ "$MODE" = "gen" ]; then
   exit 0
 fi

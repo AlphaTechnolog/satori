@@ -32,7 +32,7 @@ pub fn main() !void {
     // --- warm-up, discarded ---------------------------------------------------
     // First-call costs (dynamic symbol resolution, vnode cache misses) are real
     // but they happen once in the actual binary too, so excluding them here
-    // measures steady-state cost. The end-to-end measurement in tools/bench.sh
+    // measures steady-state cost. The end-to-end measurement in test/startup.zig
     // is what captures cold-start reality.
     var warm: shared.Shared = .{};
     warm.load();
