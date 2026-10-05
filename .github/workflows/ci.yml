@@ -102,5 +102,12 @@ jobs:
 
       # The only command. fmt + 12 tests + the C-binding matrix + no-fork +
       # negative control + the startup gate.
+      #
+      # Single-quoted, deliberately. `run: "$ZIG" build check` is a YAML syntax
+      # error, not a shell one: the value starts with a double quote, so YAML
+      # parses "$ZIG" as a quoted scalar and then fails on the next token. The
+      # first version of this file failed for exactly that reason, and the
+      # symptom was a workflow GitHub refused to start at all — zero jobs, no
+      # log, which reads like a permissions problem and is not one.
       - name: zig build check
-        run: "$ZIG" build check
+        run: '"$ZIG" build check'
