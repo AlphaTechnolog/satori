@@ -186,7 +186,16 @@ pub fn build(b: *std.Build) void {
     // did before: no extra step, no extra process.
     const host_bindings: ?*std.Build.Step = if (host_is_committed_target) null else blk: {
         const out = b.fmt("zig-out/bindings/c.{s}.zig", .{host_triple});
-        const cmd = b.addSystemCommand(&.{ "sh", "tools/regen-c.sh", "--gen", "--out", out, host_triple });
+        // "bash", never "sh". This script declares #!/usr/bin/env bash and uses
+        // `set -o pipefail`, which is not POSIX. Invoking it as `sh` overrides
+        // its own interpreter declaration, and whether the suite works then
+        // depends on what /bin/sh happens to be: bash on macOS, and on Linux
+        // only from dash 0.5.12 (2022), which added pipefail. The GitHub
+        // runner's dash rejected it — "set: Illegal option -o pipefail" — and
+        // every script step failed at once. Asking for the interpreter the
+        // scripts themselves name is the only version of this that is not a
+        // coin flip on the runner image.
+        const cmd = b.addSystemCommand(&.{ "bash", "tools/regen-c.sh", "--gen", "--out", out, host_triple });
         cmd.setEnvironmentVariable("ZIG", b.graph.zig_exe);
         cmd.has_side_effects = true;
         std.debug.print(
@@ -349,7 +358,7 @@ pub fn build(b: *std.Build) void {
     // C bindings still translate for every supported target, and the committed
     // native file is current. Catches a libc change before a release does.
     {
-        const ccheck = b.addSystemCommand(&.{ "sh", "tools/regen-c.sh", "--matrix" });
+        const ccheck = b.addSystemCommand(&.{ "bash", "tools/regen-c.sh", "--matrix" });
         ccheck.setEnvironmentVariable("ZIG", b.graph.zig_exe);
         // regen-c.sh otherwise infers the committed file's target from `uname`,
         // so on a Linux runner it diffs the committed aarch64-macos bindings
@@ -364,7 +373,7 @@ pub fn build(b: *std.Build) void {
     // Zero forks, zero allocations — proven from the symbol table, with a
     // negative control proving the check can still fail.
     {
-        const nofork = b.addSystemCommand(&.{ "sh", "tools/check-no-fork.sh", rel_bin });
+        const nofork = b.addSystemCommand(&.{ "bash", "tools/check-no-fork.sh", rel_bin });
         nofork.setEnvironmentVariable("ZIG", b.graph.zig_exe);
         nofork.has_side_effects = true;
         nofork.step.dependOn(&rel_install.step);
@@ -378,7 +387,7 @@ pub fn build(b: *std.Build) void {
         // check-negative-control.sh correctly rejects, and the run teaches
         // nothing. That is not hypothetical: it is what happened on the first
         // Linux CI attempt.
-        const negctl = b.addSystemCommand(&.{ "sh", "tools/check-negative-control.sh", c_file });
+        const negctl = b.addSystemCommand(&.{ "bash", "tools/check-negative-control.sh", c_file });
         negctl.setEnvironmentVariable("ZIG", b.graph.zig_exe);
         // It compiles the control from c_file, so it has to wait for the host
         // bindings to exist. `check` has no other path to that step — the
@@ -458,7 +467,7 @@ pub fn build(b: *std.Build) void {
         const triple = label;
         const bindings = b.fmt("zig-out/bindings/c.{s}.zig", .{triple});
 
-        const gen = b.addSystemCommand(&.{ "sh", "tools/regen-c.sh", "--gen", "--out", bindings, triple });
+        const gen = b.addSystemCommand(&.{ "bash", "tools/regen-c.sh", "--gen", "--out", bindings, triple });
         gen.setEnvironmentVariable("ZIG", b.graph.zig_exe);
         gen.has_side_effects = true;
         gen.step.dependOn(b.getInstallStep()); // ensure zig-out/ exists
