@@ -7,9 +7,9 @@ package dependencies. Licensed MIT, with attribution to neofetch for the logo ar
 Public repo: <https://github.com/AlphaTechnolog/satori>, default branch `main`,
 remote `origin`. `zig build check` runs in CI on **one** Linux runner
 (`.github/workflows/ci.yml`) — exactly that command, no split jobs — and was
-green on 2026-10-05, three runs in a row — most recent:
-<https://github.com/AlphaTechnolog/satori/actions/runs/37344885729>. Runner
-medians: 0.729 / 0.540 / 0.433 ms.
+green on 2026-10-05, four runs in a row — most recent:
+<https://github.com/AlphaTechnolog/satori/actions/runs/37345446554>. Runner
+medians, oldest to newest: 0.729 / 0.540 / 0.433 / 0.480 ms.
 
 The design plan is at `/Users/alpha/.opencode/plan/`, in two files:
 `satori-rewrite.md` (research, measurements, rationale; §5 landmines, §14 style)
@@ -49,12 +49,37 @@ zig test -lc --dep c -Mroot=test/layout.zig -Mc=src/c.zig
 ```
 
 Linux (`ssh clementine` — Debian, zig at
-`~/.local/opt/zig-x86_64-linux-0.17.0/zig`, source rsynced to `~/satori`, which
-is **not** a git repo so commit locally before syncing):
+`~/.local/opt/zig-x86_64-linux-0.17.0/zig`):
 
 ```sh
-ssh clementine 'cd ~/satori && ~/.local/opt/zig-x86_64-linux-0.17.0/zig build check'
+ssh clementine 'cd ~/satori && git pull -q && ~/.local/opt/zig-x86_64-linux-0.17.0/zig build check'
 ```
+
+**`~/satori` there is a `git clone` of the public repo, not an rsync scratch
+copy.** That is deliberate. It used to be rsynced, and it went stale in the worst
+possible way: it predated `COMMITTED_C_TARGET` and still held 2,743 lines of
+glibc bindings in `src/c.zig` instead of the committed 12,061-line
+aarch64-macos ones. A green `zig build check` there was *vacuously* green — it
+was testing pre-fix code against the wrong bindings. Re-create it with:
+
+```sh
+ssh clementine 'rm -rf ~/satori && git clone https://github.com/AlphaTechnolog/satori.git ~/satori'
+```
+
+That is also exactly what CI does, so the local Linux result and the CI result
+are the same measurement. To exercise a commit that is not pushed yet, clone that
+SHA — do not rsync a working tree over the clone, for the reason above. To test
+*unpushed* working-tree changes, rsync into a **separate** directory so the
+trustworthy tree stays trustworthy:
+
+```sh
+rsync -a --delete --exclude='.git' --exclude='zig-out/' --exclude='.zig-cache/' \
+      ./ clementine:~/satori-wip/
+ssh clementine 'cd ~/satori-wip && ~/.local/opt/zig-x86_64-linux-0.17.0/zig build check'
+```
+
+A green check in `~/satori-wip` says the working tree builds; it says nothing
+about the commit, because `~/satori-wip` has no notion of one.
 
 Both boxes are necessary and neither is sufficient. Four landmines passed on
 macOS *and* on clementine and failed only on the GitHub runner; a green check on
@@ -80,10 +105,10 @@ Two env vars matter, both set at job level:
   only raise the local gate; `test/startup.zig` clamps it, so the escape hatch
   can never become a way to delete the gate. Both verdicts are always printed.
   25 ms is a placeholder chosen before any runner data, not a measurement —
-  retune it against a spread of runs. Three runs on identical code gave medians
-  0.729 / 0.540 / 0.433 ms and maxes of 3.067 / 0.812 / 0.876 ms: the median
-  moves a little, the tail moves 4×, and the tail is what a blocking gate trips
-  on. That is why the gate reports.
+  retune it against a spread of runs. Four runs on identical code gave medians
+  0.729 / 0.540 / 0.433 / 0.480 ms and maxes of 3.067 / 0.812 / 0.876 / 0.594 ms:
+  the median moves a little, the tail moves 12×, and the tail is what a blocking
+  gate trips on. That is why the gate reports.
 
 ## Invariants
 
@@ -140,8 +165,10 @@ compiles. That premise failed silently for four build steps before it was found.
 **The footgun: `tools/regen-c.sh` with no mode flag overwrites `src/c.zig`**,
 inferring the target from `uname`. Running it bare on Linux silently replaces the
 macOS bindings with Linux ones. (That already happened in `~/satori` on
-clementine — that file is 2,743 lines of glibc bindings, not the committed
-12,061.) Always pass a mode:
+clementine — that file was 2,743 lines of glibc bindings, not the committed
+12,061. `~/satori` has since been replaced with a clean clone; the clone's
+`src/c.zig` is the committed 12,061 and `git checkout` reverts any damage in one
+step, which a scratch tree cannot do.) Always pass a mode:
 
 ```sh
 tools/regen-c.sh --check                    # verify the committed file is current

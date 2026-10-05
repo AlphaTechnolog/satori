@@ -25,12 +25,33 @@ and verified on macOS arm64, Linux x86_64, and a GitHub Actions
 + `e992d3e` (run the gates on any host, and CI), `13f0c5e` (record CI in
 AGENTS.md). Feature work not started.
 
-CI runs exactly `zig build check` on **one** Linux runner, in 2m52s, 2m03s and
-1m58s wall across the three green runs. First:
+CI runs exactly `zig build check` on **one** Linux runner, in 2m52s, 2m03s,
+1m58s and 1m51s wall across the four green runs. First:
 <https://github.com/AlphaTechnolog/satori/actions/runs/37343357084> (commit
 `e992d3e`); then <https://github.com/AlphaTechnolog/satori/actions/runs/37344427595>
-(`13f0c5e`) and <https://github.com/AlphaTechnolog/satori/actions/runs/37344885729>
-(`a11ca8f`), both documentation-only changes that still ran the full gate.
+(`13f0c5e`), <https://github.com/AlphaTechnolog/satori/actions/runs/37344885729>
+(`a11ca8f`) and <https://github.com/AlphaTechnolog/satori/actions/runs/37345446554>
+(`77d146d`) — documentation-only changes that still ran the full gate.
+
+The Linux verification host was rebuilt on 2026-10-05 and is no longer
+trustworthy-by-accident: `~/satori` on clementine is now a clean `git clone` of
+the public repo, not the stale rsync tree that had been silently certifying
+pre-fix code. See Landmines. Both Linux figures in this file that predate that
+refresh were re-measured on the clone.
+
+### The two verification hosts
+
+Quoting a number without saying where it came from is how the 1.400 ms figure
+below survived in this file for a day.
+
+- **macOS arm64** — this machine, Darwin 26.6.2, Apple clang, Zig
+  `~/.local/opt/zig-aarch64-macos-0.17.0/zig`. Build host matches
+  `COMMITTED_C_TARGET`, so it compiles the committed `src/c.zig`.
+- **Linux x86_64** — `ssh clementine`, Intel i5-6500 @ 3.20 GHz, 4 cores,
+  Debian forky/sid, glibc 2.43, gcc 16.2.0, kernel 7.1.13, Zig
+  `~/.local/opt/zig-x86_64-linux-0.17.0/zig`. Build host is *not*
+  `COMMITTED_C_TARGET`, so it generates its own bindings into
+  `zig-out/bindings/` — the path that makes the Linux result equivalent to CI's.
 
 Getting there took four fixes that none of the local testing could have found,
 because every one of them only bites on a host that is not the maintainer's
@@ -40,39 +61,71 @@ thing that will be re-introduced by a well-meaning refactor.
 ### Measured (re-verify with the commands before quoting)
 
 `$ZIG build startup` — 200 runs after 20 discarded warm-up, stripped ReleaseFast,
-median of end-to-end `fork`+`exec`+`exit`:
+median of end-to-end `fork`+`exec`+`exit`.
+
+**Read the caveat under the table before quoting any single cell. Every figure in
+it is a property of the machine and its load, not of satori.** The same binary on
+the same idle box moved from a 0.675 ms median to 0.978 ms with a 4.226 ms max
+when eight spinners were put on it. Both of the "Linux" figures this table used
+to carry — 1.400 ms, then 0.845 ms — fail to reproduce under stated conditions,
+one from each of the two failure modes: the stale rsync tree, and a loaded
+session on the correct commit. A cell is a fact about one run, not a constant.
 
 | platform | median | min | p95 | max |
 |---|---|---|---|---|
 | macOS arm64 (this machine) | 1.611 ms | 1.521 | 2.006 | 2.177 |
-| Linux x86_64 Debian 14 (`ssh clementine`) | 1.400 ms | 1.297 | 1.475 | 1.619 |
-| **GitHub Actions `ubuntu-latest`** (3 runs) | **0.729 / 0.540 / 0.433 ms** | 0.680 / 0.511 / 0.407 | 0.964 / 0.680 / 0.575 | **3.067** / 0.812 / 0.876 |
+| Linux x86_64 Debian forky/sid (`ssh clementine`) | **0.672–0.682 ms** (5 samples, idle) | 0.606 | 0.746–0.881 | 1.010 |
+| **GitHub Actions `ubuntu-latest`** (4 runs) | **0.729 / 0.540 / 0.433 / 0.480 ms** | 0.680 / 0.511 / 0.407 / 0.466 | 0.964 / 0.680 / 0.575 / 0.548 | **3.067** / 0.812 / 0.876 / 0.594 |
 
-The local re-measurement on 2026-10-05 while making these changes put macOS at
-1.560–1.741 ms depending on background load, so the macOS row above is a
-mid-range figure, not a fixed one.
+The Linux row is five samples of `77d146d` from a **clean `git clone`** in
+`~/satori` on an idle box (load average 0.02), all with 20 discarded warm-up runs
+and 200 measured: medians 0.682 / 0.673 / 0.677 ms from three `zig build startup`
+runs and 0.672 / 0.675 ms from two `zig build check` runs. The two entry points
+agree and the whole spread is 1.5%, which is what makes this a usable
+measurement rather than a single lucky sample — and also what makes the two
+figures it replaces unusable.
 
-**The shared CI runner is FASTER than either dedicated box** — 0.729, 0.540 and
-0.433 ms medians against 1.400 ms on clementine and 1.611 ms on the Mac. Runner:
-`Linux 6.17.0-1022-azure x86_64`, 4 cores. Do not read that as the runner being
-good hardware; read it as the local numbers being load-sensitive.
+It **replaces 1.400 ms**, which was measured on the stale rsync tree described
+under Landmines and is not a measurement of this commit at all. An earlier
+session on this very same commit reported 0.845 ms; that did not reproduce in
+five samples spanning 0.672–0.682 ms, so it was almost certainly a loaded
+session — the 8-way-load numbers below are the size of that effect. The general
+lesson is the one already written at the top of this file: a sub-millisecond
+figure is not a constant, and quoting one without its conditions is how 1.400 ms
+survived here for a day.
 
-The useful detail is the **spread across the three runs, on identical code with
-an identical job definition**. Medians 0.729 / 0.540 / 0.433 ms span 1.7×, which
-is itself the argument against trusting a single CI number. The sharper detail is
-the tails: run 1 reached **max 3.067 ms** — a 4.2× tail, close enough to the
-3.5 ms local gate to have failed it on luck — while runs 2 and 3 reached 0.812
-and 0.876 ms, tails of 1.5× and 2.0×. So the median is stable to within a small
-factor and the tail is not, and the tail is exactly what a blocking gate trips
-on. That is the measured justification for reporting rather than blocking (see
-Decisions).
+The macOS row is a single figure and equally load-sensitive: re-measuring on
+2026-10-05 while making these changes gave 1.560–1.741 ms depending on
+background load.
 
-Gate is median < 3.5 ms. neofetch measured 138 ms on the Linux box (~194×).
+The 8-way-load measurement is the mechanism behind the caveat above, on the same
+binary and the same idle box immediately afterwards: min 0.618, **median 0.978**,
+p95 2.719, **max 4.226 ms**. That max is *over* the 3.5 ms local gate, from CPU
+load alone on hardware that is fine. This is what a shared runner looks like, and
+it is why CI reports the median at a 25 ms gate instead of blocking at 3.5 ms.
+
+**The shared CI runner is FASTER than either dedicated box** — 0.729, 0.540,
+0.433 and 0.480 ms medians against 0.672–0.682 ms on clementine and 1.611 ms on
+the Mac. Runner: `Linux 6.17.0-1022-azure x86_64`, 4 cores. Do not read that as
+the runner being good hardware; read it as the local numbers being
+load-sensitive.
+
+The useful detail is the **spread across the four runs, on identical code with
+an identical job definition**. Medians 0.729 / 0.540 / 0.433 / 0.480 ms span
+1.7×, which is itself the argument against trusting a single CI number. The
+sharper detail is the tails: run 1 reached **max 3.067 ms** — a 4.2× tail, close
+enough to the 3.5 ms local gate to have failed it on luck — while runs 2, 3 and 4
+reached 0.812, 0.876 and 0.594 ms, tails of 1.5×, 2.0× and 1.2×. So the median
+is stable to within a small factor and the tail is not, and the tail is exactly
+what a blocking gate trips on. That is the measured justification for reporting
+rather than blocking (see Decisions).
+
+Gate is median < 3.5 ms. neofetch measured 138 ms on the Linux box (~205×).
 The plan records 0.71 ms for Linux from the milestone-0 session; that did not
-reproduce on 2026-10-05 (1.400 ms), though 0.712–0.729 ms *did* reproduce on
-clementine and on the CI runner within the same session. Treat sub-millisecond
-figures as machine- and load-dependent and re-measure before publishing any of
-them.
+reproduce on 2026-10-05 either (0.672–0.682 ms), though sub-millisecond figures
+*did* reproduce on clementine and on the CI runner within the same session.
+Treat every sub-millisecond figure as machine- and load-dependent, quote it with
+its conditions, and re-measure before publishing one.
 
 `$ZIG build bench` — 1000 warm iterations, microseconds: `shared.load()` 4,
 `sysctl osprodversion` 1, `host_statistics64` 3, **total 8**. The plan records
@@ -139,12 +192,14 @@ The current sequence is in `/Users/alpha/.opencode/plan/satori-phase-2.md`.
 Also worth doing soon, cheap and now unblocked:
 
 - **Set a real blocking CI perf threshold.** 25 ms was chosen before there was
-  any runner data and the observed medians are 0.729 and 0.540 ms, so the
-  current gate only catches catastrophic regressions. `SATORI_STARTUP_GATE_US`
-  exists for exactly this retune. Three runs is not a distribution; collect more.
-  Whatever the threshold ends up being, the tail has to be accounted for: run 1
-  produced a 3.067 ms max against a 0.729 ms median on code that runs 2 and 3
-  ran at 0.540 / 0.433 ms medians with 0.812 / 0.876 ms maxes.
+  any runner data and the observed medians are 0.729 / 0.540 / 0.433 / 0.480 ms,
+  so the current gate only catches catastrophic regressions.
+  `SATORI_STARTUP_GATE_US` exists for exactly this retune. Four runs is not a
+  distribution; collect more. Whatever the threshold ends up being, the tail has
+  to be accounted for: run 1 produced a 3.067 ms max against a 0.729 ms median on
+  code that runs 2, 3 and 4 ran at 0.540 / 0.433 / 0.480 ms medians with 0.812 /
+  0.876 / 0.594 ms maxes — and 8-way CPU load on an idle dedicated box put a
+  **4.226 ms max** on the same binary, over the 3.5 ms local gate.
 - **Pin `ubuntu-24.04` instead of `ubuntu-latest`.** The runner log warns that
   `ubuntu-latest` migrates to Ubuntu 26 on 2026-10-19, which will move `/bin/sh`
   and the libc under the gates. Deliberately left as `ubuntu-latest` so a moving
@@ -224,10 +279,10 @@ but both are the expensive ones.
   gate — so the escape hatch cannot turn into a way to delete the gate. Measured
   justification: under 8-way CPU load the median reaches 4.030 ms and under
   32-way it reaches 5.242 ms, both on a box that is fine, which is what a shared
-  runner looks like; and of three real CI runs on identical code, one had a
-  **max** of 3.067 ms against a 0.729 ms median while the other two ran at
-  0.540 / 0.433 ms with 0.812 / 0.876 ms maxes. A gate at 3.5 ms on that
-  hardware would be a coin flip.
+  runner looks like; and of four real CI runs on identical code, one had a
+  **max** of 3.067 ms against a 0.729 ms median while the other three ran at
+  0.540 / 0.433 / 0.480 ms with 0.812 / 0.876 / 0.594 ms maxes. A gate at
+  3.5 ms on that hardware would be a coin flip.
   A flaky red build teaches everyone to ignore CI, which costs more than the
   regression this stands in for.
 - **The committed bindings' target is a declared constant**
@@ -289,8 +344,9 @@ Operational:
   permissions or billing problem and cost a debugging round. Single-quote the
   whole value: `run: '"$ZIG" build check'`.
 - **`tools/regen-c.sh` with no mode flag overwrites `src/c.zig`**, inferring the
-  target from `uname`. It has already replaced the macOS bindings with glibc
-  ones in `~/satori` on clementine. Always pass `--check` or `--gen`.
+  target from `uname`. It replaced the macOS bindings with glibc ones in the
+  old rsync `~/satori` on clementine; that tree is gone (see below). Always pass
+  `--check` or `--gen`.
 - **`translate-c` must be given `-target`.** Without it it resolves native and
   reads the *Xcode SDK* rather than Zig's bundled libc, embedding SDK paths in
   comments and breaking reproducibility.
@@ -302,9 +358,21 @@ Operational:
   halves of that rule. Confirmed 2026-10-05 by trying.
 - **Never `zig fmt --stdin`** on generated files — hangs on ~12k lines. Use
   `zig fmt --check`. (`zig fmt` is in-place and silent in 0.17.)
-- **`~/satori` on clementine is an rsync copy, not a git clone.** Commit locally
-  before syncing. `~/satori-citest` and `~/satori-ci-dryrun` now also exist there
-  as scratch trees for exactly this kind of check; ignore them.
+- **An rsync scratch tree on a verification host is a trap, because it goes
+  stale silently and then certifies the wrong code.** `~/satori` on clementine
+  was rsynced and documented as "commit locally before syncing". It was last
+  synced before `COMMITTED_C_TARGET` existed and before `AGENTS.md`/`MEMORY.md`
+  did, so it held a 2,743-line glibc `src/c.zig` instead of the committed
+  12,061-line aarch64-macos one — and every "green check on Linux" quote from it
+  was vacuous: pre-fix code, wrong bindings, and no way to tell, because a
+  scratch tree has no commit to compare against. **`~/satori` is now a plain
+  `git clone` of the public repo** (which is also what CI does, so the local and
+  CI Linux results are the same measurement), and unpushed work goes to a
+  *separate* `~/satori-wip` by rsync so the trustworthy tree stays trustworthy.
+  Generalisation: a verification host must be pinned to a **commit**, and
+  `git status` on it must be clean before a green result means anything.
+  `~/satori-rsync-stale` (the old tree) and `~/satori-citest` /
+  `~/satori-ci-dryrun` also exist there as scratch; ignore all three.
 - **No `~/.ssh/config` entry for `clementine`**; it resolves by other means.
   Don't go looking for one.
 
@@ -375,9 +443,9 @@ Tooling:
   anyone arriving cold — the MIT attribution obligation is currently satisfied
   by `LICENSE` alone and must be repeated in the README when it is written.
 - **The CI perf threshold is a placeholder, not a measurement.** 25 ms was chosen
-  with zero runner data against observed medians of 0.729 / 0.540 / 0.433 ms, so
-  it currently catches only catastrophic regressions. `SATORI_STARTUP_GATE_US` is
-  the knob.
+  with zero runner data against observed medians of 0.729 / 0.540 / 0.433 /
+  0.480 ms, so it currently catches only catastrophic regressions.
+  `SATORI_STARTUP_GATE_US` is the knob.
 - **`tools/check-no-fork.sh`'s embedded probe still hardcodes `-Mc=src/c.zig`.**
   Harmless today — it is macOS-only, and on the declared target that file is
   correct — but an x86_64-macos host would build the probe against the wrong
