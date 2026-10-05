@@ -155,19 +155,16 @@ pub const Buf = struct {
     }
 
     /// SGR escape, e.g. `sgr("1;36")` emits ESC[1;36m.
+    ///
+    /// The only way an escape sequence reaches satori's output. That total is
+    /// load-bearing: `--no-color` is implemented as an early return here, so a
+    /// raw `\x1b` written anywhere else would silently disarm the flag. It is
+    /// why `Buf` has no row formatter of its own — `render.zig`'s `row` owns the
+    /// label/value shape and calls this.
     pub fn sgr(self: *Buf, code: []const u8) void {
         self.write("\x1b[");
         self.write(code);
         self.write("m");
-    }
-
-    /// The common "label: value" field row.
-    pub fn field(self: *Buf, label: []const u8, value: []const u8) void {
-        self.write(label);
-        self.writeByte(':');
-        self.writeByte(' ');
-        self.write(value);
-        self.writeByte('\n');
     }
 };
 
