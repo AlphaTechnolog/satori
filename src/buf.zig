@@ -53,6 +53,16 @@ pub const Buf = struct {
     buf: []u8,
     len: usize = 0,
 
+    /// Emit SGR escapes. `true` by default, so every existing caller keeps its
+    /// current behaviour and `init` needs no new argument.
+    ///
+    /// This is the whole of `--no-color`. One field, one branch, no call-site
+    /// changes — which is only true while `sgr` is the *total* set of
+    /// escape-producing calls. That is why the invariant is stated on `sgr`
+    /// rather than left implicit: a raw `\x1b` written by any other code would
+    /// silently disarm the flag while the flag still looked implemented.
+    color: bool = true,
+
     /// Wrap caller-owned storage. The caller owns the lifetime; `Buf` never
     /// allocates. This is what makes "zero allocations on the default path"
     /// structurally true rather than a convention.
@@ -162,6 +172,7 @@ pub const Buf = struct {
     /// why `Buf` has no row formatter of its own — `render.zig`'s `row` owns the
     /// label/value shape and calls this.
     pub fn sgr(self: *Buf, code: []const u8) void {
+        if (!self.color) return;
         self.write("\x1b[");
         self.write(code);
         self.write("m");
@@ -194,6 +205,24 @@ test "fixed point zero-pads the fraction" {
     b.writeByte(' ');
     b.writeFixed(1234, 1); // 123.4
     try @import("std").testing.expectEqualStrings("0.05 123.4", b.written());
+}
+
+test "color is on by default and sgr is its only escape path" {
+    var storage: [32]u8 = undefined;
+
+    var b = Buf.init(&storage);
+    try @import("std").testing.expect(b.color);
+    b.sgr("1;32");
+    try @import("std").testing.expectEqualStrings("\x1b[1;32m", b.written());
+
+    // The same buffer with colour off: sgr writes nothing at all, so `len` must
+    // not move. Asserting on the bytes alone would also pass if sgr wrote an
+    // empty string, which is not what "no escape sequences" means.
+    b.len = 0;
+    b.color = false;
+    b.sgr("1;32");
+    b.write("plain");
+    try @import("std").testing.expectEqualStrings("plain", b.written());
 }
 
 test "writes truncate instead of panicking" {

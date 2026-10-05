@@ -43,7 +43,10 @@ pub fn main(init: std.process.Init.Minimal) !void {
     sh.load();
 
     var out = buf.Buf.init(&stdout_buf);
-    render.render(&out, &sh, .{ .benchmark = opts.benchmark });
+    render.render(&out, &sh, .{
+        .color = !opts.disable_color,
+        .benchmark = opts.benchmark,
+    });
     flush(out.written());
 }
 
@@ -63,14 +66,16 @@ fn emit(bytes: []const u8) void {
 const Options = struct {
     help: bool = false,
     benchmark: bool = false,
-    /// Parsed but deliberately not advertised in `usage` and not honoured yet.
+    /// `--no-color`. Honoured: `render` copies `!disable_color` onto
+    /// `buf.Buf.color`, and `Buf.sgr` is the only code in the program that emits
+    /// an escape sequence, so this reaches every escape there is. Verified by
+    /// `satori --no-color | grep -c $'\033'` printing 0.
     ///
-    /// `--no-color` used to be listed in the help text while `render()` ignored
-    /// it, so `--help` documented a flag that demonstrably did nothing
-    /// (`satori --no-color | cat -v` still emitted escapes). Advertising it was
-    /// the lie; the parser keeps accepting it so a script passing it does not
-    /// start failing, but nothing should rely on the output being plain until
-    /// `buf.Buf` grows a `color: bool` and `sgr()` early-returns on it.
+    /// This flag was un-advertised in step 1 because it was inert then, and
+    /// re-advertised in step 2 once it was not. Worth remembering why it was
+    /// ever a question: a flag that parses and does nothing is worse than a
+    /// flag that is rejected, because a script passing it keeps running and
+    /// silently gets coloured output into a pipe.
     disable_color: bool = false,
 };
 
@@ -96,6 +101,7 @@ const usage =
     \\Usage: satori [options]
     \\
     \\  -h, --help      show this help
+    \\      --no-color  disable colour output
     \\      --benchmark  print timing diagnostics
     \\
     \\More fields land incrementally; see plan §15 for the milestone table.

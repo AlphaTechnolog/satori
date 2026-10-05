@@ -53,6 +53,9 @@ const VALUE_CAP = 512;
 /// Output knobs. Deliberately not the CLI `Options`: `main` owns flag parsing,
 /// and this is the rendering configuration derived from it.
 pub const Options = struct {
+    /// `--no-color`: emit no SGR escapes. Defaults to colour on, so a caller
+    /// that says nothing gets today's behaviour.
+    color: bool = true,
     /// `--benchmark`: append the timing trailer.
     benchmark: bool = false,
 };
@@ -123,6 +126,11 @@ const LABEL_COLON_WIDTH = blk: {
 /// here allocates.
 pub fn render(out: *buf.Buf, sh: *const shared.Shared, opts: Options) void {
     var storage: [VALUE_CAP]u8 = undefined;
+
+    // Set once, here, and nowhere else. Every escape in the program is emitted
+    // by `Buf.sgr`, which consults this, so this assignment is the complete
+    // implementation of --no-color.
+    out.color = opts.color;
 
     header(out, sh);
 
@@ -364,6 +372,86 @@ test "the registry is the only thing that decides row order and labels" {
     for (fields) |f| {
         try std.testing.expect(f.label.len + 1 <= LABEL_COLON_WIDTH);
     }
+}
+
+test "golden: --no-color emits the same report with zero escapes" {
+    var storage: [4096]u8 = undefined;
+
+    var plain = buf.Buf.init(&storage);
+    const sh = fixture();
+    render(&plain, &sh, .{ .color = false });
+
+    const expected = switch (builtin.os.tag) {
+        .macos => "tester@testbox\n" ++
+            "OS:     26.6.2\n" ++
+            "Kernel: 25.6.0\n" ++
+            "Arch:   arm64\n" ++
+            "Shell:  zsh\n" ++
+            "Uptime: 1h 1m 1s\n" ++
+            "Memory: 1.5 GiB / 8.0 GiB\n",
+        else => "tester@testbox\n" ++
+            "OS:     Linux\n" ++
+            "Kernel: 25.6.0\n" ++
+            "Arch:   arm64\n" ++
+            "Shell:  zsh\n" ++
+            "Uptime: 1h 1m 1s\n" ++
+            "Memory: unavailable\n",
+    };
+    try std.testing.expectEqualStrings(expected, plain.written());
+
+    // The claim `--no-color` makes is "no escape sequences", so count them over
+    // the WHOLE output rather than trusting the equality above to imply it. Two
+    // escapes that happened to cancel, or an escape byte inside a value, would
+    // both pass a string comparison and fail this.
+    var escapes: usize = 0;
+    for (plain.written()) |b| {
+        if (b == 0x1b) escapes += 1;
+    }
+    try std.testing.expectEqual(@as(usize, 0), escapes);
+}
+
+test "colour changes the escapes and nothing else" {
+    // The property that makes --no-color safe rather than merely present: turning
+    // it off must not shift, drop or pad a byte of the report's actual content.
+    // A naive "strip ESC and compare" would leave the SGR parameter text
+    // ("[1;32m") behind, so the comparison removes whole escape sequences —
+    // ESC '[' params 'm' — which is exactly what colour adds and nothing else.
+    var coloured_storage: [4096]u8 = undefined;
+    var plain_storage: [4096]u8 = undefined;
+
+    const sh = fixture();
+    var coloured = buf.Buf.init(&coloured_storage);
+    render(&coloured, &sh, .{});
+    var plain = buf.Buf.init(&plain_storage);
+    render(&plain, &sh, .{ .color = false });
+
+    var without = buf.Buf.init(coloured_storage[2048..]);
+    try std.testing.expectEqualStrings(
+        plain.written(),
+        dropSgr(coloured.written(), &without),
+    );
+}
+
+/// Copy `src` into `dst`, omitting every complete SGR sequence.
+///
+/// Deliberately only strips complete `ESC [ ... m` sequences: a lone ESC is
+/// copied through, so an escape the renderer emitted in a shape this does not
+/// recognise shows up as a test failure rather than being silently forgiven.
+fn dropSgr(src: []const u8, dst: *buf.Buf) []const u8 {
+    var i: usize = 0;
+    while (i < src.len) {
+        if (src[i] == 0x1b and i + 1 < src.len and src[i + 1] == '[') {
+            var j = i + 2;
+            while (j < src.len and src[j] != 'm') j += 1;
+            if (j < src.len) {
+                i = j + 1; // skip through the 'm'
+                continue;
+            }
+        }
+        dst.writeByte(src[i]);
+        i += 1;
+    }
+    return dst.written();
 }
 
 test "golden: --benchmark appends its trailer" {
