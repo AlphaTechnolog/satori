@@ -48,6 +48,7 @@ const Deps = struct {
     macos: *std.Build.Module,
     linux: *std.Build.Module,
     shared: *std.Build.Module,
+    render: *std.Build.Module,
 };
 
 fn buildDeps(
@@ -125,6 +126,18 @@ fn buildDeps(
     m_shared.addImport("macos", m_macos);
     m_shared.addImport("linux", m_linux);
 
+    // render.zig reads only what Shared has already resolved, so it needs no
+    // platform imports of its own — which is the point, not an omission. If it
+    // ever needs one, that is a signal a syscall leaked back into the renderer.
+    const m_render = b.createModule(.{
+        .root_source_file = b.path("src/render.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    m_render.addImport("buf", m_buf);
+    m_render.addImport("fmt", m_fmt);
+    m_render.addImport("shared", m_shared);
+
     return .{
         .c = m_c,
         .buf = m_buf,
@@ -133,6 +146,7 @@ fn buildDeps(
         .macos = m_macos,
         .linux = m_linux,
         .shared = m_shared,
+        .render = m_render,
     };
 }
 
@@ -146,6 +160,7 @@ fn wire(root: *std.Build.Module, d: Deps) void {
     root.addImport("macos", d.macos);
     root.addImport("linux", d.linux);
     root.addImport("shared", d.shared);
+    root.addImport("render", d.render);
 }
 
 pub fn build(b: *std.Build) void {
@@ -253,6 +268,11 @@ pub fn build(b: *std.Build) void {
         .{ .name = "buf", .path = "src/buf.zig" },
         .{ .name = "fmt", .path = "src/fmt.zig" },
         .{ .name = "shared", .path = "src/shared.zig" },
+        // The renderer is a module of its own for the same reason everything else
+        // is: a test binary is the only way to reach a function that is not
+        // `pub` from main, and one binary per module is the only way to collect
+        // its `test` blocks at all.
+        .{ .name = "render", .path = "src/render.zig" },
         // Layout assertions are a separate compilation for a second reason: a
         // @compileError there must fail the build loudly rather than being
         // folded into another binary's test list.

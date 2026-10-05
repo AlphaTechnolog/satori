@@ -17,6 +17,7 @@
 //! since that is where every number actually lives.
 
 const shared = @import("shared");
+const render = @import("render");
 const posix = @import("posix");
 const macos = @import("macos");
 const buf = @import("buf");
@@ -38,8 +39,17 @@ pub fn main() !void {
     warm.load();
     var warm_scratch: [256]u8 = undefined;
     if (builtin.os.tag == .macos) {
+        // Still warmed directly, even though load() now calls both: these two
+        // lines are what makes the sub-measurements below comparable to the
+        // earlier ones, and a phase whose first call is the only warm call in the
+        // harness measures cold-start cost.
         _ = macos.osVersion(&warm_scratch);
         _ = macos.vmStats();
+    }
+    {
+        var out: [16 * 1024]u8 = undefined;
+        var b = buf.Buf.init(&out);
+        render.render(&b, &warm, .{});
     }
 
     // --- phase timings --------------------------------------------------------
@@ -53,6 +63,9 @@ pub fn main() !void {
         load_us = elapsedUs(t0, RUNS);
     }
 
+    // Measured separately to show what load() is made of. Since step 2 these are
+    // *inside* load(), so they are components of load_us and are no longer added
+    // into the total — doing that would count them twice.
     var sysctl_us: u64 = 0;
     var vm_us: u64 = 0;
     if (builtin.os.tag == .macos) {
@@ -68,6 +81,22 @@ pub fn main() !void {
         vm_us = elapsedUs(t2, RUNS);
     }
 
+    // The renderer itself: pure formatting over data already in hand, and the
+    // only thing step 2 added to the default path. It has to stay in the noise
+    // next to load(), or the move into Shared bought nothing.
+    var render_us: u64 = 0;
+    {
+        var out: [16 * 1024]u8 = undefined;
+        var b = buf.Buf.init(&out);
+        const t3 = posix.monotonicNs();
+        for (0..RUNS) |_| {
+            b.len = 0;
+            render.render(&b, &warm, .{});
+        }
+        render_us = elapsedUs(t3, RUNS);
+        std.mem.doNotOptimizeAway(b.written().len);
+    }
+
     // --- output ---------------------------------------------------------------
     var out: [2048]u8 = undefined;
     var b = buf.Buf.init(&out);
@@ -77,18 +106,22 @@ pub fn main() !void {
 
     b.write("  shared.load()           ");
     b.writeUint(load_us);
-    b.write(" us\n");
+    b.write(" us   (every syscall the program makes)\n");
 
     if (builtin.os.tag == .macos) {
-        b.write("  sysctl osprodversion   ");
+        b.write("    sysctl osprodversion ");
         b.writeUint(sysctl_us);
-        b.write(" us\n");
-        b.write("  host_statistics64      ");
+        b.write(" us     (inside load())\n");
+        b.write("    host_statistics64    ");
         b.writeUint(vm_us);
-        b.write(" us\n");
+        b.write(" us     (inside load())\n");
     }
 
-    const total = load_us + sysctl_us + vm_us;
+    b.write("  render()                ");
+    b.writeUint(render_us);
+    b.write(" us   (formatting only, no syscall)\n");
+
+    const total = load_us;
     b.write("\n  total data gathering   ");
     b.writeUint(total);
     b.write(" us\n");

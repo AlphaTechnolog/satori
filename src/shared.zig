@@ -17,6 +17,17 @@ const std = @import("std");
 
 const Str = buf.Str;
 
+/// Memory in bytes.
+///
+/// The platform layers disagree about what "used" means — on macOS it is
+/// active+inactive+wired+compressed, *not* `total - free`, because `free_count`
+/// there counts only untouched pages — so the figure is computed where the
+/// semantics live and carried, never re-derived by the renderer.
+pub const MemStats = struct {
+    used: u64 = 0,
+    total: u64 = 0,
+};
+
 pub const Shared = struct {
     // --- strings, all resolved once ---
     sysname: Str = .{},
@@ -26,8 +37,18 @@ pub const Shared = struct {
     user: Str = .{},
     shell: Str = .{},
 
+    /// macOS product version ("26.6.2"), empty when the sysctl is unavailable.
+    /// There is no Linux equivalent and that is not a gap: on Linux
+    /// `uname().sysname` already carries the distribution name, so the OS row
+    /// reads that instead. See render.zig's `osValue`.
+    os_version: Str = .{},
+
     // --- scalars ---
     page_size: u64 = 0,
+    /// Memory, resolved once. `total == 0` is the absence encoding: the renderer
+    /// prints "unavailable" rather than a plausible "0 B / 0 B". It is also
+    /// today's encoding on Linux, where no memory source is gathered yet (step 4).
+    mem: MemStats = .{},
     /// Boot time as seconds since the Unix epoch, 0 if unavailable.
     boot_unix: i64 = 0,
     /// CLOCK_MONOTONIC reading taken at the same moment as boot_unix, so
@@ -73,6 +94,29 @@ pub const Shared = struct {
             else => @import("posix"),
         };
         self.page_size = plat.pageSize();
+
+        // The remaining rows. `osVersion` and `vmStats` were called by render()
+        // itself until step 2, which made the renderer impure: a golden test of
+        // it would have baked in whatever machine the test ran on. Everything the
+        // renderer prints is gathered here instead, which is the whole point of
+        // this type.
+        //
+        // The comptime switch is load-bearing rather than tidy. `linux.zig` has
+        // no `vmStats` at all (step 4 adds it), so an unconditional call would
+        // not compile there; and the Mach calls do not exist on Linux. A field
+        // with no source on this platform keeps its default, and the renderer
+        // reports that as "unavailable".
+        switch (builtin.os.tag) {
+            .macos => {
+                const macos = @import("macos");
+                var scratch: [256]u8 = undefined;
+                self.os_version.set(macos.osVersion(&scratch));
+                const vm = macos.vmStats();
+                self.mem.used = vm.used();
+                self.mem.total = vm.total;
+            },
+            else => {},
+        }
 
         // kern.boottime / CLOCK_BOOTTIME report boot as an instant counted from
         // the wall-clock epoch, but uptime must be measured on CLOCK_MONOTONIC so

@@ -12,11 +12,8 @@
 
 const buf = @import("buf");
 const shared = @import("shared");
-const posix = @import("posix");
-const macos = @import("macos");
-const fmt = @import("fmt");
+const render = @import("render");
 const c = @import("c");
-const builtin = @import("builtin");
 const std = @import("std");
 
 /// Large enough for the full default field set with generous headroom for long
@@ -25,10 +22,6 @@ const std = @import("std");
 const OUTPUT_CAP = 64 * 1024;
 
 var stdout_buf: [OUTPUT_CAP]u8 = undefined;
-
-/// Scratch space for a formatted field value. Kept separate from stdout_buf so a
-/// value can be formatted before its label is written — see render().
-var value_storage: [256]u8 = undefined;
 
 /// Zig 0.17 replaced `std.process.argsAlloc` with an `Init.Minimal` parameter.
 /// That is strictly better here: argv is handed over as a vector of C strings
@@ -50,7 +43,7 @@ pub fn main(init: std.process.Init.Minimal) !void {
     sh.load();
 
     var out = buf.Buf.init(&stdout_buf);
-    render(&out, &sh, opts);
+    render.render(&out, &sh, .{ .benchmark = opts.benchmark });
     flush(out.written());
 }
 
@@ -95,57 +88,6 @@ fn parseArgs(args: std.process.Args) Options {
         }
     }
     return o;
-}
-
-fn render(out: *buf.Buf, sh: *const shared.Shared, opts: Options) void {
-    var scratch: [512]u8 = undefined;
-
-    out.sgr("1;36");
-    out.write(sh.user.slice());
-    out.sgr("1;34");
-    out.write("@");
-    out.sgr("0");
-    out.write(sh.hostname.slice());
-    out.writeByte('\n');
-    out.sgr("0");
-
-    if (builtin.os.tag == .macos) {
-        const ver = macos.osVersion(&scratch);
-        out.field("OS", if (ver.len > 0) ver else sh.release.slice());
-        out.field("Kernel", sh.release.slice());
-        out.field("Arch", sh.machine.slice());
-    } else {
-        out.field("OS", sh.sysname.slice());
-        out.field("Kernel", sh.release.slice());
-        out.field("Arch", sh.machine.slice());
-    }
-
-    out.field("Shell", sh.shell.slice());
-
-    // Format into a SEPARATE buffer before calling field. Passing `out` to both
-    // fmt.duration and field mutates the same buffer twice: argument evaluation
-    // runs duration first, so the value lands *before* its own label and the row
-    // reads "50sUptime: 50s". Compute, then emit.
-    var val: buf.Buf = buf.Buf.init(&value_storage);
-    val.len = 0;
-    _ = fmt.duration(&val, sh.uptimeSeconds());
-    out.field("Uptime", val.written());
-
-    if (builtin.os.tag == .macos) {
-        const vm = macos.vmStats();
-        if (vm.total > 0) {
-            out.write("Memory: ");
-            _ = fmt.bytes(out, vm.used());
-            out.write(" / ");
-            _ = fmt.bytes(out, vm.total);
-            out.writeByte('\n');
-        }
-    }
-
-    if (opts.benchmark) {
-        out.writeByte('\n');
-        out.write("shared load complete; no forks, one write\n");
-    }
 }
 
 const usage =
