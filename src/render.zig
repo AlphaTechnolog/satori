@@ -315,10 +315,21 @@ test "golden: the default report" {
                 ESC ++ "[1;33mUptime" ++ ESC ++ "[0m: 1h 1m 1s\n" ++ // fmt.duration(3661)
                 ESC ++ "[1;33mMemory" ++ ESC ++ "[0m: 1.5 GiB / 8.0 GiB\n"; // used / total
         },
-        // Linux: the OS row reads sysname, and no memory source is gathered yet
-        // (step 4), so total == 0 and the row says so rather than vanishing.
-        // The row *shape* is now identical on both arms — only these two values
-        // differ.
+        // Linux: the OS row is the ONLY difference, because it is the only field
+        // whose *source* differs by platform — it reads sysname where macOS read
+        // os_version. Everything else, Memory included, renders from the same
+        // fixture data on both arms.
+        //
+        // An earlier version of this test claimed "Memory: unavailable" here,
+        // reasoning that Linux has no memory source yet. That was wrong in a way
+        // worth recording: it made the fixture pretend to be a real Linux
+        // `Shared.load()`, which couples the golden test to what a platform's
+        // loader happens to gather. render() is a pure function of its argument,
+        // so if the argument carries memory, it prints memory — on every
+        // platform. "Linux gathers no memory" is a claim about `load()`, and
+        // test.golden: a missing source is reported, not hidden below covers it
+        // directly. Found by running the gate on clementine, where only the
+        // Linux arm exists to disagree with macOS.
         else => blk: {
             break :blk ESC ++ "[1;36mtester" ++ ESC ++ "[1;34m@" ++
                 ESC ++ "[0mtestbox\n" ++
@@ -327,10 +338,39 @@ test "golden: the default report" {
                 ESC ++ "[1;32mArch" ++ ESC ++ "[0m:   arm64\n" ++
                 ESC ++ "[1;32mShell" ++ ESC ++ "[0m:  zsh\n" ++
                 ESC ++ "[1;33mUptime" ++ ESC ++ "[0m: 1h 1m 1s\n" ++
-                ESC ++ "[1;33mMemory" ++ ESC ++ "[0m: unavailable\n";
+                ESC ++ "[1;33mMemory" ++ ESC ++ "[0m: 1.5 GiB / 8.0 GiB\n";
         },
     };
     try std.testing.expectEqualStrings(expected, out.written());
+}
+
+test "a missing source is reported, not hidden" {
+    // The claim that the previous test's Linux arm was making, stated directly
+    // instead: a Shared carrying everything except memory prints "unavailable"
+    // for Memory and nothing else changes. This is what a real Linux
+    // `Shared.load()` looks like today, since step 4 adds the memory source.
+    //
+    // Worth its own test because the failure it prevents is invisible on
+    // macOS: there, `mem` is always populated, so a golden test can never
+    // observe the absent case. Only the every-source-absent test above covers
+    // it, and that one does not isolate which field is responsible.
+    var storage: [4096]u8 = undefined;
+    var out = buf.Buf.init(&storage);
+    var sh = fixture();
+    sh.mem = .{}; // no source: total == 0
+    render(&out, &sh, .{ .color = false });
+
+    const os_row = switch (builtin.os.tag) {
+        .macos => "OS:     26.6.2\n",
+        else => "OS:     Linux\n",
+    };
+    const want = "tester@testbox\n" ++ os_row ++
+        "Kernel: 25.6.0\n" ++
+        "Arch:   arm64\n" ++
+        "Shell:  zsh\n" ++
+        "Uptime: 1h 1m 1s\n" ++
+        "Memory: unavailable\n";
+    try std.testing.expectEqualStrings(want, out.written());
 }
 
 test "golden: every source absent" {
@@ -389,13 +429,15 @@ test "golden: --no-color emits the same report with zero escapes" {
             "Shell:  zsh\n" ++
             "Uptime: 1h 1m 1s\n" ++
             "Memory: 1.5 GiB / 8.0 GiB\n",
+        // Only the OS value differs by platform; see the same reasoning in
+        // "golden: the default report".
         else => "tester@testbox\n" ++
             "OS:     Linux\n" ++
             "Kernel: 25.6.0\n" ++
             "Arch:   arm64\n" ++
             "Shell:  zsh\n" ++
             "Uptime: 1h 1m 1s\n" ++
-            "Memory: unavailable\n",
+            "Memory: 1.5 GiB / 8.0 GiB\n",
     };
     try std.testing.expectEqualStrings(expected, plain.written());
 
