@@ -7,12 +7,23 @@
 //! `host_statistics64` returned KERN_INVALID_ARGUMENT that went unnoticed
 //! because the return code was not checked.
 //!
-//! Every value below was measured by the platform C compiler, not inferred:
+//! Every value below was measured by the platform C compiler, not inferred, and
+//! not typed in by hand:
 //!   macOS  — clang -O2, Darwin 26.6.2, arm64
 //!   Linux  — gcc -O2, Debian fork/sid, x86_64, glibc 2.43
 //!
-//! Regenerate ground truth for a new target with tools/gt.c:
+//! Regenerate ground truth with tools/gt.c — its output is the switch arm body:
 //!   cc -O2 tools/gt.c -o gt && ./gt
+//!
+//! Two-sided proof, and both halves are load-bearing. tools/gt.c reports what
+//! the *system* headers say; this file asserts that the *translated* declarations
+//! in src/c.zig agree. Either side failing loudly is the point: a libc that
+//! changes a layout must break the build, not change the number on screen.
+//!
+//! Verified 2026-10-05 on both hosts: every assertion below is emitted verbatim
+//! by tools/gt.c compiled there (21 of 21 per arm), so nothing here is
+//! hand-entered. gt.c also measures structs this file does not assert yet
+//! (struct sysinfo, struct dirent) — see AGENTS.md "Known gaps".
 //!
 //! The negative control at the bottom proves these assertions actually fire.
 //! Without it, a typo that made every check vacuous would pass silently — which
@@ -70,7 +81,11 @@ test "struct layouts match the platform ABI" {
             expectOffset(c.struct_statfs, "f_fstypename", 72);
             expectOffset(c.struct_statfs, "f_mntonname", 88);
 
-            // vm_statistics64_data_t is 52 x natural_t (u32), NOT 24 x u64.
+            // vm_statistics64_data_t is 416 bytes: 57 named fields of MIXED
+            // width, the first five natural_t (u32, 4-byte stride) and the rest
+            // 64-bit (8-byte stride), with reserved gaps at 20, 100 and 148. So
+            // neither the size nor the field count can be derived from the other
+            // — which is how the hand-written 15 x u64 was wrong twice over.
             // HOST_VM_INFO64_COUNT must be derived from the real size.
             expectSize(c.vm_statistics64_data_t, 416, "vm_statistics64_data_t");
             expectSize(c.natural_t, 4, "natural_t");
@@ -109,8 +124,9 @@ test "struct layouts match the platform ABI" {
 
 test "HOST_VM_INFO64_COUNT derives from the real struct size" {
     if (builtin.os.tag != .macos) return error.SkipZigTest;
-    // Must match the value a C compiler computes:
-    //   sizeof(vm_statistics64_data_t) / sizeof(natural_t) == 104
+    // Must match the value a C compiler computes, measured by tools/gt.c:
+    //   sizeof(vm_statistics64_data_t) 416 / sizeof(natural_t) 4 == 104
+    // Not 15, and not 52: see the comment in the macOS arm above.
     const count = @sizeOf(c.vm_statistics64_data_t) / @sizeOf(c.natural_t);
     try std.testing.expectEqual(@as(usize, 104), count);
 }

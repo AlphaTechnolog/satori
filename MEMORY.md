@@ -23,7 +23,9 @@ and verified on macOS arm64, Linux x86_64, and a GitHub Actions
 `ubuntu-latest` runner. Commits `9ce02b4` (skeleton + invariants), `62985a6`
 (one command for every gate), `c8e2923` (docs + licence), `06d1062` + `950c7ec`
 + `e992d3e` (run the gates on any host, and CI), `13f0c5e` (record CI in
-AGENTS.md). Feature work not started.
+AGENTS.md), `a11ca8f` + `77d146d` (runner measurements 2 and 3), `fd8a40f`
+(correct three stale records in these two files), then step 1: write
+`tools/gt.c`, drop the `--no-color` lie. Field work not started.
 
 CI runs exactly `zig build check` on **one** Linux runner, in 2m52s, 2m03s,
 1m58s and 1m51s wall across the four green runs. First:
@@ -179,7 +181,8 @@ scopes.
 
 The current sequence is in `/Users/alpha/.opencode/plan/satori-phase-2.md`.
 
-1. Step 1 — write `tools/gt.c`; delete `--no-color` from `usage`.
+1. **Step 1 — done 2026-10-05.** `tools/gt.c` written and verified on both
+   hosts; `--no-color` out of `usage`.
 2. Step 2 — field registry + renderer, golden-tested, against the existing 6.
    `--no-color` gets implemented here (`color: bool` on `Buf`, early return in
    `sgr()`).
@@ -188,6 +191,13 @@ The current sequence is in `/Users/alpha/.opencode/plan/satori-phase-2.md`.
    implemented and unused, ~30 lines, 6 → 10 fields.
 4. Step 4 — Linux parity. Step 5 — logos. Step 6 — CLI/`--json` freeze, config,
    opt-in, e2e golden.
+
+`tools/gt.c` is what unblocks step 3 and step 4: Resolution needs
+`struct winsize`, and step 4 is Linux parity, so between them every remaining
+field needs measured ground truth for at least one new struct. Verified there on
+2026-10-05: it emits the switch arm body for whichever platform it is compiled
+on, and all 21 values `test/layout.zig` asserts per arm come out of it verbatim,
+so no asserted number is hand-entered.
 
 Also worth doing soon, cheap and now unblocked:
 
@@ -381,8 +391,17 @@ Correctness, all of which shipped as silent wrong answers rather than crashes:
 - **A wrong hand-written `extern struct` compiles fine and returns garbage.** 2
   of 2 attempts were wrong: `struct statfs` (assumed 1,104 bytes with `f_fsid`
   last; actually 2,168 with `f_fsid`@48, `f_flags`@64, `f_fstypename`@72) and
-  `vm_statistics64_data_t` (assumed 15×`u64`; actually 416 bytes = 52×`natural_t`,
-  so `HOST_VM_INFO64_COUNT` = 104).
+  `vm_statistics64_data_t` (assumed 15×`u64`; actually 416 bytes).
+- **"416 bytes = 52×`natural_t`" was itself wrong, and this file said so for a
+  day.** Measured with `tools/gt.c` on 2026-10-05: 52×`natural_t` is 208, not
+  416. The truth is 416 bytes = 104×`natural_t` = 52×8-byte slots, holding **57
+  named fields of mixed width** — the first five are `natural_t` (u32, 4-byte
+  stride: offsets 0, 4, 8, 12, 16) and the remaining 52 are 64-bit (8-byte
+  stride, from `reactivations`@24 to `phantom_ghosts_added`@408), with
+  *unnamed reserved gaps at 20, 100 and 148*. So neither the size nor the field
+  count can be derived from the other, which is why the hand-written version was
+  wrong twice over. `HOST_VM_INFO64_COUNT` = 416/4 = **104** was right all along;
+  only the explanation attached to it was not.
 - **That wrong count made `host_statistics64` return `KERN_INVALID_ARGUMENT`**
   (268435459) and go unnoticed because the return code was not checked. It now
   renders as a plausible "0 MiB used". Always check the return code.
@@ -429,14 +448,21 @@ Tooling:
 
 ## Open
 
-- **`tools/gt.c` does not exist.** `test/layout.zig` tells you to
-  `cc -O2 tools/gt.c -o gt && ./gt` to regenerate layout ground truth, but the
-  file is missing. It is step 1 of `satori-phase-2.md` and is a prerequisite for
-  every new struct — which means for milestone 1 (Resolution needs
-  `struct winsize`) and all of Linux parity.
-- **`--no-color` is advertised in `usage` but not honored.** `render()` ignores
-  `opts.disable_color`. Verified: `./satori --no-color | cat -v` still emits
-  escapes. Delete it from `usage` now, implement in step 2.
+- **`test/layout.zig` asserts a subset of what `tools/gt.c` now measures.** The
+  tool is complete; the test is a chosen subset of what satori depends on.
+  Unasserted but already measured, and read by `linux.zig`: `struct sysinfo`
+  (112 bytes, `mem_unit`@104, `__f`@108) and `struct dirent` (280 bytes,
+  `d_name`@19). Also unasserted: `time_t`/`clock_t` on both platforms, and
+  `fsid_t`/`fsblkcnt_t`/`fsfilcnt_t` on macOS. Adding them is cheap and is the
+  obvious next use of the tool.
+- **`--no-color` is un-advertised but still not honoured.** It was listed in
+  `usage` while `render()` ignored it — verified at the time:
+  `./satori --no-color | cat -v` still emitted escapes. It is out of `usage` now
+  and the parser still accepts it (so a passing script does not start failing),
+  with the field's doc comment saying plainly that it does nothing. Implement it
+  in step 2 as `color: bool` on `buf.Buf` with an early return in `sgr()`, in
+  the same change that rewrites `render()`; doing it in two steps wastes the
+  rewrite.
 - **`README.md` does not exist**; deferred to step 6 so it does not have to claim
   parity it does not have. Its absence on a public repo is expected.
   `LICENSE` exists (MIT + attribution) and `AGENTS.md` is the entry point for
@@ -446,6 +472,12 @@ Tooling:
   with zero runner data against observed medians of 0.729 / 0.540 / 0.433 /
   0.480 ms, so it currently catches only catastrophic regressions.
   `SATORI_STARTUP_GATE_US` is the knob.
+- **`tools/gt.c` is not wired into `zig build check`, on purpose.** It is a
+  maintainer tool like `tools/regen-c.sh`. Making it a gate would tie every push
+  to whatever `cc` and libc the CI runner image ships, which is a different
+  measurement from the pinned Zig toolchain everything else is verified against.
+  Worth revisiting *if* the runner image is pinned (`ubuntu-24.04`), at which
+  point the gate is against a known libc rather than whatever is newest.
 - **`tools/check-no-fork.sh`'s embedded probe still hardcodes `-Mc=src/c.zig`.**
   Harmless today — it is macOS-only, and on the declared target that file is
   correct — but an x86_64-macos host would build the probe against the wrong

@@ -205,9 +205,23 @@ measured by the platform C compiler. It is the most important test in the repo:
 the failure it prevents is silently wrong output, not a crash.
 
 Values are **per-target**; adding a struct means adding ground truth for both
-macOS and Linux or the `else` branch `@compileError`s. `test/layout.zig` tells you
-to run `cc -O2 tools/gt.c` — **`tools/gt.c` does not exist yet**, so write it
-before adding a struct.
+macOS and Linux or the `else` branch `@compileError`s. The measurement tool is
+`tools/gt.c` — `cc -O2 tools/gt.c -o gt && ./gt` — and its output *is* the switch
+arm body, so the procedure is paste, then `zig build check` on both hosts. It
+includes `src/c.h` rather than restating the headers, so it can only ever see the
+headers the bindings were translated from; a struct must be added to `src/c.h`
+first. It prints **every** field of every struct, not the subset the test
+asserts, on purpose — picking the subset is the judgement call that caused both
+silent failures. Two C names differ from their translated names
+(`struct sysinfo._f` → `__f`), which the tool makes explicit instead of
+papering over.
+
+Two-sided proof, and both halves matter: `gt.c` says what the *system* headers
+say, `test/layout.zig` asserts that the *translated* declarations in `src/c.zig`
+agree. If a libc changes a layout, one side fails loudly instead of the program
+printing a wrong number. Verified 2026-10-05: every value asserted in
+`test/layout.zig` is emitted verbatim by `tools/gt.c` on both hosts (21 of 21
+per arm), so no asserted number is hand-entered.
 
 `test/negative_control.zig` must never compile, and
 `tools/check-negative-control.sh` fails if it does. Keep the failure *reason*
@@ -281,15 +295,20 @@ Verified, so you don't waste time rediscovering them:
 - Field parity is 6 of neofetch's 17 defaults (OS, Kernel, Arch, Shell, Uptime,
   Memory). `macos.zig` already implements `cpuBrand`, `coreCount`,
   `threadCount`, `hwModel` — implemented and *unused*, not yet rendered.
-- `--no-color` is advertised in `usage` but **not honored**; `render()` ignores
-  `opts.disable_color`. Verified: `./satori --no-color | cat -v` still emits
-  escapes. Delete it from `usage`; implement it in the renderer step.
-- `tools/gt.c` is referenced by `test/layout.zig` but **does not exist**, so
-  regenerating layout ground truth has no documented working procedure. It is
-  step 1 of `satori-phase-2.md` and a prerequisite for every new struct.
+- `--no-color` is **no longer advertised** in `usage`; it used to be listed
+  while `render()` ignored it. The parser still accepts it (so a script passing
+  it does not break) but it does nothing, and the comment on
+  `Options.disable_color` says so. Implement it as `color: bool` on `buf.Buf`
+  with an early return in `sgr()` — in the step that rewrites `render()`, not
+  before, or it gets written twice.
 - No README. Deferred to step 6 so it does not have to claim parity it does not
   have; `LICENSE` plus this file carry anyone arriving cold for now. The MIT
   attribution to neofetch must be repeated in it when it is written.
+- `test/layout.zig` asserts a subset of what `tools/gt.c` can measure.
+  `struct sysinfo` (112 bytes, `mem_unit`@104) and `struct dirent` (280 bytes,
+  `d_name`@19) are already measured and read by `linux.zig` but not asserted
+  yet; `struct winsize` arrives with Resolution. Adding those assertions is
+  cheap and is the obvious next use of the tool.
 - `logos/data/` is empty and unreferenced by the build (only `build.zig.zon`'s
   `.paths` mentions it). The logo engine is not started.
 

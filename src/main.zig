@@ -70,6 +70,14 @@ fn emit(bytes: []const u8) void {
 const Options = struct {
     help: bool = false,
     benchmark: bool = false,
+    /// Parsed but deliberately not advertised in `usage` and not honoured yet.
+    ///
+    /// `--no-color` used to be listed in the help text while `render()` ignored
+    /// it, so `--help` documented a flag that demonstrably did nothing
+    /// (`satori --no-color | cat -v` still emitted escapes). Advertising it was
+    /// the lie; the parser keeps accepting it so a script passing it does not
+    /// start failing, but nothing should rely on the output being plain until
+    /// `buf.Buf` grows a `color: bool` and `sgr()` early-returns on it.
     disable_color: bool = false,
 };
 
@@ -146,7 +154,6 @@ const usage =
     \\Usage: satori [options]
     \\
     \\  -h, --help      show this help
-    \\      --no-color   disable ANSI colour
     \\      --benchmark  print timing diagnostics
     \\
     \\More fields land incrementally; see plan §15 for the milestone table.
