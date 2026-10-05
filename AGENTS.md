@@ -7,8 +7,9 @@ package dependencies. Licensed MIT, with attribution to neofetch for the logo ar
 Public repo: <https://github.com/AlphaTechnolog/satori>, default branch `main`,
 remote `origin`. `zig build check` runs in CI on **one** Linux runner
 (`.github/workflows/ci.yml`) — exactly that command, no split jobs — and was
-green on 2026-10-05:
-<https://github.com/AlphaTechnolog/satori/actions/runs/37343357084>.
+green on 2026-10-05, three runs in a row — most recent:
+<https://github.com/AlphaTechnolog/satori/actions/runs/37344885729>. Runner
+medians: 0.729 / 0.540 / 0.433 ms.
 
 The design plan is at `/Users/alpha/.opencode/plan/`, in two files:
 `satori-rewrite.md` (research, measurements, rationale; §5 landmines, §14 style)
@@ -79,8 +80,10 @@ Two env vars matter, both set at job level:
   only raise the local gate; `test/startup.zig` clamps it, so the escape hatch
   can never become a way to delete the gate. Both verdicts are always printed.
   25 ms is a placeholder chosen before any runner data, not a measurement —
-  retune it against a spread of runs. The runner's median is **0.729 ms** with a
-  3.067 ms max, which is why the gate reports rather than blocks.
+  retune it against a spread of runs. Three runs on identical code gave medians
+  0.729 / 0.540 / 0.433 ms and maxes of 3.067 / 0.812 / 0.876 ms: the median
+  moves a little, the tail moves 4×, and the tail is what a blocking gate trips
+  on. That is why the gate reports.
 
 ## Invariants
 

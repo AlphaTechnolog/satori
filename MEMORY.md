@@ -25,11 +25,12 @@ and verified on macOS arm64, Linux x86_64, and a GitHub Actions
 + `e992d3e` (run the gates on any host, and CI), `13f0c5e` (record CI in
 AGENTS.md). Feature work not started.
 
-CI runs exactly `zig build check` on **one** Linux runner, in 2m52s and 2m03s
-wall across the two green runs. First green run:
+CI runs exactly `zig build check` on **one** Linux runner, in 2m52s, 2m03s and
+1m58s wall across the three green runs. First:
 <https://github.com/AlphaTechnolog/satori/actions/runs/37343357084> (commit
-`e992d3e`); second: <https://github.com/AlphaTechnolog/satori/actions/runs/37344427595>
-(commit `13f0c5e`, the documentation change).
+`e992d3e`); then <https://github.com/AlphaTechnolog/satori/actions/runs/37344427595>
+(`13f0c5e`) and <https://github.com/AlphaTechnolog/satori/actions/runs/37344885729>
+(`a11ca8f`), both documentation-only changes that still ran the full gate.
 
 Getting there took four fixes that none of the local testing could have found,
 because every one of them only bites on a host that is not the maintainer's
@@ -45,25 +46,26 @@ median of end-to-end `fork`+`exec`+`exit`:
 |---|---|---|---|---|
 | macOS arm64 (this machine) | 1.611 ms | 1.521 | 2.006 | 2.177 |
 | Linux x86_64 Debian 14 (`ssh clementine`) | 1.400 ms | 1.297 | 1.475 | 1.619 |
-| **GitHub Actions `ubuntu-latest`** (2 runs) | **0.729 / 0.540 ms** | 0.680 / 0.511 | 0.964 / 0.680 | **3.067** / 0.812 |
+| **GitHub Actions `ubuntu-latest`** (3 runs) | **0.729 / 0.540 / 0.433 ms** | 0.680 / 0.511 / 0.407 | 0.964 / 0.680 / 0.575 | **3.067** / 0.812 / 0.876 |
 
 The local re-measurement on 2026-10-05 while making these changes put macOS at
 1.560–1.741 ms depending on background load, so the macOS row above is a
 mid-range figure, not a fixed one.
 
-**The shared CI runner is FASTER than either dedicated box** — 0.729 and
-0.540 ms medians against 1.400 ms on clementine and 1.611 ms on the Mac. Runner:
+**The shared CI runner is FASTER than either dedicated box** — 0.729, 0.540 and
+0.433 ms medians against 1.400 ms on clementine and 1.611 ms on the Mac. Runner:
 `Linux 6.17.0-1022-azure x86_64`, 4 cores. Do not read that as the runner being
 good hardware; read it as the local numbers being load-sensitive.
 
-The useful detail is the **spread between the two runs**. Run 1: median 0.729 ms,
-**max 3.067 ms** — a 4.2× tail, which nearly reached the 3.5 ms local gate. Run 2
-on identical code: median 0.540 ms, max 0.812 ms, a 1.5× tail. Same code, same
-gate, opposite conclusions about the max. On a shared runner the median is
-robust and the tail is not, and the tail is what a blocking gate would trip on.
-That is the measured justification for reporting rather than blocking (see
-Decisions), and it is also why the local numbers above need re-measuring rather
-than trusting.
+The useful detail is the **spread across the three runs, on identical code with
+an identical job definition**. Medians 0.729 / 0.540 / 0.433 ms span 1.7×, which
+is itself the argument against trusting a single CI number. The sharper detail is
+the tails: run 1 reached **max 3.067 ms** — a 4.2× tail, close enough to the
+3.5 ms local gate to have failed it on luck — while runs 2 and 3 reached 0.812
+and 0.876 ms, tails of 1.5× and 2.0×. So the median is stable to within a small
+factor and the tail is not, and the tail is exactly what a blocking gate trips
+on. That is the measured justification for reporting rather than blocking (see
+Decisions).
 
 Gate is median < 3.5 ms. neofetch measured 138 ms on the Linux box (~194×).
 The plan records 0.71 ms for Linux from the milestone-0 session; that did not
@@ -139,10 +141,10 @@ Also worth doing soon, cheap and now unblocked:
 - **Set a real blocking CI perf threshold.** 25 ms was chosen before there was
   any runner data and the observed medians are 0.729 and 0.540 ms, so the
   current gate only catches catastrophic regressions. `SATORI_STARTUP_GATE_US`
-  exists for exactly this retune. Two runs is not a distribution; collect more.
+  exists for exactly this retune. Three runs is not a distribution; collect more.
   Whatever the threshold ends up being, the tail has to be accounted for: run 1
-  produced a 3.067 ms max against a 0.729 ms median on code that run 2 ran at
-  0.540 ms / 0.812 ms max.
+  produced a 3.067 ms max against a 0.729 ms median on code that runs 2 and 3
+  ran at 0.540 / 0.433 ms medians with 0.812 / 0.876 ms maxes.
 - **Pin `ubuntu-24.04` instead of `ubuntu-latest`.** The runner log warns that
   `ubuntu-latest` migrates to Ubuntu 26 on 2026-10-19, which will move `/bin/sh`
   and the libc under the gates. Deliberately left as `ubuntu-latest` so a moving
@@ -222,9 +224,10 @@ but both are the expensive ones.
   gate — so the escape hatch cannot turn into a way to delete the gate. Measured
   justification: under 8-way CPU load the median reaches 4.030 ms and under
   32-way it reaches 5.242 ms, both on a box that is fine, which is what a shared
-  runner looks like; and one real CI run's **max** was 3.067 ms against a
-  0.729 ms median, where a second run of the same code gave 0.540 ms / 0.812 ms
-  max. A gate at 3.5 ms on that hardware would be a coin flip.
+  runner looks like; and of three real CI runs on identical code, one had a
+  **max** of 3.067 ms against a 0.729 ms median while the other two ran at
+  0.540 / 0.433 ms with 0.812 / 0.876 ms maxes. A gate at 3.5 ms on that
+  hardware would be a coin flip.
   A flaky red build teaches everyone to ignore CI, which costs more than the
   regression this stands in for.
 - **The committed bindings' target is a declared constant**
@@ -372,8 +375,9 @@ Tooling:
   anyone arriving cold — the MIT attribution obligation is currently satisfied
   by `LICENSE` alone and must be repeated in the README when it is written.
 - **The CI perf threshold is a placeholder, not a measurement.** 25 ms was chosen
-  with zero runner data against an observed 0.729 ms median, so it currently
-  catches only catastrophic regressions. `SATORI_STARTUP_GATE_US` is the knob.
+  with zero runner data against observed medians of 0.729 / 0.540 / 0.433 ms, so
+  it currently catches only catastrophic regressions. `SATORI_STARTUP_GATE_US` is
+  the knob.
 - **`tools/check-no-fork.sh`'s embedded probe still hardcodes `-Mc=src/c.zig`.**
   Harmless today — it is macOS-only, and on the declared target that file is
   correct — but an x86_64-macos host would build the probe against the wrong
