@@ -12,7 +12,7 @@
 # packaging and air-gapped CI. CI runs this script with --check once per matrix
 # target and fails if the pinned toolchain would produce anything different.
 #
-# THREE NON-OBVIOUS RULES, EACH LEARNED THE HARD WAY
+# FOUR NON-OBVIOUS RULES, EACH LEARNED THE HARD WAY
 #
 # 1. -target IS MANDATORY. Without it translate-c resolves the native target and
 #    reads the *Xcode SDK* headers instead of Zig's bundled libc headers. The
@@ -27,6 +27,11 @@
 # 3. NEVER pipe through `zig fmt --stdin`. It hangs on input this large. Output
 #    from translate-c is already canonically formatted, so verify with
 #    `zig fmt --check`, which does not write and therefore cannot do damage.
+#
+# 4. THE TOOLCHAIN'S OWN ABSOLUTE PATH MUST BE NORMALISED OUT. translate-c
+#    stamps the path of the Zig installation into its diagnostic comments, so the
+#    raw output differs per machine. See the normalisation block below; without
+#    it a committed src/c.zig can only ever be verified on one laptop.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -76,7 +81,7 @@ while [ $# -gt 0 ]; do
     --check) MODE="check"; shift ;;
     --gen) MODE="gen"; shift ;;
     --matrix) MODE="matrix"; shift ;;
-    -h|--help) sed -n '2,40p' "$0"; exit 0 ;;
+    -h|--help) sed -n '2,44p' "$0"; exit 0 ;;
     --out) OUT="$2"; shift 2 ;;
     --out=*) OUT="${1#*=}"; shift ;;
     --target) TARGET="$2"; shift 2 ;;
@@ -132,6 +137,37 @@ if [ ! -s "$tmp/c.zig" ]; then
   echo "FAIL: translate-c produced an empty file for $TARGET"
   exit 1
 fi
+
+# ---- normalise the toolchain's install path ----------------------------------
+#
+# translate-c annotates each warning it emits with the absolute path of the
+# header responsible, inside a `//` comment. Those paths embed the *generating
+# machine's* Zig installation directory — 1,384 of them in the aarch64-macos
+# file, every one of the form `<zig-dir>/lib/libc/include/...`.
+#
+# Left in, the committed src/c.zig is byte-identical only on a machine whose Zig
+# lives at the same absolute path, so `--check` calls the file "stale" everywhere
+# else. That is not staleness: the diff is `/Users/.../lib/libc` versus
+# `/opt/hostedtoolcache/.../lib/libc`, i.e. identical declarations with different
+# provenance. It is the same class of leak as the missing -target in rule 1 (Xcode
+# SDK paths) one level further out, and it is why a file that must be committed
+# has to be normalised before it is committed.
+#
+# Only `//` comment lines are rewritten, deliberately. The path is diagnostic
+# provenance rather than content; if it ever appeared in a declaration, replacing
+# it would change the build instead of making it portable.
+zig_exe="$ZIG"
+case "$zig_exe" in
+  */*) ;;
+  *) zig_exe="$(command -v "$zig_exe")" ;;
+esac
+zig_dir="$(cd "$(dirname "$zig_exe")" && pwd -P)"
+zig_dir_esc="$(printf '%s' "$zig_dir" | sed -e 's/[\\&|]/\\&/g')"
+if ! sed "/^[[:space:]]*\/\// s|${zig_dir_esc}|<zig-install>|g" "$tmp/c.zig" >"$tmp/c.norm"; then
+  echo "FAIL: could not normalise the toolchain path in the $TARGET bindings"
+  exit 1
+fi
+mv "$tmp/c.norm" "$tmp/c.zig"
 
 lines="$(wc -l <"$tmp/c.zig" | tr -d ' ')"
 echo "generated $lines lines for $TARGET"

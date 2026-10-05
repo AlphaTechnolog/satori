@@ -1,0 +1,106 @@
+# satori's entire gate suite is one command. This workflow runs that command and
+# nothing else, deliberately: every gate is reachable from `zig build check`
+# (fmt + 12 tests + the 5-target C-binding matrix + no-fork + the negative
+# control + the startup gate), so splitting them into separate jobs here would
+# create a second, drifting description of what "green" means.
+#
+# ONE LINUX RUNNER, NO macOS RUNNER. Verified, not assumed: a Linux host links
+# Mach-O, so `-target aarch64-macos` cross-builds to a real Mach-O binary, and
+# `tools/regen-c.sh --matrix` generates macOS bindings from a Linux host fine.
+# A macOS runner would multiply the bill for nothing.
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # One run per ref. A superseded push is cancelled rather than queued: its
+  # result is already uninteresting, and a queue of stale runs is how a gate
+  # starts looking like noise.
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: zig build check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      # src/c.zig is committed for this target. `tools/regen-c.sh` otherwise
+      # infers the committed file's target from `uname`, so on a Linux runner it
+      # diffs the committed aarch64-macos bindings against freshly generated
+      # Linux ones and reports the committed file as "stale" — a false alarm
+      # about a file this runner never compiles. build.zig already passes
+      # SATORI_TARGET from its declared COMMITTED_C_TARGET for the same reason;
+      # this line is the belt to that braces, and it is what a maintainer needs
+      # if they ever run the script by hand on a Linux box.
+      SATORI_TARGET: aarch64-macos
+
+      # CI REPORTS the startup median but does not block at the local 3.5 ms gate.
+      # A shared 2-core runner is not dedicated hardware: dedicated boxes measure
+      # 1.4-1.6 ms, and failing CI at 3.5 ms on a noisy runner would be failing
+      # for reasons that have nothing to do with the change under test. A flaky
+      # red build teaches everyone to ignore CI, which costs more than the
+      # regression this is standing in for. 25 ms is ~16x the dedicated-hardware
+      # median and ~5.5x the local gate — high enough that a genuine regression
+      # (a syscall added to the startup path, an allocation creeping in) still
+      # fails, low enough never to fire on scheduling noise.
+      #
+      # The gate can only be RAISED from here, never lowered: test/startup.zig
+      # clamps this to at least its 3.5 ms local gate. Both verdicts are printed
+      # in the log either way. Once there is a distribution of real runner
+      # numbers, replace this with a threshold derived from them.
+      SATORI_STARTUP_GATE_US: "25000"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Zig 0.17.0 from the pinned official tarball
+        run: |
+          set -euo pipefail
+
+          # Zig 0.17.0 exactly, for the linux-x86_64 runner. Deliberately NOT the
+          # third-party ziglang/setup-zig action: this project's thesis is
+          # hermetic reproducibility, and a digest pinned to the official
+          # tarball is the strongest available statement of that. A floating
+          # "latest" install would also silently change what src/c.zig means.
+
+          version=0.17.0
+          # sha256 from https://ziglang.org/download/index.json under "0.17.0" ->
+          # "x86_64-linux" -> "shasum". Verified against a locally downloaded
+          # copy on 2026-10-05, not copied from a blog post.
+          sha256=1cbe9df9f27e6b78d14ccbca43b6703a404ef79ef1c463de901d7f088d4e2026
+          url="https://ziglang.org/download/${version}/zig-x86_64-linux-${version}.tar.xz"
+
+          curl -fsSL --retry 3 -o /tmp/zig.tar.xz "$url"
+          echo "${sha256}  /tmp/zig.tar.xz" | sha256sum --check -
+          mkdir -p "$HOME/.local/opt"
+          tar -xJf /tmp/zig.tar.xz -C "$HOME/.local/opt"
+          rm -f /tmp/zig.tar.xz
+
+          # tools/regen-c.sh and tools/check-no-fork.sh both read ${ZIG:-zig}, and
+          # `zig` on the runner's PATH is not the pinned version. build.zig passes
+          # its own resolved zig_exe to its sub-steps, but the scripts also run by
+          # hand, and a script silently falling back to a different `zig` is the
+          # kind of thing that produces an unreproducible file.
+          echo "ZIG=$HOME/.local/opt/zig-x86_64-linux-${version}/zig" >> "$GITHUB_ENV"
+          echo "$HOME/.local/opt/zig-x86_64-linux-${version}" >> "$GITHUB_PATH"
+
+      - name: Report the toolchain
+        run: |
+          set -euo pipefail
+          "$ZIG" version
+          echo "runner: $(uname -srm)"
+          echo "cores: $(nproc)"
+
+      # The only command. fmt + 12 tests + the C-binding matrix + no-fork +
+      # negative control + the startup gate.
+      - name: zig build check
+        run: "$ZIG" build check

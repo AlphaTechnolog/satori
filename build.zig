@@ -1,5 +1,40 @@
 const std = @import("std");
 
+/// The single target `src/c.zig` is committed for.
+///
+/// This is a DECLARED fact about the committed file, not something inferred from
+/// `uname` — and the distinction is load-bearing. `tools/regen-c.sh` infers its
+/// target from `uname` when none is given, so on a Linux host it compares the
+/// committed aarch64-macos bindings against freshly generated Linux ones and
+/// reports the committed file as "stale". That check was never the problem,
+/// though; see `hostBindings` below for what actually breaks on a foreign host.
+///
+/// Change this only together with regenerating src/c.zig for the new target
+/// (tools/regen-c.sh <target>) and confirming test/layout.zig's ground truth.
+const COMMITTED_C_TARGET = "aarch64-macos";
+
+/// The ABI-qualified triple for a resolved target, in the form `translate-c`
+/// accepts: "x86_64-linux-gnu", "aarch64-macos", "x86_64-linux-musl".
+///
+/// Factored out of the matrix loop because two places need it and they must
+/// agree: the matrix labels, and the decision of whether this build host can use
+/// the committed bindings.
+fn abiTriple(b: *std.Build, mt: std.Build.ResolvedTarget) []const u8 {
+    const arch = @tagName(mt.result.cpu.arch);
+    const os_tag = @tagName(mt.result.os.tag);
+
+    // The abi is not optional information here. "x86_64-linux" is ambiguous
+    // between gnu and musl, and translate-c's -target parser wants the qualified
+    // form; see the matrix loop for what happens when it is dropped.
+    const abi: []const u8 = switch (mt.result.abi) {
+        .gnu => "gnu",
+        .musl => "musl",
+        else => "none",
+    };
+    if (std.mem.eql(u8, abi, "none")) return b.fmt("{s}-{s}", .{ arch, os_tag });
+    return b.fmt("{s}-{s}-{s}", .{ arch, os_tag, abi });
+}
+
 /// Every module in the dependency graph, for one target.
 ///
 /// Building this in a function rather than inline keeps the native build and the
@@ -117,7 +152,56 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const c_file = b.option([]const u8, "c-file", "Generated C interop module to use") orelse "src/c.zig";
+    // ---- which C bindings does this build use? --------------------------------
+    //
+    // src/c.zig is COMMITTED for exactly one target (COMMITTED_C_TARGET) and
+    // cannot describe any other. The aarch64-macos file contains no
+    // struct_sysinfo, no struct_statvfs and no CLOCK_BOOTTIME, so a Linux host
+    // compiling against it cannot build the Linux platform layer, cannot compile
+    // test/layout.zig's Linux branch, and cannot compile the negative control —
+    // three failures that have nothing to do with the change being tested. This
+    // was measured, not assumed: `SATORI_TARGET=aarch64-macos` does NOT fix it,
+    // because that variable only tells regen-c.sh which target to diff the
+    // committed file against. It cannot change which file the build compiles.
+    //
+    // So when the build host is not that target, this build generates bindings
+    // for the host into zig-out/bindings/ and uses those instead. Two properties
+    // keep that consistent with the project's hermetic thesis:
+    //
+    //   * it never writes src/c.zig, and
+    //   * it never touches the network. `zig translate-c` is a local CLI with no
+    //     package fetch, which is precisely why `zig build matrix` can
+    //     cross-compile five targets from one Linux box. The reason bindings are
+    //     committed at all is that a package *fetch* at build time breaks distro
+    //     packaging and air-gapped CI; local generation does not.
+    //
+    // The committed file is still verified, for its own target, by the regen-c
+    // step in `check` below — which now passes COMMITTED_C_TARGET explicitly
+    // instead of letting regen-c.sh infer it from uname.
+    const host_triple = abiTriple(b, b.graph.host);
+    const host_is_committed_target = std.mem.eql(u8, host_triple, COMMITTED_C_TARGET);
+
+    // Only generated for a host that cannot use the committed file. On an
+    // aarch64-macos host this stays null and `zig build` costs exactly what it
+    // did before: no extra step, no extra process.
+    const host_bindings: ?*std.Build.Step = if (host_is_committed_target) null else blk: {
+        const out = b.fmt("zig-out/bindings/c.{s}.zig", .{host_triple});
+        const cmd = b.addSystemCommand(&.{ "sh", "tools/regen-c.sh", "--gen", "--out", out, host_triple });
+        cmd.setEnvironmentVariable("ZIG", b.graph.zig_exe);
+        cmd.has_side_effects = true;
+        std.debug.print(
+            "\nbuild host is {s}, not the committed {s}: generating host bindings\n",
+            .{ host_triple, COMMITTED_C_TARGET },
+        );
+        break :blk &cmd.step;
+    };
+
+    const default_c_file = if (host_is_committed_target)
+        "src/c.zig"
+    else
+        b.fmt("zig-out/bindings/c.{s}.zig", .{host_triple});
+
+    const c_file = b.option([]const u8, "c-file", "Generated C interop module to use") orelse default_c_file;
     const deps = buildDeps(b, target, optimize, c_file);
 
     // ---- executable ----------------------------------------------------------
@@ -132,6 +216,11 @@ pub fn build(b: *std.Build) void {
         .name = "satori",
         .root_module = exe_mod,
     });
+    // The Compile step waits on binding generation, not the Install step. Making
+    // it depend only on the install leaves the compile free to start before
+    // zig-out/bindings/c.<host>.zig exists, which succeeds on any machine with
+    // leftovers from a previous run and fails on a clean CI runner.
+    if (host_bindings) |g| exe.step.dependOn(g);
     b.installArtifact(exe);
 
     // Note: Zig 0.17 removed `b.args`, so `zig build run -- --flag` no longer
@@ -169,6 +258,7 @@ pub fn build(b: *std.Build) void {
         });
         wire(m, deps);
         const t = b.addTest(.{ .name = u.name, .root_module = m });
+        if (host_bindings) |g| t.step.dependOn(g);
         test_step.dependOn(&b.addRunArtifact(t).step);
     }
 
@@ -188,6 +278,7 @@ pub fn build(b: *std.Build) void {
         });
         wire(m, deps);
         const t = b.addTest(.{ .name = "platform", .root_module = m });
+        if (host_bindings) |g| t.step.dependOn(g);
         test_step.dependOn(&b.addRunArtifact(t).step);
     }
 
@@ -199,6 +290,7 @@ pub fn build(b: *std.Build) void {
     });
     wire(bench_mod, deps);
     const bench = b.addExecutable(.{ .name = "satori-bench", .root_module = bench_mod });
+    if (host_bindings) |g| bench.step.dependOn(g);
     const bench_step = b.step("bench", "Measure each data-gathering phase");
     bench_step.dependOn(&b.addRunArtifact(bench).step);
 
@@ -216,6 +308,7 @@ pub fn build(b: *std.Build) void {
     });
     wire(rel_mod, rel_deps);
     const rel_exe = b.addExecutable(.{ .name = "satori", .root_module = rel_mod });
+    if (host_bindings) |g| rel_exe.step.dependOn(g);
     // A custom dest_dir keeps this from colliding with the developer's default
     // zig-out/bin/satori, which may be any optimization mode. It is relative to
     // the install prefix, so this yields zig-out/release/satori — writing
@@ -233,6 +326,7 @@ pub fn build(b: *std.Build) void {
     });
     wire(startup_mod, rel_deps);
     const startup_exe = b.addExecutable(.{ .name = "satori-startup", .root_module = startup_mod });
+    if (host_bindings) |g| startup_exe.step.dependOn(g);
     const startup_run = b.addRunArtifact(startup_exe);
     startup_run.addArg(rel_bin);
     startup_run.step.dependOn(&rel_install.step);
@@ -257,6 +351,12 @@ pub fn build(b: *std.Build) void {
     {
         const ccheck = b.addSystemCommand(&.{ "sh", "tools/regen-c.sh", "--matrix" });
         ccheck.setEnvironmentVariable("ZIG", b.graph.zig_exe);
+        // regen-c.sh otherwise infers the committed file's target from `uname`,
+        // so on a Linux runner it diffs the committed aarch64-macos bindings
+        // against freshly generated Linux ones and calls the committed file
+        // "stale" — a false alarm about a file this host never uses. The target
+        // is a declared fact, so it is passed rather than guessed.
+        ccheck.setEnvironmentVariable("SATORI_TARGET", COMMITTED_C_TARGET);
         ccheck.has_side_effects = true;
         check_step.dependOn(&ccheck.step);
     }
@@ -270,8 +370,23 @@ pub fn build(b: *std.Build) void {
         nofork.step.dependOn(&rel_install.step);
         check_step.dependOn(&nofork.step);
 
-        const negctl = b.addSystemCommand(&.{ "sh", "tools/check-negative-control.sh" });
+        // The bindings path is passed rather than hardcoded to src/c.zig in the
+        // script, because the control has to be compiled against the SAME
+        // bindings test/layout.zig was. Pointing it at the committed file while
+        // layout.zig used host bindings fails on a foreign host for the wrong
+        // reason — "no member named struct_statvfs" — which
+        // check-negative-control.sh correctly rejects, and the run teaches
+        // nothing. That is not hypothetical: it is what happened on the first
+        // Linux CI attempt.
+        const negctl = b.addSystemCommand(&.{ "sh", "tools/check-negative-control.sh", c_file });
         negctl.setEnvironmentVariable("ZIG", b.graph.zig_exe);
+        // It compiles the control from c_file, so it has to wait for the host
+        // bindings to exist. `check` has no other path to that step — the
+        // negative control runs its own `zig build-obj`, not a build-graph
+        // artifact — so without this dependency it races generation and fails on
+        // a clean machine while passing on one with a warm zig-out. The same
+        // ordering rule as the matrix's Compile step, reached the same way.
+        if (host_bindings) |g| negctl.step.dependOn(g);
         negctl.has_side_effects = true;
         check_step.dependOn(&negctl.step);
     }

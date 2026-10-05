@@ -731,9 +731,9 @@ pub fn _OSSwapInt64(arg__data: __uint64_t) callconv(.c) __uint64_t {
     _u._ul[@as(c_int, 1)] = _OSSwapInt32(_u._ul[@as(c_int, 1)]);
     return _u._ull;
 }
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/wait.h:201:19: warning: struct demoted to opaque type - has bitfield
+// <zig-install>/lib/libc/include/any-darwin-any/sys/wait.h:201:19: warning: struct demoted to opaque type - has bitfield
 const struct_unnamed_2 = opaque {};
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/wait.h:211:4: warning: union demoted to opaque type - has opaque field
+// <zig-install>/lib/libc/include/any-darwin-any/sys/wait.h:211:4: warning: union demoted to opaque type - has opaque field
 pub const union_wait = opaque {};
 pub extern fn wait([*c]c_int) pid_t;
 pub extern fn waitpid(pid_t, [*c]c_int, c_int) pid_t;
@@ -860,13 +860,13 @@ pub extern fn arc4random_addrandom([*c]u8, __datlen: c_int) void;
 pub extern fn arc4random_buf(__buf: ?*anyopaque, __nbytes: usize) void;
 pub extern fn arc4random_stir() void;
 pub extern fn arc4random_uniform(__upper_bound: u32) u32;
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:298:15: warning: unsupported type: 'void (^)(void)'
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:298:15: warning: unsupported type: 'void (^)(void)'
 pub const atexit_b = @compileError("unable to resolve prototype of function");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:298:6
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:298:6
 
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:308:38: warning: unsupported type: 'int (^)(const void *, const void *)'
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:308:38: warning: unsupported type: 'int (^)(const void *, const void *)'
 pub const bsearch_b = @compileError("unable to resolve prototype of function");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:307:7
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:307:7
 pub extern fn cgetcap([*c]u8, [*c]const u8, c_int) [*c]u8;
 pub extern fn cgetclose() c_int;
 pub extern fn cgetent([*c][*c]u8, [*c][*c]u8, [*c]const u8) c_int;
@@ -885,21 +885,21 @@ pub extern fn getloadavg([*c]f64, __nelem: c_int) c_int;
 pub extern fn getprogname() [*c]const u8;
 pub extern fn setprogname([*c]const u8) void;
 pub extern fn heapsort(__base: ?*anyopaque, __nel: usize, __width: usize, __compar: ?*const fn (?*const anyopaque, ?*const anyopaque) callconv(.c) c_int) c_int;
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:345:22: warning: unsupported type: 'int (^)(const void *, const void *)'
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:345:22: warning: unsupported type: 'int (^)(const void *, const void *)'
 pub const heapsort_b = @compileError("unable to resolve prototype of function");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:344:6
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:344:6
 pub extern fn mergesort(__base: ?*anyopaque, __nel: usize, __width: usize, __compar: ?*const fn (?*const anyopaque, ?*const anyopaque) callconv(.c) c_int) c_int;
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:352:22: warning: unsupported type: 'int (^)(const void *, const void *)'
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:352:22: warning: unsupported type: 'int (^)(const void *, const void *)'
 pub const mergesort_b = @compileError("unable to resolve prototype of function");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:351:6
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:351:6
 pub extern fn psort(__base: ?*anyopaque, __nel: usize, __width: usize, __compar: ?*const fn (?*const anyopaque, ?*const anyopaque) callconv(.c) c_int) void;
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:360:22: warning: unsupported type: 'int (^)(const void *, const void *)'
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:360:22: warning: unsupported type: 'int (^)(const void *, const void *)'
 pub const psort_b = @compileError("unable to resolve prototype of function");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:359:7
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:359:7
 pub extern fn psort_r(__base: ?*anyopaque, __nel: usize, __width: usize, ?*anyopaque, __compar: ?*const fn (?*anyopaque, ?*const anyopaque, ?*const anyopaque) callconv(.c) c_int) void;
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:368:22: warning: unsupported type: 'int (^)(const void *, const void *)'
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:368:22: warning: unsupported type: 'int (^)(const void *, const void *)'
 pub const qsort_b = @compileError("unable to resolve prototype of function");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:367:7
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:367:7
 pub extern fn qsort_r(__base: ?*anyopaque, __nel: usize, __width: usize, ?*anyopaque, __compar: ?*const fn (?*anyopaque, ?*const anyopaque, ?*const anyopaque) callconv(.c) c_int) void;
 pub extern fn radixsort(__base: [*c][*c]const u8, __nel: c_int, __table: [*c]const u8, __endbyte: c_uint) c_int;
 pub extern fn rpmatch([*c]const u8) c_int;
@@ -1537,7 +1537,7 @@ pub const struct_mach_port_guard_info = extern struct {
 pub const mach_port_guard_info_t = struct_mach_port_guard_info;
 pub const mach_port_info_t = [*c]integer_t;
 pub const mach_port_flavor_t = c_int;
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/port.h:342:26: warning: struct demoted to opaque type - has bitfield
+// <zig-install>/lib/libc/include/any-darwin-any/mach/port.h:342:26: warning: struct demoted to opaque type - has bitfield
 pub const struct_mach_port_qos = opaque {};
 pub const mach_port_qos_t = struct_mach_port_qos;
 pub const struct_mach_service_port_info = extern struct {
@@ -1822,9 +1822,9 @@ pub const struct_vol_attributes_attr = extern struct {
 };
 pub const vol_attributes_attr_t = struct_vol_attributes_attr;
 pub const os_function_t = ?*const fn (?*anyopaque) callconv(.c) void;
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:338:16: warning: unsupported type: 'void (^)(void)'
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:338:16: warning: unsupported type: 'void (^)(void)'
 pub const os_block_t = @compileError("unable to resolve typedef child type");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:338:16
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:338:16
 pub const struct_fsid = extern struct {
     val: [2]i32 = @import("std").mem.zeroes([2]i32),
 };
@@ -2508,42 +2508,42 @@ pub inline fn __P(protos: anytype) @TypeOf(protos) {
     return protos;
 }
 pub const __CONCAT = @compileError("unable to translate C expr: unexpected token '##'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:116:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:116:9
 pub const __STRING = @compileError("unable to translate C expr: unexpected token ''");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:117:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:117:9
 pub const __const = @compileError("unable to translate C expr: unexpected token 'const'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:119:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:119:9
 pub const __signed = c_int;
 pub const __volatile = @compileError("unable to translate C expr: unexpected token 'volatile'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:121:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:121:9
 pub const __dead2 = @compileError("unable to translate macro: undefined identifier `__noreturn__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:165:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:165:9
 pub const __pure2 = @compileError("unable to translate C expr: unexpected token '__attribute__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:166:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:166:9
 pub const __stateful_pure = @compileError("unable to translate macro: undefined identifier `__pure__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:167:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:167:9
 pub const __unused = @compileError("unable to translate macro: undefined identifier `__unused__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:172:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:172:9
 pub const __used = @compileError("unable to translate macro: undefined identifier `__used__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:177:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:177:9
 pub const __cold = @compileError("unable to translate macro: undefined identifier `__cold__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:183:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:183:9
 pub const __returns_nonnull = @compileError("unable to translate macro: undefined identifier `returns_nonnull`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:190:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:190:9
 pub const __exported = @compileError("unable to translate macro: undefined identifier `__visibility__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:200:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:200:9
 pub const __exported_push = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:201:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:201:9
 pub const __exported_push_hidden = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:203:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:203:9
 pub const __exported_pop = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:204:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:204:9
 pub const __exported_hidden = @compileError("unable to translate macro: undefined identifier `__private_extern__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:205:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:205:9
 pub const __deprecated = @compileError("unable to translate macro: undefined identifier `__deprecated__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:223:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:223:9
 pub const __deprecated_msg = @compileError("unable to translate macro: undefined identifier `__deprecated__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:227:10
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:227:10
 pub inline fn __deprecated_enum_msg(_msg: anytype) @TypeOf(__deprecated_msg(_msg)) {
     _ = &_msg;
     return __deprecated_msg(_msg);
@@ -2553,19 +2553,19 @@ pub inline fn __kpi_deprecated(_msg: anytype) void {
     return;
 }
 pub const __unavailable = @compileError("unable to translate macro: undefined identifier `__unavailable__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:244:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:244:9
 pub const __kpi_unavailable = "";
 pub const __kpi_deprecated_arm64_macos_unavailable = "";
 pub const __dead = "";
 pub const __pure = "";
 pub const __restrict = @compileError("unable to translate C expr: unexpected token 'restrict'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:266:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:266:9
 pub const __disable_tail_calls = "";
 pub const __not_tail_called = "";
 pub const __result_use_check = @compileError("unable to translate macro: undefined identifier `__warn_unused_result__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:322:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:322:9
 pub const __swift_unavailable = @compileError("unable to translate macro: undefined identifier `__availability__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:332:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:332:9
 pub inline fn __swift_unavailable_from_async(_msg: anytype) void {
     _ = &_msg;
     return;
@@ -2574,43 +2574,43 @@ pub const __swift_nonisolated = "";
 pub const __swift_nonisolated_unsafe = "";
 pub const __abortlike = __dead2 ++ __cold;
 pub const __header_inline = @compileError("unable to translate C expr: unexpected token 'extern'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:383:10
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:383:10
 pub const __header_always_inline = @compileError("unable to translate macro: undefined identifier `__always_inline__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:392:10
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:392:10
 pub const __unreachable_ok_push = "";
 pub const __unreachable_ok_pop = "";
 pub const __printflike = @compileError("unable to translate macro: undefined identifier `__format__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:429:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:429:9
 pub const __printf0like = @compileError("unable to translate macro: undefined identifier `__format__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:431:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:431:9
 pub const __scanflike = @compileError("unable to translate macro: undefined identifier `__format__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:433:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:433:9
 pub const __osloglike = @compileError("unable to translate macro: undefined identifier `__format__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:435:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:435:9
 pub const __IDSTRING = @compileError("unable to translate C expr: unexpected token 'static'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:438:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:438:9
 pub const __COPYRIGHT = @compileError("unable to translate macro: undefined identifier `copyright`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:441:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:441:9
 pub const __RCSID = @compileError("unable to translate macro: undefined identifier `rcsid`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:445:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:445:9
 pub const __SCCSID = @compileError("unable to translate macro: undefined identifier `sccsid`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:449:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:449:9
 pub const __PROJECT_VERSION = @compileError("unable to translate macro: undefined identifier `project_version`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:453:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:453:9
 pub inline fn __FBSDID(s: anytype) void {
     _ = &s;
     return;
 }
 pub const __DECONST = @compileError("unable to translate C expr: unexpected token 'const'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:462:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:462:9
 pub const __DEVOLATILE = @compileError("unable to translate C expr: unexpected token 'volatile'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:466:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:466:9
 pub const __DEQUALIFY = @compileError("unable to translate C expr: unexpected token 'const'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:470:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:470:9
 pub const __alloc_align = @compileError("unable to translate macro: undefined identifier `alloc_align`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:479:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:479:9
 pub const __alloc_size = @compileError("unable to translate macro: undefined identifier `alloc_size`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:500:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:500:9
 pub const __has_safe_buffers = @as(c_int, 0);
 pub const __unsafe_buffer_usage = "";
 pub const __unsafe_buffer_usage_begin = "";
@@ -2628,29 +2628,29 @@ pub const __DARWIN_SUF_1050 = "";
 pub const __DARWIN_SUF_NON_CANCELABLE = "";
 pub const __DARWIN_SUF_EXTSN = "$DARWIN_EXTSN";
 pub const __DARWIN_ALIAS = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:790:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:790:9
 pub const __DARWIN_ALIAS_C = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:791:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:791:9
 pub const __DARWIN_ALIAS_I = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:792:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:792:9
 pub const __DARWIN_NOCANCEL = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:793:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:793:9
 pub const __DARWIN_INODE64 = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:794:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:794:9
 pub const __DARWIN_1050 = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:796:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:796:9
 pub const __DARWIN_1050ALIAS = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:797:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:797:9
 pub const __DARWIN_1050ALIAS_C = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:798:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:798:9
 pub const __DARWIN_1050ALIAS_I = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:799:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:799:9
 pub const __DARWIN_1050INODE64 = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:800:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:800:9
 pub const __DARWIN_EXTSN = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:802:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:802:9
 pub const __DARWIN_EXTSN_C = @compileError("unable to translate C expr: unexpected token '__asm'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:803:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:803:9
 pub inline fn __DARWIN_ALIAS_STARTING_IPHONE___IPHONE_2_0(x: anytype) void {
     _ = &x;
     return;
@@ -3356,7 +3356,7 @@ pub inline fn __DARWIN_ALIAS_STARTING_MAC___MAC_27_0(x: anytype) void {
     return;
 }
 pub const __DARWIN_ALIAS_STARTING = @compileError("unable to translate macro: undefined identifier `__DARWIN_ALIAS_STARTING_MAC_`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:813:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:813:9
 pub const ___POSIX_C_DEPRECATED_STARTING_198808L = "";
 pub const ___POSIX_C_DEPRECATED_STARTING_199009L = "";
 pub const ___POSIX_C_DEPRECATED_STARTING_199209L = "";
@@ -3365,7 +3365,7 @@ pub const ___POSIX_C_DEPRECATED_STARTING_199506L = "";
 pub const ___POSIX_C_DEPRECATED_STARTING_200112L = "";
 pub const ___POSIX_C_DEPRECATED_STARTING_200809L = "";
 pub const __POSIX_C_DEPRECATED = @compileError("unable to translate macro: undefined identifier `___POSIX_C_DEPRECATED_STARTING_`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:876:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:876:9
 pub const __DARWIN_C_ANSI = @as(c_long, 0o10000);
 pub const __DARWIN_C_FULL = @as(c_long, 900000);
 pub const __DARWIN_C_LEVEL = __DARWIN_C_FULL;
@@ -3377,9 +3377,9 @@ pub const _DARWIN_FEATURE_ONLY_VERS_1050 = @as(c_int, 1);
 pub const _DARWIN_FEATURE_ONLY_UNIX_CONFORMANCE = @as(c_int, 1);
 pub const _DARWIN_FEATURE_UNIX_CONFORMANCE = @as(c_int, 3);
 pub const __CAST_AWAY_QUALIFIER = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:974:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:974:9
 pub const __XNU_PRIVATE_EXTERN = @compileError("unable to translate macro: undefined identifier `visibility`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:988:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:988:9
 pub const __has_ptrcheck = @as(c_int, 0);
 pub const __single = "";
 pub const __unsafe_indexable = "";
@@ -3464,18 +3464,18 @@ pub const __ASSUME_PTR_ABI_SINGLE_END = __ptrcheck_abi_assume_unsafe_indexable()
 pub const __header_indexable = "";
 pub const __header_bidi_indexable = "";
 pub const __compiler_barrier = @compileError("unable to translate C expr: unexpected token '__asm__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:1073:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:1073:9
 pub const __enum_open = "";
 pub const __enum_closed = "";
 pub const __enum_options = "";
 pub const __enum_decl = @compileError("unable to translate C expr: unexpected token 'typedef'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:1106:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:1106:9
 pub const __enum_closed_decl = @compileError("unable to translate C expr: unexpected token 'typedef'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:1108:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:1108:9
 pub const __options_decl = @compileError("unable to translate C expr: unexpected token 'typedef'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:1110:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:1110:9
 pub const __options_closed_decl = @compileError("unable to translate C expr: unexpected token 'typedef'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/cdefs.h:1112:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/cdefs.h:1112:9
 pub const __kernel_ptr_semantics = "";
 pub const __kernel_data_semantics = "";
 pub const __kernel_dual_semantics = "";
@@ -3495,7 +3495,7 @@ pub const __PTHREAD_ONCE_SIZE__ = @as(c_int, 8);
 pub const __PTHREAD_RWLOCK_SIZE__ = @as(c_int, 192);
 pub const __PTHREAD_RWLOCKATTR_SIZE__ = @as(c_int, 16);
 pub const __offsetof = @compileError("unable to translate macro: undefined identifier `__builtin_offsetof`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/_types.h:97:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/_types.h:97:9
 pub const __AVAILABILITY__ = "";
 pub const __API_TO_BE_DEPRECATED = __helpers.promoteIntLiteral(c_int, 100000, .decimal);
 pub const __API_TO_BE_DEPRECATED_MACOS = __helpers.promoteIntLiteral(c_int, 100000, .decimal);
@@ -4006,144 +4006,144 @@ pub const __DRIVERKIT_VERSION_MAX_ALLOWED = __DRIVERKIT_27_0;
 pub const __VISION_OS_VERSION_MIN_REQUIRED = __ENVIRONMENT_OS_VERSION_MIN_REQUIRED__;
 pub const __VISION_OS_VERSION_MAX_ALLOWED = __VISIONOS_27_0;
 pub const __AVAILABILITY_INTERNAL_DEPRECATED = @compileError("unable to translate macro: undefined identifier `deprecated`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:142:9
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:142:9
 pub const __AVAILABILITY_INTERNAL_DEPRECATED_MSG = @compileError("unable to translate macro: undefined identifier `deprecated`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:145:17
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:145:17
 pub const __AVAILABILITY_INTERNAL_UNAVAILABLE = @compileError("unable to translate macro: undefined identifier `unavailable`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:154:9
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:154:9
 pub const __AVAILABILITY_INTERNAL_WEAK_IMPORT = @compileError("unable to translate macro: undefined identifier `weak_import`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:155:9
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:155:9
 pub const __AVAILABILITY_INTERNAL_REGULAR = "";
 pub const __API_AVAILABLE_PLATFORM_macos = @compileError("unable to translate macro: undefined identifier `macos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:160:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:160:12
 pub const __API_DEPRECATED_PLATFORM_macos = @compileError("unable to translate macro: undefined identifier `macos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:161:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:161:12
 pub const __API_OBSOLETED_PLATFORM_macos = @compileError("unable to translate macro: undefined identifier `macos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:162:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:162:12
 pub const __API_UNAVAILABLE_PLATFORM_macos = @compileError("unable to translate macro: undefined identifier `macos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:163:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:163:12
 pub const __API_AVAILABLE_PLATFORM_macosx = @compileError("unable to translate macro: undefined identifier `macos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:164:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:164:12
 pub const __API_DEPRECATED_PLATFORM_macosx = @compileError("unable to translate macro: undefined identifier `macos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:165:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:165:12
 pub const __API_OBSOLETED_PLATFORM_macosx = @compileError("unable to translate macro: undefined identifier `macos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:166:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:166:12
 pub const __API_UNAVAILABLE_PLATFORM_macosx = @compileError("unable to translate macro: undefined identifier `macos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:167:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:167:12
 pub const __API_AVAILABLE_PLATFORM_macOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `macOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:168:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:168:12
 pub const __API_DEPRECATED_PLATFORM_macOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `macOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:169:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:169:12
 pub const __API_OBSOLETED_PLATFORM_macOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `macOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:170:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:170:12
 pub const __API_UNAVAILABLE_PLATFORM_macOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `macOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:171:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:171:12
 pub const __API_AVAILABLE_PLATFORM_ios = @compileError("unable to translate macro: undefined identifier `ios`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:172:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:172:12
 pub const __API_DEPRECATED_PLATFORM_ios = @compileError("unable to translate macro: undefined identifier `ios`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:173:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:173:12
 pub const __API_OBSOLETED_PLATFORM_ios = @compileError("unable to translate macro: undefined identifier `ios`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:174:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:174:12
 pub const __API_UNAVAILABLE_PLATFORM_ios = @compileError("unable to translate macro: undefined identifier `ios`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:175:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:175:12
 pub const __API_AVAILABLE_PLATFORM_iOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `iOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:176:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:176:12
 pub const __API_DEPRECATED_PLATFORM_iOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `iOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:177:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:177:12
 pub const __API_OBSOLETED_PLATFORM_iOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `iOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:178:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:178:12
 pub const __API_UNAVAILABLE_PLATFORM_iOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `iOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:179:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:179:12
 pub const __API_AVAILABLE_PLATFORM_macCatalyst = @compileError("unable to translate macro: undefined identifier `macCatalyst`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:180:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:180:12
 pub const __API_DEPRECATED_PLATFORM_macCatalyst = @compileError("unable to translate macro: undefined identifier `macCatalyst`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:181:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:181:12
 pub const __API_OBSOLETED_PLATFORM_macCatalyst = @compileError("unable to translate macro: undefined identifier `macCatalyst`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:182:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:182:12
 pub const __API_UNAVAILABLE_PLATFORM_macCatalyst = @compileError("unable to translate macro: undefined identifier `macCatalyst`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:183:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:183:12
 pub const __API_AVAILABLE_PLATFORM_macCatalystApplicationExtension = @compileError("unable to translate macro: undefined identifier `macCatalystApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:184:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:184:12
 pub const __API_DEPRECATED_PLATFORM_macCatalystApplicationExtension = @compileError("unable to translate macro: undefined identifier `macCatalystApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:185:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:185:12
 pub const __API_OBSOLETED_PLATFORM_macCatalystApplicationExtension = @compileError("unable to translate macro: undefined identifier `macCatalystApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:186:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:186:12
 pub const __API_UNAVAILABLE_PLATFORM_macCatalystApplicationExtension = @compileError("unable to translate macro: undefined identifier `macCatalystApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:187:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:187:12
 pub const __API_AVAILABLE_PLATFORM_watchos = @compileError("unable to translate macro: undefined identifier `watchos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:188:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:188:12
 pub const __API_DEPRECATED_PLATFORM_watchos = @compileError("unable to translate macro: undefined identifier `watchos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:189:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:189:12
 pub const __API_OBSOLETED_PLATFORM_watchos = @compileError("unable to translate macro: undefined identifier `watchos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:190:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:190:12
 pub const __API_UNAVAILABLE_PLATFORM_watchos = @compileError("unable to translate macro: undefined identifier `watchos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:191:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:191:12
 pub const __API_AVAILABLE_PLATFORM_watchOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `watchOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:192:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:192:12
 pub const __API_DEPRECATED_PLATFORM_watchOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `watchOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:193:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:193:12
 pub const __API_OBSOLETED_PLATFORM_watchOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `watchOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:194:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:194:12
 pub const __API_UNAVAILABLE_PLATFORM_watchOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `watchOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:195:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:195:12
 pub const __API_AVAILABLE_PLATFORM_tvos = @compileError("unable to translate macro: undefined identifier `tvos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:196:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:196:12
 pub const __API_DEPRECATED_PLATFORM_tvos = @compileError("unable to translate macro: undefined identifier `tvos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:197:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:197:12
 pub const __API_OBSOLETED_PLATFORM_tvos = @compileError("unable to translate macro: undefined identifier `tvos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:198:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:198:12
 pub const __API_UNAVAILABLE_PLATFORM_tvos = @compileError("unable to translate macro: undefined identifier `tvos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:199:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:199:12
 pub const __API_AVAILABLE_PLATFORM_tvOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `tvOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:200:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:200:12
 pub const __API_DEPRECATED_PLATFORM_tvOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `tvOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:201:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:201:12
 pub const __API_OBSOLETED_PLATFORM_tvOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `tvOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:202:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:202:12
 pub const __API_UNAVAILABLE_PLATFORM_tvOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `tvOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:203:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:203:12
 pub const __API_AVAILABLE_PLATFORM_driverkit = @compileError("unable to translate macro: undefined identifier `driverkit`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:205:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:205:12
 pub const __API_DEPRECATED_PLATFORM_driverkit = @compileError("unable to translate macro: undefined identifier `driverkit`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:206:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:206:12
 pub const __API_OBSOLETED_PLATFORM_driverkit = @compileError("unable to translate macro: undefined identifier `driverkit`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:207:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:207:12
 pub const __API_UNAVAILABLE_PLATFORM_driverkit = @compileError("unable to translate macro: undefined identifier `driverkit`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:208:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:208:12
 pub const __API_AVAILABLE_PLATFORM_visionos = @compileError("unable to translate macro: undefined identifier `visionos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:209:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:209:12
 pub const __API_DEPRECATED_PLATFORM_visionos = @compileError("unable to translate macro: undefined identifier `visionos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:210:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:210:12
 pub const __API_OBSOLETED_PLATFORM_visionos = @compileError("unable to translate macro: undefined identifier `visionos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:211:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:211:12
 pub const __API_UNAVAILABLE_PLATFORM_visionos = @compileError("unable to translate macro: undefined identifier `visionos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:212:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:212:12
 pub const __API_AVAILABLE_PLATFORM_visionOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `visionOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:213:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:213:12
 pub const __API_DEPRECATED_PLATFORM_visionOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `visionOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:214:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:214:12
 pub const __API_OBSOLETED_PLATFORM_visionOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `visionOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:215:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:215:12
 pub const __API_UNAVAILABLE_PLATFORM_visionOSApplicationExtension = @compileError("unable to translate macro: undefined identifier `visionOSApplicationExtension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:216:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:216:12
 pub const __API_UNAVAILABLE_PLATFORM_kernelkit = @compileError("unable to translate macro: undefined identifier `kernelkit`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:218:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:218:12
 pub const __API_AVAILABLE_PLATFORM_anyappleos = @compileError("unable to translate macro: undefined identifier `anyAppleOS`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:224:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:224:12
 pub const __API_DEPRECATED_PLATFORM_anyappleos = @compileError("unable to translate macro: undefined identifier `anyAppleOS`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:225:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:225:12
 pub const __API_UNAVAILABLE_PLATFORM_anyappleos = @compileError("unable to translate macro: undefined identifier `anyAppleOS`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:226:12
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:226:12
 pub const __API_APPLY_TO = @compileError("unable to translate macro: undefined identifier `any`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:236:11
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:236:11
 pub inline fn __API_RANGE_STRINGIFY(x: anytype) @TypeOf(__API_RANGE_STRINGIFY2(x)) {
     _ = &x;
     return __API_RANGE_STRINGIFY2(x);
 }
 pub const __API_RANGE_STRINGIFY2 = @compileError("unable to translate C expr: unexpected token ''");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:238:11
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:238:11
 pub const __API_A = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:252:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:252:13
 pub inline fn __API_AVAILABLE0(arg0: anytype) @TypeOf(__API_A(arg0)) {
     _ = &arg0;
     return __API_A(arg0);
@@ -4349,7 +4349,7 @@ pub inline fn __API_AVAILABLE_GET_MACRO_93585900(_0: anytype, _1: anytype, _2: a
     return NAME;
 }
 pub const __API_A_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:272:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:272:13
 pub inline fn __API_AVAILABLE_BEGIN0(arg0: anytype) @TypeOf(__API_A_BEGIN(arg0)) {
     _ = &arg0;
     return __API_A_BEGIN(arg0);
@@ -4555,7 +4555,7 @@ pub inline fn __API_AVAILABLE_BEGIN_GET_MACRO_93585900(_0: anytype, _1: anytype,
     return NAME;
 }
 pub const __API_D = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:294:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:294:13
 pub inline fn __API_DEPRECATED_MSG0(msg: anytype, arg0: anytype) @TypeOf(__API_D(msg, arg0)) {
     _ = &msg;
     _ = &arg0;
@@ -4778,7 +4778,7 @@ pub inline fn __API_DEPRECATED_MSG_GET_MACRO_93585900(_0: anytype, _1: anytype, 
     return NAME;
 }
 pub const __API_D_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:314:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:314:13
 pub inline fn __API_DEPRECATED_BEGIN0(msg: anytype, arg0: anytype) @TypeOf(__API_D_BEGIN(msg, arg0)) {
     _ = &msg;
     _ = &arg0;
@@ -5001,7 +5001,7 @@ pub inline fn __API_DEPRECATED_BEGIN_GET_MACRO_93585900(_0: anytype, _1: anytype
     return NAME;
 }
 pub const __API_DR = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:335:17
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:335:17
 pub inline fn __API_DEPRECATED_REP0(msg: anytype, arg0: anytype) @TypeOf(__API_DR(msg, arg0)) {
     _ = &msg;
     _ = &arg0;
@@ -5224,7 +5224,7 @@ pub inline fn __API_DEPRECATED_REP_GET_MACRO_93585900(_0: anytype, _1: anytype, 
     return NAME;
 }
 pub const __API_DR_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:359:17
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:359:17
 pub inline fn __API_DEPRECATED_WITH_REPLACEMENT_BEGIN0(msg: anytype, arg0: anytype) @TypeOf(__API_DR_BEGIN(msg, arg0)) {
     _ = &msg;
     _ = &arg0;
@@ -5447,7 +5447,7 @@ pub inline fn __API_DEPRECATED_WITH_REPLACEMENT_BEGIN_GET_MACRO_93585900(_0: any
     return NAME;
 }
 pub const __API_O = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:384:9
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:384:9
 pub inline fn __API_OBSOLETED_MSG0(msg: anytype, arg0: anytype) @TypeOf(__API_O(msg, arg0)) {
     _ = &msg;
     _ = &arg0;
@@ -5670,7 +5670,7 @@ pub inline fn __API_OBSOLETED_MSG_GET_MACRO_93585900(_0: anytype, _1: anytype, _
     return NAME;
 }
 pub const __API_O_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:404:9
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:404:9
 pub inline fn __API_OBSOLETED_BEGIN0(msg: anytype, arg0: anytype) @TypeOf(__API_O_BEGIN(msg, arg0)) {
     _ = &msg;
     _ = &arg0;
@@ -5893,7 +5893,7 @@ pub inline fn __API_OBSOLETED_BEGIN_GET_MACRO_93585900(_0: anytype, _1: anytype,
     return NAME;
 }
 pub const __API_OR = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:425:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:425:13
 pub inline fn __API_OBSOLETED_REP0(msg: anytype, arg0: anytype) @TypeOf(__API_OR(msg, arg0)) {
     _ = &msg;
     _ = &arg0;
@@ -6116,39 +6116,39 @@ pub inline fn __API_OBSOLETED_REP_GET_MACRO_93585900(_0: anytype, _1: anytype, _
     return NAME;
 }
 pub const __API_OR_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:449:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:449:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN0 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:454:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:454:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN1 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:455:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:455:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN2 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:456:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:456:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN3 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:457:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:457:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN4 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:458:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:458:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN5 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:459:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:459:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN6 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:460:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:460:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN7 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:461:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:461:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN8 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:462:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:462:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN9 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:463:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:463:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN10 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:464:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:464:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN11 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:465:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:465:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN12 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:466:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:466:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN13 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:467:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:467:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN14 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:468:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:468:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN15 = @compileError("unable to translate macro: undefined identifier `__API_R_BEGIN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:469:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:469:13
 pub inline fn __API_OBSOLETED_WITH_REPLACEMENT_BEGIN_GET_MACRO_93585900(_0: anytype, _1: anytype, _2: anytype, _3: anytype, _4: anytype, _5: anytype, _6: anytype, _7: anytype, _8: anytype, _9: anytype, _10: anytype, _11: anytype, _12: anytype, _13: anytype, _14: anytype, _15: anytype, _16: anytype, NAME: anytype) @TypeOf(NAME) {
     _ = &_0;
     _ = &_1;
@@ -6171,7 +6171,7 @@ pub inline fn __API_OBSOLETED_WITH_REPLACEMENT_BEGIN_GET_MACRO_93585900(_0: anyt
     return NAME;
 }
 pub const __API_U = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:481:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:481:13
 pub inline fn __API_UNAVAILABLE0(arg0: anytype) @TypeOf(__API_U(arg0)) {
     _ = &arg0;
     return __API_U(arg0);
@@ -6377,7 +6377,7 @@ pub inline fn __API_UNAVAILABLE_GET_MACRO_93585900(_0: anytype, _1: anytype, _2:
     return NAME;
 }
 pub const __API_U_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternal.h:501:13
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternal.h:501:13
 pub inline fn __API_UNAVAILABLE_BEGIN0(arg0: anytype) @TypeOf(__API_U_BEGIN(arg0)) {
     _ = &arg0;
     return __API_U_BEGIN(arg0);
@@ -6588,2053 +6588,2053 @@ pub inline fn __swift_compiler_version_at_least() @TypeOf(@as(c_int, 1)) {
 pub const __AVAILABILITY_INTERNAL_LEGACY__ = "";
 pub const __ENABLE_LEGACY_IPHONE_AVAILABILITY = @as(c_int, 1);
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:67:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:67:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:68:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:68:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:70:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:70:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:74:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:74:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:76:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:76:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:80:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:80:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:82:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:82:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:86:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:86:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:88:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:88:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_11_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:92:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:92:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_2_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:93:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:93:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_2_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:95:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:95:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_2_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:99:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:99:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_2_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:101:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:101:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_2_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:105:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:105:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_2_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:107:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:107:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_3_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:111:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:111:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_3_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:113:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:113:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_3_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:117:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:117:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_3_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:119:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:119:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_3_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:123:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:123:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_3_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:125:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:125:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_4_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:129:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:129:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_4_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:131:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:131:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_4_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:135:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:135:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_4_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:137:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:137:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:141:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:141:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_4_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:143:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:143:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:147:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:147:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:149:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:149:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:153:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:153:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:155:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:155:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:159:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:159:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:161:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:161:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:165:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:165:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:167:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:167:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:171:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:171:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:173:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:173:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:177:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:177:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:179:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:179:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:183:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:183:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:185:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:185:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:189:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:189:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:191:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:191:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:195:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:195:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:197:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:197:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:201:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:201:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:203:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:203:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:207:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:207:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:209:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:209:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:213:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:213:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:215:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:215:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:219:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:219:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:221:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:221:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:225:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:225:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:227:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:227:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:231:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:231:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:233:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:233:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:237:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:237:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:239:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:239:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:243:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:243:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_0_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:244:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:244:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:245:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:245:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:246:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:246:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:248:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:248:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:252:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:252:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:254:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:254:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:258:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:258:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:260:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:260:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:264:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:264:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:266:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:266:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_2_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:270:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:270:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_2_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:272:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:272:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_2_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:276:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:276:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_2_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:278:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:278:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_3_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:282:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:282:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_3_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:284:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:284:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_3_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:288:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:288:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_3_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:290:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:290:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_3_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:294:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:294:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_3_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:296:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:296:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_4_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:300:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:300:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_4_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:302:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:302:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_4_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:306:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:306:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_4_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:308:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:308:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:312:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:312:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_4_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:314:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:314:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:318:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:318:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:320:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:320:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:324:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:324:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:326:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:326:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:330:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:330:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:332:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:332:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:336:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:336:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:338:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:338:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:342:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:342:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:344:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:344:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:348:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:348:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:350:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:350:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:354:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:354:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:356:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:356:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:360:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:360:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:362:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:362:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:366:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:366:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:368:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:368:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:372:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:372:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:374:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:374:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:378:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:378:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:380:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:380:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:384:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:384:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:386:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:386:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:390:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:390:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:392:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:392:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:396:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:396:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:398:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:398:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:402:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:402:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:404:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:404:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:408:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:408:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:410:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:410:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:414:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:414:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_1_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:415:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:415:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:416:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:416:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:417:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:417:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:419:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:419:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:423:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:423:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:425:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:425:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:429:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:429:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:431:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:431:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:435:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:435:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:437:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:437:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_2_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:441:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:441:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_2_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:443:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:443:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_3_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:447:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:447:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_3_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:449:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:449:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_3_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:453:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:453:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_3_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:455:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:455:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_3_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:459:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:459:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_3_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:461:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:461:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_4_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:465:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:465:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_4_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:467:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:467:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_4_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:471:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:471:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_4_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:473:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:473:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:477:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:477:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_4_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:479:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:479:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:483:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:483:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:485:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:485:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:489:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:489:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:491:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:491:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:495:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:495:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:497:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:497:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:501:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:501:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:503:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:503:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:507:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:507:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:509:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:509:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:513:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:513:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:515:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:515:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:519:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:519:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:521:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:521:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:525:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:525:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:527:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:527:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:531:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:531:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:533:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:533:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:537:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:537:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:539:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:539:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:543:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:543:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:545:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:545:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:549:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:549:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:551:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:551:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:555:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:555:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:557:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:557:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:561:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:561:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:563:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:563:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:567:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:567:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:569:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:569:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:573:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:573:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:575:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:575:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:579:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:579:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_2_2_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:580:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:580:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:581:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:581:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:582:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:582:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:584:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:584:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:588:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:588:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:590:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:590:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:594:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:594:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:596:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:596:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:600:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:600:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:602:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:602:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_3_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:606:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:606:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_3_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:608:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:608:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_3_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:612:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:612:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_3_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:614:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:614:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_3_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:618:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:618:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_3_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:620:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:620:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_4_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:624:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:624:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_4_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:626:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:626:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_4_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:630:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:630:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_4_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:632:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:632:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:636:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:636:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_4_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:638:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:638:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:642:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:642:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:644:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:644:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:648:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:648:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:650:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:650:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:654:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:654:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:656:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:656:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:660:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:660:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:662:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:662:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:666:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:666:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:668:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:668:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:672:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:672:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:674:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:674:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:678:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:678:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:680:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:680:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:684:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:684:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:686:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:686:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:690:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:690:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:692:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:692:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:696:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:696:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:698:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:698:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:702:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:702:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:704:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:704:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:708:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:708:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:710:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:710:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:714:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:714:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:716:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:716:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:720:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:720:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:722:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:722:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:726:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:726:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:728:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:728:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:732:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:732:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:734:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:734:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:738:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:738:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_0_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:739:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:739:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:740:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:740:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:741:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:741:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:743:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:743:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:747:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:747:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:749:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:749:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:753:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:753:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:755:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:755:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:759:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:759:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:761:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:761:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_3_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:765:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:765:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_3_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:767:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:767:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_3_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:771:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:771:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_3_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:773:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:773:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_4_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:777:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:777:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_4_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:779:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:779:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_4_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:783:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:783:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_4_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:785:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:785:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:789:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:789:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_4_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:791:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:791:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:795:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:795:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:797:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:797:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:801:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:801:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:803:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:803:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:807:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:807:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:809:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:809:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:813:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:813:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:815:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:815:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:819:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:819:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:821:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:821:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:825:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:825:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:827:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:827:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:831:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:831:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:833:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:833:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:837:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:837:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:839:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:839:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:843:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:843:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:845:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:845:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:849:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:849:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:851:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:851:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:855:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:855:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:857:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:857:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:861:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:861:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:863:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:863:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:867:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:867:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:869:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:869:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:873:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:873:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:875:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:875:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:879:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:879:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:881:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:881:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:885:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:885:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:887:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:887:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:891:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:891:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_1_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:892:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:892:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:893:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:893:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:894:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:894:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:896:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:896:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:900:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:900:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:902:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:902:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:906:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:906:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:908:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:908:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:912:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:912:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:914:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:914:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_3_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:918:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:918:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_3_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:920:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:920:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_4_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:924:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:924:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_4_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:926:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:926:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_4_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:930:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:930:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_4_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:932:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:932:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:936:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:936:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_4_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:938:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:938:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:942:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:942:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:944:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:944:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:948:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:948:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:950:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:950:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:954:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:954:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:956:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:956:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:960:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:960:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:962:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:962:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:966:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:966:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:968:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:968:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:972:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:972:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:974:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:974:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:978:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:978:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:980:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:980:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:984:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:984:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:986:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:986:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:990:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:990:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:992:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:992:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:996:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:996:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:998:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:998:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1002:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1002:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1004:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1004:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1008:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1008:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1010:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1010:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1014:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1014:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1016:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1016:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1020:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1020:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1022:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1022:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1026:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1026:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1028:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1028:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1032:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1032:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1034:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1034:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1038:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1038:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_3_2_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1039:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1039:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1040:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1040:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1041:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1041:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1043:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1043:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1047:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1047:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1049:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1049:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1053:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1053:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1055:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1055:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1059:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1059:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1061:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1061:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_12_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1066:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1066:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_4_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1070:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1070:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_4_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1072:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1072:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_4_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1076:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1076:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_4_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1078:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1078:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1082:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1082:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_4_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1084:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1084:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1088:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1088:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1090:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1090:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1094:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1094:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1096:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1096:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1100:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1100:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1102:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1102:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1106:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1106:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1108:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1108:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1112:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1112:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1114:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1114:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1118:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1118:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1120:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1120:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1124:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1124:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1126:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1126:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1130:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1130:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1132:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1132:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1136:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1136:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1138:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1138:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1142:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1142:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1144:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1144:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1148:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1148:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1150:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1150:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1154:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1154:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1156:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1156:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1160:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1160:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1162:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1162:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1166:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1166:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1168:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1168:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1172:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1172:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1174:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1174:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1178:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1178:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1180:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1180:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1184:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1184:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_0_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1185:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1185:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1186:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1186:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1187:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1187:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1189:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1189:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1193:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1193:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1195:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1195:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1199:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1199:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1201:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1201:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1205:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1205:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1207:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1207:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_4_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1211:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1211:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_4_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1213:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1213:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1217:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1217:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_4_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1219:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1219:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1223:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1223:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1225:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1225:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1229:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1229:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1231:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1231:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1235:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1235:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1237:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1237:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1241:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1241:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1243:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1243:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1247:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1247:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1249:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1249:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1253:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1253:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1255:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1255:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1259:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1259:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1261:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1261:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1265:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1265:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1267:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1267:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1271:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1271:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1273:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1273:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1277:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1277:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1279:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1279:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1283:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1283:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1285:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1285:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1289:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1289:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1291:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1291:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1295:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1295:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1297:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1297:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1301:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1301:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1303:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1303:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1307:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1307:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1309:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1309:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1313:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1313:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1315:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1315:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1319:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1319:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_1_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1320:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1320:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1321:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1321:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1322:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1322:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1324:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1324:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1328:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1328:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1330:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1330:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1334:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1334:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1336:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1336:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1340:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1340:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1342:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1342:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_4_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1346:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1346:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_4_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1348:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1348:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1352:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1352:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1354:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1354:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1358:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1358:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1360:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1360:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1364:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1364:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1366:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1366:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1370:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1370:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1372:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1372:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1376:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1376:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1378:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1378:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1382:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1382:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1384:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1384:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1388:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1388:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1390:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1390:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1394:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1394:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1396:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1396:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1400:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1400:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1402:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1402:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1406:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1406:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1408:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1408:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1412:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1412:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1414:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1414:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1418:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1418:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1420:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1420:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1424:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1424:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1426:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1426:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1430:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1430:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1432:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1432:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1436:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1436:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1438:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1438:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1442:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1442:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1444:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1444:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1448:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1448:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_2_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1449:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1449:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1450:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1450:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1451:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1451:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1453:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1453:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1457:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1457:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1459:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1459:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1463:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1463:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1465:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1465:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1469:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1469:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1471:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1471:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_4_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1475:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1475:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_4_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1477:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1477:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1481:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1481:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1483:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1483:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1487:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1487:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1489:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1489:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1493:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1493:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1495:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1495:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1499:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1499:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1501:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1501:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1505:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1505:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1507:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1507:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1511:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1511:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1513:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1513:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1517:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1517:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1519:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1519:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1523:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1523:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1525:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1525:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1529:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1529:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1531:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1531:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1535:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1535:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1537:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1537:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1541:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1541:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1543:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1543:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1547:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1547:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1549:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1549:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1553:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1553:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1555:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1555:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1559:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1559:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1561:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1561:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1565:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1565:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1567:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1567:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1571:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1571:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_4_3_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1572:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1572:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1573:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1573:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1574:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1574:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1576:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1576:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1580:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1580:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1582:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1582:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1586:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1586:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1588:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1588:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1592:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1592:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1594:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1594:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_11_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1598:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1598:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_5_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1599:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1599:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_5_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1601:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1601:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1605:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1605:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1607:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1607:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1611:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1611:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1613:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1613:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1617:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1617:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1619:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1619:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1623:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1623:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1625:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1625:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1629:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1629:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1631:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1631:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1635:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1635:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1637:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1637:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1641:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1641:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1643:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1643:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1647:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1647:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1649:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1649:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1653:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1653:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1655:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1655:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1659:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1659:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1661:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1661:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1665:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1665:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1667:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1667:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1671:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1671:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1673:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1673:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1677:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1677:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1679:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1679:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1683:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1683:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1685:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1685:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1689:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1689:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_0_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1690:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1690:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1691:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1691:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1692:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1692:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1694:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1694:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1698:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1698:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1700:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1700:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1704:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1704:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1706:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1706:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1710:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1710:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1712:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1712:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_5_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1716:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1716:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_5_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1718:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1718:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1722:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1722:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1724:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1724:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1728:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1728:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1730:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1730:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1734:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1734:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1736:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1736:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1740:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1740:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1742:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1742:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1746:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1746:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1748:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1748:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1752:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1752:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1754:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1754:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1758:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1758:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1760:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1760:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1764:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1764:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1766:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1766:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1770:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1770:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1772:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1772:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1776:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1776:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1778:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1778:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1782:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1782:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1784:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1784:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1788:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1788:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1790:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1790:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1794:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1794:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1796:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1796:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1800:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1800:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_5_1_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1801:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1801:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1802:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1802:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1803:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1803:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1805:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1805:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1809:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1809:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1811:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1811:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1815:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1815:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1817:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1817:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1821:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1821:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1823:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1823:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_6_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1827:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1827:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_6_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1829:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1829:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1833:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1833:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1835:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1835:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1839:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1839:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1841:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1841:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1845:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1845:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1847:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1847:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1851:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1851:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1853:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1853:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1857:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1857:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1859:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1859:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1863:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1863:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1865:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1865:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1869:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1869:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1871:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1871:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1875:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1875:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1877:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1877:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1881:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1881:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1883:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1883:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1887:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1887:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1889:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1889:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1893:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1893:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1895:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1895:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1899:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1899:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1901:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1901:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1905:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1905:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_0_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1906:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1906:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1907:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1907:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1908:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1908:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1910:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1910:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1914:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1914:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1916:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1916:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1920:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1920:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1922:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1922:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1926:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1926:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1928:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1928:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_6_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1932:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1932:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_6_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1934:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1934:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1938:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1938:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1940:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1940:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1944:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1944:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1946:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1946:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1950:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1950:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1952:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1952:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1956:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1956:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1958:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1958:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1962:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1962:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1964:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1964:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1968:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1968:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1970:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1970:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1974:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1974:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1976:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1976:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1980:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1980:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1982:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1982:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1986:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1986:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1988:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1988:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1992:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1992:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1994:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1994:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1998:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:1998:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2000:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2000:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2004:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2004:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_6_1_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2005:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2005:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2006:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2006:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2007:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2007:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2009:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2009:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2013:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2013:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2015:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2015:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2019:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2019:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2021:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2021:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2025:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2025:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2027:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2027:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_11_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2031:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2031:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_11_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2032:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2032:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_12_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2034:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2034:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_7_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2038:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2038:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_7_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2040:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2040:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2044:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2044:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2046:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2046:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2050:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2050:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2052:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2052:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2056:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2056:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2058:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2058:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2062:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2062:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2064:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2064:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2068:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2068:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2070:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2070:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2074:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2074:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2076:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2076:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2080:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2080:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2082:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2082:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2086:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2086:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2088:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2088:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2092:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2092:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2094:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2094:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2098:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2098:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2100:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2100:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2104:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2104:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_0_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2105:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2105:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2106:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2106:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2107:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2107:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2109:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2109:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2113:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2113:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2115:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2115:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2119:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2119:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2121:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2121:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2125:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2125:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2127:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2127:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_7_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2131:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2131:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_7_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2133:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2133:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2137:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2137:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2139:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2139:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2143:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2143:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2145:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2145:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2149:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2149:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2151:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2151:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2155:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2155:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2157:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2157:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2161:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2161:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2163:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2163:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2167:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2167:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2169:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2169:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2173:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2173:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2175:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2175:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2179:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2179:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2181:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2181:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2185:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2185:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2187:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2187:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2191:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2191:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_7_1_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2192:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2192:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2193:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2193:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2194:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2194:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2196:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2196:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2200:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2200:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2202:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2202:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2206:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2206:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2208:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2208:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2212:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2212:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2214:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2214:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_11_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2219:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2219:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_11_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2223:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2223:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_12_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2224:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2224:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2225:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2225:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2227:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2227:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2231:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2231:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2233:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2233:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2237:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2237:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2239:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2239:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2243:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2243:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2245:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2245:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2249:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2249:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2251:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2251:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2255:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2255:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2257:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2257:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2261:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2261:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2263:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2263:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2267:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2267:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2269:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2269:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2273:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2273:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2275:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2275:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2279:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2279:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_0_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2280:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2280:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2281:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2281:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2282:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2282:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2284:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2284:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2288:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2288:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2290:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2290:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2294:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2294:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2296:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2296:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2300:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2300:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2302:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2302:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_8_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2306:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2306:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_8_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2308:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2308:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2312:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2312:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2314:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2314:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2318:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2318:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2320:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2320:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2324:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2324:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2326:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2326:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2330:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2330:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2332:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2332:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2336:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2336:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2338:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2338:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2342:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2342:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2344:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2344:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2348:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2348:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2350:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2350:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2354:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2354:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_1_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2355:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2355:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2356:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2356:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2357:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2357:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2359:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2359:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2363:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2363:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2365:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2365:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2369:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2369:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2371:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2371:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2375:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2375:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2377:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2377:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_8_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2381:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2381:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_8_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2383:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2383:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2387:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2387:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2389:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2389:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2393:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2393:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2395:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2395:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2399:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2399:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2401:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2401:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2405:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2405:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2407:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2407:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2411:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2411:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2413:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2413:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2417:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2417:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2419:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2419:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2423:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2423:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_2_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2424:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2424:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2425:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2425:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2426:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2426:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2428:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2428:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2432:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2432:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2434:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2434:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2438:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2438:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2440:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2440:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2444:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2444:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2446:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2446:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_8_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2450:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2450:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_8_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2452:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2452:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2456:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2456:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2458:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2458:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2462:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2462:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2464:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2464:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2468:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2468:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2470:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2470:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2474:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2474:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2476:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2476:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2480:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2480:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2482:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2482:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2486:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2486:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_3_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2487:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2487:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2488:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2488:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2489:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2489:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2491:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2491:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2495:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2495:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2497:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2497:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2501:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2501:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2503:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2503:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2507:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2507:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2509:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2509:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_8_4 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2513:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2513:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_8_4_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2515:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2515:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2519:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2519:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2521:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2521:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2525:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2525:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2527:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2527:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2531:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2531:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2533:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2533:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2537:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2537:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2539:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2539:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2543:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2543:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_8_4_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2544:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2544:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2545:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2545:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2546:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2546:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2548:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2548:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2552:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2552:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2554:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2554:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2558:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2558:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2560:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2560:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2564:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2564:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2566:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2566:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_9_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2570:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2570:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_9_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2572:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2572:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2576:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2576:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2578:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2578:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2582:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2582:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2584:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2584:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2588:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2588:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2590:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2590:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2594:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2594:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_0_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2595:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2595:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2596:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2596:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2597:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2597:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2599:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2599:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2603:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2603:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2605:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2605:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2609:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2609:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2611:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2611:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2615:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2615:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2617:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2617:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_9_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2621:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2621:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_9_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2623:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2623:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2627:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2627:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2629:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2629:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2633:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2633:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2635:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2635:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2639:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2639:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_1_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2640:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2640:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2641:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2641:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2642:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2642:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2644:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2644:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2648:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2648:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2650:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2650:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2654:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2654:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2656:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2656:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2660:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2660:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2662:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2662:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_9_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2666:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2666:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_9_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2668:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2668:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2672:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2672:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2674:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2674:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2678:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2678:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_2_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2679:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2679:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2680:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2680:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2681:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2681:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2683:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2683:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2687:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2687:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2689:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2689:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2693:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2693:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2695:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2695:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2699:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2699:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2701:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2701:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_9_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2705:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2705:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_9_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2707:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2707:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2711:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2711:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_9_3_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2712:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2712:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2713:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2713:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_10_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2714:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2714:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_10_0_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2716:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2716:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2720:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2720:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2722:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2722:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2726:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2726:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2728:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2728:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2732:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2732:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2734:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2734:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_11_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2738:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2738:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_12_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2739:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2739:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2740:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2740:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_0_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2741:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2741:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2742:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2742:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_1_DEP__IPHONE_10_1 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2743:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2743:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_1_DEP__IPHONE_10_1_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2745:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2745:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_1_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2749:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2749:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_1_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2751:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2751:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_1_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2755:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2755:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_1_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2757:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2757:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_1_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2761:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2761:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_1_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2762:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2762:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2763:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2763:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_2_DEP__IPHONE_10_2 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2764:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2764:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_2_DEP__IPHONE_10_2_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2766:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2766:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_2_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2770:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2770:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_2_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2772:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2772:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_2_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2776:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2776:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_2_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2777:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2777:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2778:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2778:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_3_DEP__IPHONE_10_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2779:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2779:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_3_DEP__IPHONE_10_3_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2781:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2781:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_3_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2785:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2785:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_10_3_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2786:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2786:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_11 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2787:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2787:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_11_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2788:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2788:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_11_3 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2789:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2789:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_12_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2790:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2790:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_13_0 = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2791:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2791:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2793:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2793:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_NA__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2794:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2794:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_NA_DEP__IPHONE_NA = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2795:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2795:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_NA_DEP__IPHONE_NA_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2796:21
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2796:21
 pub const __AVAILABILITY_INTERNAL__IPHONE_COMPAT_VERSION = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2817:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2817:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_COMPAT_VERSION_DEP__IPHONE_COMPAT_VERSION = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2818:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2818:25
 pub const __AVAILABILITY_INTERNAL__IPHONE_COMPAT_VERSION_DEP__IPHONE_COMPAT_VERSION_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2820:25
+// <zig-install>/lib/libc/include/any-darwin-any/AvailabilityInternalLegacy.h:2820:25
 pub const __OSX_AVAILABLE_STARTING = @compileError("unable to translate macro: undefined identifier `__AVAILABILITY_INTERNAL`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:204:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:204:13
 pub const __OSX_AVAILABLE_BUT_DEPRECATED = @compileError("unable to translate macro: undefined identifier `__AVAILABILITY_INTERNAL`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:205:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:205:13
 pub const __OSX_AVAILABLE_BUT_DEPRECATED_MSG = @compileError("unable to translate macro: undefined identifier `__AVAILABILITY_INTERNAL`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:207:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:207:13
 pub const __OS_AVAILABILITY = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:263:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:263:13
 pub const __OS_AVAILABILITY_MSG = @compileError("unable to translate macro: undefined identifier `availability`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:264:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:264:13
 pub const __OSX_EXTENSION_UNAVAILABLE = @compileError("unable to translate macro: undefined identifier `macosx_app_extension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:281:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:281:13
 pub const __IOS_EXTENSION_UNAVAILABLE = @compileError("unable to translate macro: undefined identifier `ios_app_extension`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:282:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:282:13
 pub inline fn __OS_EXTENSION_UNAVAILABLE(_msg: anytype) @TypeOf(__OSX_EXTENSION_UNAVAILABLE(_msg) ++ __IOS_EXTENSION_UNAVAILABLE(_msg)) {
     _ = &_msg;
     return __OSX_EXTENSION_UNAVAILABLE(_msg) ++ __IOS_EXTENSION_UNAVAILABLE(_msg);
 }
 pub const __OSX_UNAVAILABLE = @compileError("unable to translate macro: undefined identifier `macosx`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:299:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:299:13
 pub const __OSX_AVAILABLE = @compileError("unable to translate macro: undefined identifier `macosx`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:300:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:300:13
 pub const __OSX_DEPRECATED = @compileError("unable to translate macro: undefined identifier `macosx`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:301:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:301:13
 pub const __IOS_UNAVAILABLE = @compileError("unable to translate macro: undefined identifier `ios`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:325:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:325:13
 pub const __IOS_PROHIBITED = @compileError("unable to translate macro: undefined identifier `ios`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:327:15
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:327:15
 pub const __IOS_AVAILABLE = @compileError("unable to translate macro: undefined identifier `ios`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:329:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:329:13
 pub const __IOS_DEPRECATED = @compileError("unable to translate macro: undefined identifier `ios`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:330:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:330:13
 pub const __TVOS_UNAVAILABLE = @compileError("unable to translate macro: undefined identifier `tvos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:354:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:354:13
 pub const __TVOS_PROHIBITED = @compileError("unable to translate macro: undefined identifier `tvos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:356:15
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:356:15
 pub const __TVOS_AVAILABLE = @compileError("unable to translate macro: undefined identifier `tvos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:358:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:358:13
 pub const __TVOS_DEPRECATED = @compileError("unable to translate macro: undefined identifier `tvos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:359:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:359:13
 pub const __WATCHOS_UNAVAILABLE = @compileError("unable to translate macro: undefined identifier `watchos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:383:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:383:13
 pub const __WATCHOS_PROHIBITED = @compileError("unable to translate macro: undefined identifier `watchos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:385:15
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:385:15
 pub const __WATCHOS_AVAILABLE = @compileError("unable to translate macro: undefined identifier `watchos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:387:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:387:13
 pub const __WATCHOS_DEPRECATED = @compileError("unable to translate macro: undefined identifier `watchos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:388:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:388:13
 pub const __SWIFT_UNAVAILABLE = @compileError("unable to translate macro: undefined identifier `swift`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:411:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:411:13
 pub const __SWIFT_UNAVAILABLE_MSG = @compileError("unable to translate macro: undefined identifier `swift`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:412:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:412:13
 pub const __API_AVAILABLE = @compileError("unable to translate C expr: unexpected token '__VA_ARGS__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:457:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:457:13
 pub const __API_AVAILABLE_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:459:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:459:13
 pub const __API_AVAILABLE_END = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:460:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:460:13
 pub const __API_DEPRECATED = @compileError("unable to translate C expr: unexpected token '__VA_ARGS__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:483:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:483:13
 pub const __API_DEPRECATED_WITH_REPLACEMENT = @compileError("unable to translate C expr: unexpected token '__VA_ARGS__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:484:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:484:13
 pub const __API_DEPRECATED_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:486:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:486:13
 pub const __API_DEPRECATED_END = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:487:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:487:13
 pub const __API_DEPRECATED_WITH_REPLACEMENT_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:489:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:489:13
 pub const __API_DEPRECATED_WITH_REPLACEMENT_END = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:490:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:490:13
 pub const __API_OBSOLETED = @compileError("unable to translate C expr: unexpected token '__VA_ARGS__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:494:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:494:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT = @compileError("unable to translate C expr: unexpected token '__VA_ARGS__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:495:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:495:13
 pub const __API_OBSOLETED_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:497:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:497:13
 pub const __API_OBSOLETED_END = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:498:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:498:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:500:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:500:13
 pub const __API_OBSOLETED_WITH_REPLACEMENT_END = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:501:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:501:13
 pub const __API_UNAVAILABLE = @compileError("unable to translate C expr: unexpected token '__VA_ARGS__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:512:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:512:13
 pub const __API_UNAVAILABLE_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:514:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:514:13
 pub const __API_UNAVAILABLE_END = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/Availability.h:515:13
+// <zig-install>/lib/libc/include/any-darwin-any/Availability.h:515:13
 pub inline fn __SPI_AVAILABLE() void {
     return;
 }
@@ -8861,7 +8861,7 @@ pub const _FILESEC_REMOVE_ACL = __helpers.cast(?*anyopaque, @as(c_int, 1));
 pub const __STDC_VERSION_STDDEF_H__ = @as(c_long, 202311);
 pub const NULL = __helpers.cast(?*anyopaque, @as(c_int, 0));
 pub const offsetof = @compileError("unable to translate macro: undefined identifier `__builtin_offsetof`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/compiler/aro/include/stddef.h:18:9
+// <zig-install>/lib/compiler/aro/include/stddef.h:18:9
 pub const __CLANG_STDINT_H = "";
 pub const _STDINT_H_ = "";
 pub const __WORDSIZE = @as(c_int, 64);
@@ -8995,9 +8995,9 @@ pub inline fn _LIBC_FORGE_PTR(P: anytype, S: anytype) @TypeOf(P) {
 }
 pub const __TYPES_H_ = "";
 pub const __strfmonlike = @compileError("unable to translate macro: undefined identifier `__format__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_types.h:34:9
+// <zig-install>/lib/libc/include/any-darwin-any/_types.h:34:9
 pub const __strftimelike = @compileError("unable to translate macro: undefined identifier `__format__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_types.h:36:9
+// <zig-install>/lib/libc/include/any-darwin-any/_types.h:36:9
 pub const __DARWIN_WCHAR_MAX = __WCHAR_MAX__;
 pub const __DARWIN_WCHAR_MIN = -__helpers.promoteIntLiteral(c_int, 0x7fffffff, .hex) - @as(c_int, 1);
 pub const __DARWIN_WEOF = __helpers.cast(__darwin_wint_t, -@as(c_int, 1));
@@ -9049,13 +9049,13 @@ pub const SIGINFO = @as(c_int, 29);
 pub const SIGUSR1 = @as(c_int, 30);
 pub const SIGUSR2 = @as(c_int, 31);
 pub const SIG_DFL = @compileError("unable to translate C expr: expected ')' instead got '('");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/signal.h:131:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/signal.h:131:9
 pub const SIG_IGN = @compileError("unable to translate C expr: expected ')' instead got '('");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/signal.h:132:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/signal.h:132:9
 pub const SIG_HOLD = @compileError("unable to translate C expr: expected ')' instead got '('");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/signal.h:133:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/signal.h:133:9
 pub const SIG_ERR = @compileError("unable to translate C expr: expected ')' instead got '('");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/signal.h:134:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/signal.h:134:9
 pub const _BSD_MACHINE__MCONTEXT_H_ = "";
 pub const __ARM_MCONTEXT_H_ = "";
 pub const _MACH_MACHINE__STRUCTS_H_ = "";
@@ -9075,9 +9075,9 @@ pub inline fn __darwin_arm_thread_state64_get_pc_fptr(ts: anytype) ?*anyopaque {
     return __helpers.cast(?*anyopaque, __helpers.cast(usize, ts.__pc));
 }
 pub const __darwin_arm_thread_state64_set_pc_fptr = @compileError("unable to translate C expr: expected ')' instead got '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/arm/_structs.h:437:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/arm/_structs.h:437:9
 pub const __darwin_arm_thread_state64_set_pc_presigned_fptr = @compileError("unable to translate C expr: expected ')' instead got '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/arm/_structs.h:440:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/arm/_structs.h:440:9
 pub inline fn __darwin_arm_thread_state64_get_lr(ts: anytype) @TypeOf(ts.__lr) {
     _ = &ts;
     return ts.__lr;
@@ -9087,21 +9087,21 @@ pub inline fn __darwin_arm_thread_state64_get_lr_fptr(ts: anytype) ?*anyopaque {
     return __helpers.cast(?*anyopaque, __helpers.cast(usize, ts.__lr));
 }
 pub const __darwin_arm_thread_state64_set_lr_fptr = @compileError("unable to translate C expr: expected ')' instead got '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/arm/_structs.h:449:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/arm/_structs.h:449:9
 pub const __darwin_arm_thread_state64_set_lr_presigned_fptr = @compileError("unable to translate C expr: expected ')' instead got '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/arm/_structs.h:452:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/arm/_structs.h:452:9
 pub inline fn __darwin_arm_thread_state64_get_sp(ts: anytype) @TypeOf(ts.__sp) {
     _ = &ts;
     return ts.__sp;
 }
 pub const __darwin_arm_thread_state64_set_sp = @compileError("unable to translate C expr: expected ')' instead got '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/arm/_structs.h:458:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/arm/_structs.h:458:9
 pub inline fn __darwin_arm_thread_state64_get_fp(ts: anytype) @TypeOf(ts.__fp) {
     _ = &ts;
     return ts.__fp;
 }
 pub const __darwin_arm_thread_state64_set_fp = @compileError("unable to translate C expr: expected ')' instead got '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/arm/_structs.h:464:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/arm/_structs.h:464:9
 pub const __darwin_arm_thread_state64_ptrauth_strip = __helpers.DISCARD;
 pub const _STRUCT_ARM_VFP_STATE = struct___darwin_arm_vfp_state;
 pub const _STRUCT_ARM_NEON_STATE64 = struct___darwin_arm_neon_state64;
@@ -9200,7 +9200,7 @@ pub const SV_NODEFER = SA_NODEFER;
 pub const SV_NOCLDSTOP = SA_NOCLDSTOP;
 pub const SV_SIGINFO = SA_SIGINFO;
 pub const sv_onstack = @compileError("unable to translate macro: undefined identifier `sv_flags`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/signal.h:362:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/signal.h:362:9
 pub inline fn sigmask(m: anytype) @TypeOf(@as(c_int, 1) << (m - @as(c_int, 1))) {
     _ = &m;
     return @as(c_int, 1) << (m - @as(c_int, 1));
@@ -9220,9 +9220,9 @@ pub const PRIO_DARWIN_NONUI = @as(c_int, 0x1001);
 pub const RUSAGE_SELF = @as(c_int, 0);
 pub const RUSAGE_CHILDREN = -@as(c_int, 1);
 pub const ru_first = @compileError("unable to translate macro: undefined identifier `ru_ixrss`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/resource.h:164:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/resource.h:164:9
 pub const ru_last = @compileError("unable to translate macro: undefined identifier `ru_nivcsw`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/resource.h:178:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/resource.h:178:9
 pub const RUSAGE_INFO_V0 = @as(c_int, 0);
 pub const RUSAGE_INFO_V1 = @as(c_int, 1);
 pub const RUSAGE_INFO_V2 = @as(c_int, 2);
@@ -9398,7 +9398,7 @@ pub inline fn __DARWIN_OSSwapConstInt64(x: anytype) __uint64_t {
 }
 pub const _OS__OSBYTEORDERARM_H = "";
 pub const __DARWIN_OS_INLINE = @compileError("unable to translate C expr: unexpected token 'static'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/libkern/arm/_OSByteOrder.h:38:17
+// <zig-install>/lib/libc/include/any-darwin-any/libkern/arm/_OSByteOrder.h:38:17
 pub inline fn __DARWIN_OSSwapInt16(x: anytype) __uint16_t {
     _ = &x;
     return __helpers.cast(__uint16_t, if (__helpers.cast(bool, __builtin.constant_p(x))) __DARWIN_OSSwapConstInt16(x) else _OSSwapInt16(x));
@@ -9436,30 +9436,30 @@ pub inline fn htonll(x: anytype) @TypeOf(__DARWIN_OSSwapInt64(x)) {
     return __DARWIN_OSSwapInt64(x);
 }
 pub const NTOHL = @compileError("unable to translate C expr: unexpected token '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/_endian.h:144:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/_endian.h:144:9
 pub const NTOHS = @compileError("unable to translate C expr: unexpected token '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/_endian.h:145:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/_endian.h:145:9
 pub const NTOHLL = @compileError("unable to translate C expr: unexpected token '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/_endian.h:146:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/_endian.h:146:9
 pub const HTONL = @compileError("unable to translate C expr: unexpected token '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/_endian.h:147:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/_endian.h:147:9
 pub const HTONS = @compileError("unable to translate C expr: unexpected token '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/_endian.h:148:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/_endian.h:148:9
 pub const HTONLL = @compileError("unable to translate C expr: unexpected token '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/_endian.h:149:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/_endian.h:149:9
 pub const w_termsig = @compileError("unable to translate macro: undefined identifier `w_T`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/wait.h:229:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/wait.h:229:9
 pub const w_coredump = @compileError("unable to translate macro: undefined identifier `w_T`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/wait.h:230:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/wait.h:230:9
 pub const w_retcode = @compileError("unable to translate macro: undefined identifier `w_T`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/wait.h:231:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/wait.h:231:9
 pub const w_stopval = @compileError("unable to translate macro: undefined identifier `w_S`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/wait.h:232:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/wait.h:232:9
 pub const w_stopsig = @compileError("unable to translate macro: undefined identifier `w_S`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/wait.h:233:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/wait.h:233:9
 pub const _ALLOCA_H_ = "";
 pub const __alloca = @compileError("unable to translate macro: undefined identifier `__builtin_alloca`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/alloca.h:43:9
+// <zig-install>/lib/libc/include/any-darwin-any/alloca.h:43:9
 pub const _CT_RUNE_T = "";
 pub const _RUNE_T = "";
 pub const _WCHAR_T = "";
@@ -9467,7 +9467,7 @@ pub const EXIT_FAILURE = @as(c_int, 1);
 pub const EXIT_SUCCESS = @as(c_int, 0);
 pub const RAND_MAX = __helpers.promoteIntLiteral(c_int, 0x7fffffff, .hex);
 
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/_stdlib.h:139:9: warning: macro 'MB_CUR_MAX' contains a runtime value, translated to function
+// <zig-install>/lib/libc/include/any-darwin-any/_stdlib.h:139:9: warning: macro 'MB_CUR_MAX' contains a runtime value, translated to function
 pub inline fn MB_CUR_MAX() @TypeOf(__mb_cur_max) {
     return __mb_cur_max;
 }
@@ -9501,38 +9501,38 @@ pub inline fn __darwin_obsz(object: anytype) @TypeOf(__builtin.object_size(objec
     return __builtin.object_size(object, if (__helpers.cast(bool, _USE_FORTIFY_LEVEL > @as(c_int, 1))) @as(c_int, 1) else @as(c_int, 0));
 }
 pub const __darwin_pass_obsz0 = @compileError("unable to translate macro: undefined identifier `__pass_object_size__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_common.h:42:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_common.h:42:9
 pub const __darwin_pass_obsz = @compileError("unable to translate macro: undefined identifier `__pass_object_size__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_common.h:43:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_common.h:43:9
 pub const __bcopy_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___memmove_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_strings.h:65:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_strings.h:65:9
 pub const __bzero_chk_func = @compileError("unable to translate C expr: unexpected token '__VA_ARGS__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_strings.h:70:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_strings.h:70:9
 pub const _SECURE__STRING_H_ = "";
 pub const __memcpy_chk_func = @compileError("unable to translate C expr: unexpected token '__VA_ARGS__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:126:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:126:9
 pub const __memmove_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___memmove_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:131:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:131:9
 pub const __memset_chk_func = @compileError("unable to translate C expr: unexpected token '__VA_ARGS__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:136:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:136:9
 pub const __stpncpy_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___stpncpy_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:141:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:141:9
 pub const __strncpy_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___strncpy_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:146:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:146:9
 pub const __strlcpy_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___strlcpy_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:153:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:153:9
 pub const __strlcat_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___strlcat_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:158:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:158:9
 pub const __memccpy_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___memccpy_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:163:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:163:9
 pub const __strcpy_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___strcpy_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:171:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:171:9
 pub const __stpcpy_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___stpcpy_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:176:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:176:9
 pub const __strcat_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___strcat_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:181:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:181:9
 pub const __strncat_chk_func = @compileError("unable to translate macro: undefined identifier `__builtin___strncat_chk`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/secure/_string.h:187:9
+// <zig-install>/lib/libc/include/any-darwin-any/secure/_string.h:187:9
 pub const _TIME_H_ = "";
 pub const _CLOCK_T = "";
 pub const _TIME_T = "";
@@ -9892,7 +9892,7 @@ pub inline fn __DARWIN_FD_ISSET(n: anytype, p: anytype) @TypeOf(__darwin_fd_isse
     return __darwin_fd_isset(n, p);
 }
 pub const __DARWIN_FD_ZERO = @compileError("unable to translate macro: undefined identifier `__builtin_bzero`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/_types/_fd_def.h:115:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/_types/_fd_def.h:115:9
 pub inline fn __DARWIN_FD_COPY(f: anytype, t: anytype) @TypeOf(bcopy(f, t, __helpers.sizeof(f.*))) {
     _ = &f;
     _ = &t;
@@ -9938,9 +9938,9 @@ pub const ITIMER_REAL = @as(c_int, 0);
 pub const ITIMER_VIRTUAL = @as(c_int, 1);
 pub const ITIMER_PROF = @as(c_int, 2);
 pub const TIMEVAL_TO_TIMESPEC = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/time.h:121:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/time.h:121:9
 pub const TIMESPEC_TO_TIMEVAL = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/time.h:125:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/time.h:125:9
 pub const DST_NONE = @as(c_int, 0);
 pub const DST_USA = @as(c_int, 1);
 pub const DST_AUST = @as(c_int, 2);
@@ -9949,7 +9949,7 @@ pub const DST_MET = @as(c_int, 4);
 pub const DST_EET = @as(c_int, 5);
 pub const DST_CAN = @as(c_int, 6);
 pub const timerclear = @compileError("unable to translate C expr: unexpected token '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/time.h:143:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/time.h:143:9
 pub inline fn timerisset(tvp: anytype) @TypeOf((tvp.*.tv_sec != 0) or (tvp.*.tv_usec != 0)) {
     _ = &tvp;
     return (tvp.*.tv_sec != 0) or (tvp.*.tv_usec != 0);
@@ -9961,9 +9961,9 @@ pub inline fn timercmp(tvp: anytype, uvp: anytype, cmp: anytype) @TypeOf(if (__h
     return if (__helpers.cast(bool, tvp.*.tv_sec == uvp.*.tv_sec)) tvp.*.tv_usec ++ cmp(uvp).*.tv_usec else tvp.*.tv_sec ++ cmp(uvp).*.tv_sec;
 }
 pub const timeradd = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/time.h:149:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/time.h:149:9
 pub const timersub = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/time.h:158:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/time.h:158:9
 pub inline fn timevalcmp(l: anytype, r: anytype, cmp: anytype) @TypeOf(timercmp(l, r, cmp)) {
     _ = &l;
     _ = &r;
@@ -10094,7 +10094,7 @@ pub const M16KCLSHIFT = @as(c_int, 14);
 pub const M16KCLBYTES = @as(c_int, 1) << M16KCLSHIFT;
 pub const MCLOFSET = MCLBYTES - @as(c_int, 1);
 pub const NMBCLUSTERS = @compileError("unable to translate macro: undefined identifier `CONFIG_NMBCLUSTERS`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/arm/param.h:93:9
+// <zig-install>/lib/libc/include/any-darwin-any/arm/param.h:93:9
 pub inline fn ctos(x: anytype) @TypeOf(x) {
     _ = &x;
     return x;
@@ -10151,7 +10151,7 @@ pub inline fn BASEPRI(x: anytype) @TypeOf((x & (@as(c_int, 255) << @as(c_int, 8)
     return (x & (@as(c_int, 255) << @as(c_int, 8))) == @as(c_int, 0);
 }
 pub const DELAY = @compileError("unable to translate macro: undefined identifier `N`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/arm/param.h:146:9
+// <zig-install>/lib/libc/include/any-darwin-any/arm/param.h:146:9
 pub const _GCC_LIMITS_H_ = "";
 pub const __CLANG_LIMITS_H = "";
 pub const _LIMITS_H_ = "";
@@ -10291,7 +10291,7 @@ pub inline fn clrnd(i: anytype) @TypeOf(i) {
 pub const CBLOCK = @as(c_int, 64);
 pub const CBQSIZE = __helpers.div(CBLOCK, NBBY);
 pub const CBSIZE = @compileError("unable to translate macro: undefined identifier `cblock`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/param.h:167:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/param.h:167:9
 pub const CROUND = CBLOCK - @as(c_int, 1);
 pub const MAXBSIZE = @as(c_int, 256) * @as(c_int, 4096);
 pub const MAXPHYSIO = MAXPHYS;
@@ -10300,9 +10300,9 @@ pub const MAXPHYSIO_WIRED = (@as(c_int, 16) * @as(c_int, 1024)) * @as(c_int, 102
 pub const MAXPATHLEN = PATH_MAX;
 pub const MAXSYMLINKS = @as(c_int, 32);
 pub const setbit = @compileError("unable to translate C expr: expected ')' instead got '|='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/param.h:200:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/param.h:200:9
 pub const clrbit = @compileError("unable to translate C expr: expected ')' instead got '&='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/param.h:201:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/param.h:201:9
 pub inline fn isset(a: anytype, i: anytype) @TypeOf(__helpers.cast([*c]u8, a)[@as(usize, @intCast(__helpers.div(i, NBBY)))] & (@as(c_uint, 1) << __helpers.rem(i, NBBY))) {
     _ = &a;
     _ = &i;
@@ -10428,7 +10428,7 @@ pub const AUDIT_CTLMODE_EXTERNAL = __helpers.cast(u8, @as(c_int, 2));
 pub const AUDIT_EXPIRE_OP_AND = __helpers.cast(u8, @as(c_int, 0));
 pub const AUDIT_EXPIRE_OP_OR = __helpers.cast(u8, @as(c_int, 1));
 pub const __AUDIT_API_DEPRECATED = @compileError("unable to translate macro: undefined identifier `macos`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/bsm/audit.h:362:9
+// <zig-install>/lib/libc/include/any-darwin-any/bsm/audit.h:362:9
 pub const _MACH_PORT_H_ = "";
 pub const _MACH_BOOLEAN_H_ = "";
 pub const _MACH_MACHINE_BOOLEAN_H_ = "";
@@ -10438,9 +10438,9 @@ pub const FALSE = @as(c_int, 0);
 pub const _MACH_MACHINE_VM_TYPES_H_ = "";
 pub const _MACH_ARM_VM_TYPES_H_ = "";
 pub const MACH_MSG_TYPE_INTEGER_T = @compileError("unable to translate macro: undefined identifier `MACH_MSG_TYPE_INTEGER_32`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/arm/vm_types.h:158:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/arm/vm_types.h:158:9
 pub const xnu_static_assert_struct_size = @compileError("unable to translate C expr: unexpected token '_Static_assert'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/port.h:101:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/port.h:101:9
 pub inline fn xnu_static_assert_struct_size_kernel_user(name: anytype, expected_kernel_size: anytype, expected_user_size: anytype) @TypeOf(xnu_static_assert_struct_size(name, expected_user_size)) {
     _ = &name;
     _ = &expected_kernel_size;
@@ -10599,7 +10599,7 @@ pub const CRF_NOMEMBERD = @as(c_int, 0x00000001);
 pub const CRF_MAC_ENFORCE = @as(c_int, 0x00000002);
 pub const XUCRED_VERSION = @as(c_int, 0);
 pub const cr_gid = @compileError("unable to translate macro: undefined identifier `cr_groups`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/ucred.h:108:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/ucred.h:108:9
 pub const NOCRED = __helpers.cast(kauth_cred_t, @as(c_int, 0));
 pub const FSCRED = __helpers.cast(kauth_cred_t, -@as(c_int, 1));
 pub inline fn IS_VALID_CRED(_cr: anytype) @TypeOf((_cr != NOCRED) and (_cr != FSCRED)) {
@@ -10630,11 +10630,11 @@ pub const __MISMATCH_TAGS_POP = "";
 pub const __NULLABILITY_COMPLETENESS_PUSH = "";
 pub const __NULLABILITY_COMPLETENESS_POP = "";
 pub const SLIST_HEAD = @compileError("unable to translate macro: untranslatable usage of arg `name`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:236:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:236:9
 pub const SLIST_HEAD_INITIALIZER = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:245:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:245:9
 pub const SLIST_ENTRY = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:248:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:248:9
 pub inline fn SLIST_EMPTY(head: anytype) @TypeOf(head.*.slh_first == NULL) {
     _ = &head;
     return head.*.slh_first == NULL;
@@ -10644,36 +10644,36 @@ pub inline fn SLIST_FIRST(head: anytype) @TypeOf(head.*.slh_first) {
     return head.*.slh_first;
 }
 pub const SLIST_FOREACH = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:264:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:264:9
 pub const SLIST_FOREACH_SAFE = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:269:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:269:9
 pub const SLIST_FOREACH_PREVPTR = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:274:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:274:9
 pub const SLIST_INIT = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:279:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:279:9
 pub const SLIST_INSERT_AFTER = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:283:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:283:9
 pub const SLIST_INSERT_HEAD = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:288:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:288:9
 pub inline fn SLIST_NEXT(elm: anytype, field: anytype) @TypeOf(@field(elm, field).sle_next) {
     _ = &elm;
     _ = &field;
     return @field(elm, field).sle_next;
 }
 pub const SLIST_REMOVE = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:295:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:295:9
 pub const SLIST_REMOVE_AFTER = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:313:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:313:9
 pub const SLIST_REMOVE_HEAD = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:318:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:318:9
 pub const STAILQ_HEAD = @compileError("unable to translate macro: untranslatable usage of arg `name`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:325:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:325:9
 pub const STAILQ_HEAD_INITIALIZER = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:335:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:335:9
 pub const STAILQ_ENTRY = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:338:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:338:9
 pub const STAILQ_CONCAT = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:350:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:350:9
 pub inline fn STAILQ_EMPTY(head: anytype) @TypeOf(head.*.stqh_first == NULL) {
     _ = &head;
     return head.*.stqh_first == NULL;
@@ -10683,40 +10683,40 @@ pub inline fn STAILQ_FIRST(head: anytype) @TypeOf(head.*.stqh_first) {
     return head.*.stqh_first;
 }
 pub const STAILQ_FOREACH = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:362:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:362:9
 pub const STAILQ_FOREACH_SAFE = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:368:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:368:9
 pub const STAILQ_INIT = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:373:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:373:9
 pub const STAILQ_INSERT_AFTER = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:378:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:378:9
 pub const STAILQ_INSERT_HEAD = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:384:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:384:9
 pub const STAILQ_INSERT_TAIL = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:390:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:390:9
 pub const STAILQ_LAST = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:396:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:396:9
 pub inline fn STAILQ_NEXT(elm: anytype, field: anytype) @TypeOf(@field(elm, field).stqe_next) {
     _ = &elm;
     _ = &field;
     return @field(elm, field).stqe_next;
 }
 pub const STAILQ_REMOVE = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:408:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:408:9
 pub const STAILQ_REMOVE_HEAD = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:426:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:426:9
 pub const STAILQ_REMOVE_HEAD_UNTIL = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:432:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:432:9
 pub const STAILQ_REMOVE_AFTER = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:437:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:437:9
 pub const STAILQ_SWAP = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:443:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:443:9
 pub const LIST_HEAD = @compileError("unable to translate macro: untranslatable usage of arg `name`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:465:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:465:9
 pub const LIST_HEAD_INITIALIZER = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:474:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:474:9
 pub const LIST_ENTRY = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:477:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:477:9
 pub inline fn LIST_CHECK_HEAD(head: anytype, field: anytype) void {
     _ = &head;
     _ = &field;
@@ -10741,32 +10741,32 @@ pub inline fn LIST_FIRST(head: anytype) @TypeOf(head.*.lh_first) {
     return head.*.lh_first;
 }
 pub const LIST_FOREACH = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:499:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:499:9
 pub const LIST_FOREACH_SAFE = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:504:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:504:9
 pub const LIST_INIT = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:509:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:509:9
 pub const LIST_INSERT_AFTER = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:513:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:513:9
 pub const LIST_INSERT_BEFORE = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:522:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:522:9
 pub const LIST_INSERT_HEAD = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:530:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:530:9
 pub inline fn LIST_NEXT(elm: anytype, field: anytype) @TypeOf(@field(elm, field).le_next) {
     _ = &elm;
     _ = &field;
     return @field(elm, field).le_next;
 }
 pub const LIST_REMOVE = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:540:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:540:9
 pub const LIST_SWAP = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:551:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:551:9
 pub const TAILQ_HEAD = @compileError("unable to translate macro: untranslatable usage of arg `name`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:569:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:569:9
 pub const TAILQ_HEAD_INITIALIZER = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:580:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:580:9
 pub const TAILQ_ENTRY = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:583:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:583:9
 pub inline fn TAILQ_CHECK_HEAD(head: anytype, field: anytype) void {
     _ = &head;
     _ = &field;
@@ -10783,7 +10783,7 @@ pub inline fn TAILQ_CHECK_PREV(elm: anytype, field: anytype) void {
     return;
 }
 pub const TAILQ_CONCAT = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:601:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:601:9
 pub inline fn TAILQ_EMPTY(head: anytype) @TypeOf(head.*.tqh_first == NULL) {
     _ = &head;
     return head.*.tqh_first == NULL;
@@ -10793,40 +10793,40 @@ pub inline fn TAILQ_FIRST(head: anytype) @TypeOf(head.*.tqh_first) {
     return head.*.tqh_first;
 }
 pub const TAILQ_FOREACH = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:616:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:616:9
 pub const TAILQ_FOREACH_SAFE = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:621:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:621:9
 pub const TAILQ_FOREACH_REVERSE = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:626:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:626:9
 pub const TAILQ_FOREACH_REVERSE_SAFE = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:631:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:631:9
 pub const TAILQ_INIT = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:637:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:637:9
 pub const TAILQ_INSERT_AFTER = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:644:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:644:9
 pub const TAILQ_INSERT_BEFORE = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:659:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:659:9
 pub const TAILQ_INSERT_HEAD = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:669:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:669:9
 pub const TAILQ_INSERT_TAIL = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:682:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:682:9
 pub const TAILQ_LAST = @compileError("unable to translate macro: untranslatable usage of arg `headname`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:691:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:691:9
 pub inline fn TAILQ_NEXT(elm: anytype, field: anytype) @TypeOf(@field(elm, field).tqe_next) {
     _ = &elm;
     _ = &field;
     return @field(elm, field).tqe_next;
 }
 pub const TAILQ_PREV = @compileError("unable to translate macro: untranslatable usage of arg `headname`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:700:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:700:9
 pub const TAILQ_REMOVE = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:707:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:707:9
 pub const TAILQ_SWAP = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:726:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:726:9
 pub const CIRCLEQ_HEAD = @compileError("unable to translate macro: untranslatable usage of arg `name`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:751:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:751:9
 pub const CIRCLEQ_ENTRY = @compileError("unable to translate macro: untranslatable usage of arg `type`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:761:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:761:9
 pub inline fn CIRCLEQ_CHECK_HEAD(head: anytype, field: anytype) void {
     _ = &head;
     _ = &field;
@@ -10853,17 +10853,17 @@ pub inline fn CIRCLEQ_FIRST(head: anytype) @TypeOf(head.*.cqh_first) {
     return head.*.cqh_first;
 }
 pub const CIRCLEQ_FOREACH = @compileError("unable to translate C expr: unexpected token 'for'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:782:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:782:9
 pub const CIRCLEQ_INIT = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:787:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:787:9
 pub const CIRCLEQ_INSERT_AFTER = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:792:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:792:9
 pub const CIRCLEQ_INSERT_BEFORE = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:803:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:803:9
 pub const CIRCLEQ_INSERT_HEAD = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:814:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:814:9
 pub const CIRCLEQ_INSERT_TAIL = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:825:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:825:9
 pub inline fn CIRCLEQ_LAST(head: anytype) @TypeOf(head.*.cqh_last) {
     _ = &head;
     return head.*.cqh_last;
@@ -10879,7 +10879,7 @@ pub inline fn CIRCLEQ_PREV(elm: anytype, field: anytype) @TypeOf(@field(elm, fie
     return @field(elm, field).cqe_prev;
 }
 pub const CIRCLEQ_REMOVE = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/queue.h:841:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/queue.h:841:9
 pub const _SYS_LOCK_H_ = "";
 pub const _SYS_EVENT_H_ = "";
 pub const EVFILT_READ = -@as(c_int, 1);
@@ -10898,9 +10898,9 @@ pub const EVFILT_LIO = -@as(c_int, 19);
 pub const EVFILT_SYSCOUNT = @as(c_int, 19);
 pub const EVFILT_THREADMARKER = EVFILT_SYSCOUNT;
 pub const EV_SET = @compileError("unable to translate macro: undefined identifier `__kevp__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/event.h:108:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/event.h:108:9
 pub const EV_SET64 = @compileError("unable to translate macro: undefined identifier `__kevp__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/event.h:118:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/event.h:118:9
 pub const KEVENT_FLAG_NONE = @as(c_int, 0x000000);
 pub const KEVENT_FLAG_IMMEDIATE = @as(c_int, 0x000001);
 pub const KEVENT_FLAG_ERROR_EVENTS = @as(c_int, 0x000002);
@@ -10973,11 +10973,11 @@ pub const NOTE_TRACK = @as(c_int, 0x00000001);
 pub const NOTE_TRACKERR = @as(c_int, 0x00000002);
 pub const NOTE_CHILD = @as(c_int, 0x00000004);
 pub const p_forw = @compileError("unable to translate macro: undefined identifier `p_un`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/proc.h:99:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/proc.h:99:9
 pub const p_back = @compileError("unable to translate macro: undefined identifier `p_un`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/proc.h:100:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/proc.h:100:9
 pub const p_starttime = @compileError("unable to translate macro: undefined identifier `p_un`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/proc.h:101:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/proc.h:101:9
 pub const SIDL = @as(c_int, 1);
 pub const SRUN = @as(c_int, 2);
 pub const SSLEEP = @as(c_int, 3);
@@ -11074,7 +11074,7 @@ pub const CTL_MACHDEP = @as(c_int, 7);
 pub const CTL_USER = @as(c_int, 8);
 pub const CTL_MAXID = @as(c_int, 9);
 pub const CTL_NAMES = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/sysctl.h:198:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/sysctl.h:198:9
 pub const KERN_OSTYPE = @as(c_int, 1);
 pub const KERN_OSRELEASE = @as(c_int, 2);
 pub const KERN_OSREV = @as(c_int, 3);
@@ -11183,9 +11183,9 @@ pub const KERN_KDSET_EDM = @as(c_int, 26);
 pub const KERN_KDGET_EDM = @as(c_int, 27);
 pub const KERN_KDWRITETR_V3 = @as(c_int, 28);
 pub const CTL_KERN_NAMES = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/sysctl.h:351:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/sysctl.h:351:9
 pub const CTL_VFS_NAMES = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/sysctl.h:429:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/sysctl.h:429:9
 pub const KERN_PROC_ALL = @as(c_int, 0);
 pub const KERN_PROC_PID = @as(c_int, 1);
 pub const KERN_PROC_PGRP = @as(c_int, 2);
@@ -11216,7 +11216,7 @@ pub const VM_MACHFACTOR = @as(c_int, 4);
 pub const VM_SWAPUSAGE = @as(c_int, 5);
 pub const VM_MAXID = @as(c_int, 6);
 pub const CTL_VM_NAMES = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/sysctl.h:530:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/sysctl.h:530:9
 pub const LSCALE = @as(c_int, 1000);
 pub const HW_MACHINE = @as(c_int, 1);
 pub const HW_MODEL = @as(c_int, 2);
@@ -11247,7 +11247,7 @@ pub const HW_TARGET = @as(c_int, 26);
 pub const HW_PRODUCT = @as(c_int, 27);
 pub const HW_MAXID = @as(c_int, 28);
 pub const CTL_HW_NAMES = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/sysctl.h:592:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/sysctl.h:592:9
 pub const USER_CS_PATH = @as(c_int, 1);
 pub const USER_BC_BASE_MAX = @as(c_int, 2);
 pub const USER_BC_DIM_MAX = @as(c_int, 3);
@@ -11270,7 +11270,7 @@ pub const USER_STREAM_MAX = @as(c_int, 19);
 pub const USER_TZNAME_MAX = @as(c_int, 20);
 pub const USER_MAXID = @as(c_int, 21);
 pub const CTL_USER_NAMES = @compileError("unable to translate C expr: unexpected token '{'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/sysctl.h:764:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/sysctl.h:764:9
 pub const CTL_DEBUG_NAME = @as(c_int, 0);
 pub const CTL_DEBUG_VALUE = @as(c_int, 1);
 pub const CTL_DEBUG_MAXID = @as(c_int, 20);
@@ -11289,14 +11289,14 @@ pub const SEARCHFS_MAX_SEARCHPARMS = @as(c_int, 4096);
 pub const _FSOBJ_ID_T = "";
 pub const ATTR_BIT_MAP_COUNT = @as(c_int, 5);
 pub const ATTRIBUTE_SET_INIT = @compileError("unable to translate C expr: unexpected token 'do'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/attr.h:101:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/attr.h:101:9
 pub const VOL_CAPABILITIES_FORMAT = @as(c_int, 0);
 pub const VOL_CAPABILITIES_INTERFACES = @as(c_int, 1);
 pub const VOL_CAPABILITIES_RESERVED1 = @as(c_int, 2);
 pub const VOL_CAPABILITIES_RESERVED2 = @as(c_int, 3);
 pub const ATTR_MAX_BUFFER = @as(c_int, 8192);
 pub const ATTR_MAX_BUFFER_LONGPATHS = @compileError("unable to translate macro: undefined identifier `MAXLONGPATHLEN`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/attr.h:139:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/attr.h:139:9
 pub const VOL_CAP_FMT_PERSISTENTOBJECTIDS = @as(c_int, 0x00000001);
 pub const VOL_CAP_FMT_SYMBOLICLINKS = @as(c_int, 0x00000002);
 pub const VOL_CAP_FMT_HARDLINKS = @as(c_int, 0x00000004);
@@ -11476,75 +11476,75 @@ pub const SRCHFS_VALIDOPTIONSMASK = __helpers.promoteIntLiteral(c_int, 0x800003F
 pub const FST_EOF = -@as(c_int, 1);
 pub const __OS_BASE__ = "";
 pub const OS_NORETURN = @compileError("unable to translate macro: undefined identifier `__noreturn__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:45:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:45:9
 pub const OS_NOTHROW = @compileError("unable to translate macro: undefined identifier `__nothrow__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:46:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:46:9
 pub const OS_NONNULL1 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:47:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:47:9
 pub const OS_NONNULL2 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:48:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:48:9
 pub const OS_NONNULL3 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:49:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:49:9
 pub const OS_NONNULL4 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:50:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:50:9
 pub const OS_NONNULL5 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:51:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:51:9
 pub const OS_NONNULL6 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:52:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:52:9
 pub const OS_NONNULL7 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:53:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:53:9
 pub const OS_NONNULL8 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:54:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:54:9
 pub const OS_NONNULL9 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:55:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:55:9
 pub const OS_NONNULL10 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:56:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:56:9
 pub const OS_NONNULL11 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:57:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:57:9
 pub const OS_NONNULL12 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:58:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:58:9
 pub const OS_NONNULL13 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:59:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:59:9
 pub const OS_NONNULL14 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:60:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:60:9
 pub const OS_NONNULL15 = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:61:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:61:9
 pub const OS_NONNULL_ALL = @compileError("unable to translate macro: undefined identifier `__nonnull__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:62:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:62:9
 pub const OS_SENTINEL = @compileError("unable to translate macro: undefined identifier `__sentinel__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:63:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:63:9
 pub const OS_PURE = @compileError("unable to translate macro: undefined identifier `__pure__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:64:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:64:9
 pub const OS_CONST = @compileError("unable to translate C expr: unexpected token '__attribute__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:65:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:65:9
 pub const OS_WARN_RESULT = @compileError("unable to translate macro: undefined identifier `__warn_unused_result__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:66:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:66:9
 pub const OS_MALLOC = @compileError("unable to translate macro: undefined identifier `__malloc__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:67:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:67:9
 pub const OS_USED = @compileError("unable to translate macro: undefined identifier `__used__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:68:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:68:9
 pub const OS_UNUSED = @compileError("unable to translate macro: undefined identifier `__unused__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:69:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:69:9
 pub const OS_COLD = @compileError("unable to translate macro: undefined identifier `__cold__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:70:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:70:9
 pub const OS_WEAK = @compileError("unable to translate macro: undefined identifier `__weak__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:71:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:71:9
 pub const OS_WEAK_IMPORT = @compileError("unable to translate macro: undefined identifier `__weak_import__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:72:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:72:9
 pub const OS_NOINLINE = @compileError("unable to translate macro: undefined identifier `__noinline__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:73:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:73:9
 pub const OS_ALWAYS_INLINE = @compileError("unable to translate macro: undefined identifier `__always_inline__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:75:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:75:9
 pub const OS_TRANSPARENT_UNION = @compileError("unable to translate macro: undefined identifier `__transparent_union__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:79:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:79:9
 pub const OS_ALIGNED = @compileError("unable to translate macro: undefined identifier `__aligned__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:80:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:80:9
 pub const OS_FORMAT_PRINTF = @compileError("unable to translate macro: undefined identifier `__format__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:81:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:81:9
 pub const OS_EXPORT = @compileError("unable to translate macro: undefined identifier `__visibility__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:82:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:82:9
 pub const OS_INLINE = @compileError("unable to translate C expr: unexpected token 'static'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:83:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:83:9
 pub inline fn OS_EXPECT(x: anytype, v: anytype) @TypeOf(__builtin.expect(x, v)) {
     _ = &x;
     _ = &v;
@@ -11552,17 +11552,17 @@ pub inline fn OS_EXPECT(x: anytype, v: anytype) @TypeOf(__builtin.expect(x, v)) 
 }
 pub const OS_NOESCAPE = "";
 pub const OS_FALLTHROUGH = @compileError("unable to translate macro: undefined identifier `__fallthrough__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:133:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:133:9
 pub const OS_ASSUME_NONNULL_BEGIN = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:139:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:139:9
 pub const OS_ASSUME_NONNULL_END = @compileError("unable to translate macro: undefined identifier `_Pragma`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:140:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:140:9
 pub inline fn OS_COMPILER_CAN_ASSUME(expr: anytype) @TypeOf(__builtin.assume(expr)) {
     _ = &expr;
     return __builtin.assume(expr);
 }
 pub const OS_OVERLOADABLE = @compileError("unable to translate macro: undefined identifier `__overloadable__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:153:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:153:9
 pub inline fn OS_ANALYZER_SUPPRESS(RADAR: anytype) void {
     _ = &RADAR;
     return;
@@ -11571,17 +11571,17 @@ pub const __OS_ENUM_ATTR = "";
 pub const __OS_ENUM_ATTR_CLOSED = "";
 pub const __OS_OPTIONS_ATTR = "";
 pub const __OS_ENUM_C_FALLBACK = @compileError("unable to translate macro: undefined identifier `_t`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:226:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:226:9
 pub const OS_ENUM = @compileError("unable to translate macro: undefined identifier `_t`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:229:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:229:9
 pub const OS_CLOSED_ENUM = @compileError("unable to translate C expr: unexpected token '##'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:231:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:231:9
 pub const OS_OPTIONS = @compileError("unable to translate C expr: unexpected token '##'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:234:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:234:9
 pub const OS_CLOSED_OPTIONS = @compileError("unable to translate C expr: unexpected token '##'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:237:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:237:9
 pub const OS_SWIFT_UNAVAILABLE = @compileError("unable to translate macro: undefined identifier `__availability__`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:244:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:244:9
 pub inline fn OS_SWIFT_UNAVAILABLE_FROM_ASYNC(msg: anytype) void {
     _ = &msg;
     return;
@@ -11594,26 +11594,26 @@ pub inline fn OS_SWIFT_NAME(_name: anytype) void {
     return;
 }
 pub const __OS_STRINGIFY = @compileError("unable to translate C expr: unexpected token ''");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:273:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:273:9
 pub inline fn OS_STRINGIFY(s: anytype) @TypeOf(__OS_STRINGIFY(s)) {
     _ = &s;
     return __OS_STRINGIFY(s);
 }
 pub const __OS_CONCAT = @compileError("unable to translate C expr: unexpected token '##'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:275:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:275:9
 pub inline fn OS_CONCAT(x: anytype, y: anytype) @TypeOf(__OS_CONCAT(x, y)) {
     _ = &x;
     _ = &y;
     return __OS_CONCAT(x, y);
 }
 pub const os_prevent_tail_call_optimization = @compileError("unable to translate C expr: unexpected token '__asm__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:279:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:279:9
 pub inline fn os_is_compile_time_constant(expr: anytype) @TypeOf(__builtin.constant_p(expr)) {
     _ = &expr;
     return __builtin.constant_p(expr);
 }
 pub const os_compiler_barrier = @compileError("unable to translate C expr: unexpected token '__asm__'");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/os/base.h:281:9
+// <zig-install>/lib/libc/include/any-darwin-any/os/base.h:281:9
 pub const OS_NOT_TAIL_CALLED = "";
 pub const OS_ASSUME_PTR_ABI_SINGLE_BEGIN = __ASSUME_PTR_ABI_SINGLE_BEGIN;
 pub const OS_ASSUME_PTR_ABI_SINGLE_END = __ASSUME_PTR_ABI_SINGLE_END;
@@ -11647,7 +11647,7 @@ pub const MNAMELEN = MAXPATHLEN;
 pub const MNT_EXT_ROOT_DATA_VOL = @as(c_int, 0x00000001);
 pub const MNT_EXT_FSKIT = @as(c_int, 0x00000002);
 pub const __DARWIN_STRUCT_STATFS64 = @compileError("unable to translate macro: undefined identifier `f_bsize`");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/sys/mount.h:105:9
+// <zig-install>/lib/libc/include/any-darwin-any/sys/mount.h:105:9
 pub const MNT_RDONLY = @as(c_int, 0x00000001);
 pub const MNT_SYNCHRONOUS = @as(c_int, 0x00000002);
 pub const MNT_NOEXEC = @as(c_int, 0x00000004);
@@ -11769,9 +11769,9 @@ pub const VM_FLAGS_GUARD_OBJECT_OPTOUT = __helpers.promoteIntLiteral(c_int, 0x00
 pub const VM_FLAGS_RETURN_4K_DATA_ADDR = __helpers.promoteIntLiteral(c_int, 0x00800000, .hex);
 pub const VM_FLAGS_ALIAS_MASK = __helpers.promoteIntLiteral(c_int, 0xFF000000, .hex);
 pub const VM_GET_FLAGS_ALIAS = @compileError("unable to translate C expr: unexpected token '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/vm_statistics.h:402:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/vm_statistics.h:402:9
 pub const VM_SET_FLAGS_ALIAS = @compileError("unable to translate C expr: unexpected token '='");
-// /Users/alpha/.local/opt/zig-aarch64-macos-0.17.0/lib/libc/include/any-darwin-any/mach/vm_statistics.h:404:9
+// <zig-install>/lib/libc/include/any-darwin-any/mach/vm_statistics.h:404:9
 pub const VM_FLAGS_HW = VM_FLAGS_TPRO | VM_FLAGS_MTE;
 pub const VM_FLAGS_USER_ALLOCATE = (((((((((VM_FLAGS_FIXED | VM_FLAGS_ANYWHERE) | VM_FLAGS_PURGABLE) | VM_FLAGS_4GB_CHUNK) | VM_FLAGS_RANDOM_ADDR) | VM_FLAGS_NO_CACHE) | VM_FLAGS_PERMANENT) | VM_FLAGS_OVERWRITE) | VM_FLAGS_GUARD_OBJECT_OPTOUT) | VM_FLAGS_HW) | VM_FLAGS_ALIAS_MASK;
 pub const VM_FLAGS_USER_MAP = (VM_FLAGS_USER_ALLOCATE | VM_FLAGS_RETURN_4K_DATA_ADDR) | VM_FLAGS_RETURN_DATA_ADDR;

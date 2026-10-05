@@ -12,6 +12,20 @@ cd "$(dirname "$0")/.."
 
 ZIG="${ZIG:-zig}"
 
+# The bindings file to compile the control against, as an argument rather than a
+# hardcoded src/c.zig. It MUST be the same file test/layout.zig was compiled
+# with: the control asserts a struct size is wrong, and if it is pointed at
+# bindings for a different target than the real test then it fails to compile for
+# the wrong reason ("no member named struct_statvfs"), which this script rejects —
+# correctly, and unhelpfully. build.zig passes the resolved -Dc-file, so the two
+# cannot drift.
+BINDINGS="${1:-src/c.zig}"
+
+if [ ! -f "$BINDINGS" ]; then
+  echo "FAIL: $BINDINGS does not exist"
+  exit 1
+fi
+
 # Emit to a real file in a temp dir, not to /dev/null. Writing an object to
 # /dev/null is rejected on Linux ("failed to open output binary: NonResizable"),
 # and because the script then looked for its own marker in the error text and did
@@ -21,7 +35,7 @@ ZIG="${ZIG:-zig}"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
-out="$("$ZIG" build-obj --dep c -Mroot=test/negative_control.zig -Mc=src/c.zig \
+out="$("$ZIG" build-obj --dep c -Mroot=test/negative_control.zig -Mc="$BINDINGS" \
       -lc --cache-dir "$tmp/cache" -femit-bin="$tmp/out.o" 2>&1 || true)"
 
 if [ -z "$out" ]; then
@@ -36,4 +50,4 @@ if ! printf '%s' "$out" | grep -q "NEGATIVE CONTROL TRIGGERED"; then
   exit 1
 fi
 
-echo "ok: negative control fails to compile as expected"
+echo "ok: negative control fails to compile as expected (bindings: $BINDINGS)"

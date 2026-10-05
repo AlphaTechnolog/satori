@@ -28,8 +28,31 @@ const posix = @import("posix");
 const c = @import("c");
 const std = @import("std");
 
-/// CI gate from the plan: startup median must stay under 3.5 ms.
-const MEDIAN_GATE_US: u64 = 3_500;
+/// The gate from the plan: startup median must stay under 3.5 ms.
+///
+/// This is the project's actual perf claim and it is the floor for every other
+/// gate below. `ciGateUs` can only ever raise the number CI fails on, never
+/// lower this one, so a "relax the gate" change cannot quietly become a
+/// "delete the gate" change.
+const LOCAL_MEDIAN_GATE_US: u64 = 3_500;
+
+/// CI reports the median always but does not block on it at 3.5 ms, because a
+/// shared 2-core runner is not dedicated hardware and a flaky red build teaches
+/// everyone to ignore CI. It raises the gate it will fail on via
+/// SATORI_STARTUP_GATE_US; measured runner numbers will replace this heuristic
+/// with a real blocking threshold once there is a distribution of them.
+///
+/// Only ever RAISES the gate. An unset, unparseable or lower value falls back to
+/// LOCAL_MEDIAN_GATE_US, so the worst case is the local gate, not no gate.
+fn ciGateUs() u64 {
+    // posix.env, not c.getenv: it is the project's null-safe wrapper for a
+    // getenv result, and a null check belongs in exactly one place.
+    const raw = posix.env("SATORI_STARTUP_GATE_US") orelse
+        return LOCAL_MEDIAN_GATE_US;
+    const v = std.fmt.parseInt(u64, std.mem.trim(u8, raw, " \t"), 10) catch
+        return LOCAL_MEDIAN_GATE_US;
+    return @max(v, LOCAL_MEDIAN_GATE_US);
+}
 
 /// Fixed capacity so the sample array lives on the stack and the harness itself
 /// allocates nothing. Enough for a stable median; more runs only add noise from
@@ -142,12 +165,17 @@ pub fn main(init: std.process.Init.Minimal) void {
     line(&b, "p95", samples[(runs * 95) / 100]);
     line(&b, "max", samples[runs - 1]);
 
+    // Both verdicts are printed, always. The local gate is the claim; the CI gate
+    // is what this run is willing to fail on. Reporting only one of them would
+    // hide either a real regression or the reason the build is still green.
     const median = samples[runs / 2];
-    b.write("\n  gate: median under 3.5 ms  ->  ");
-    if (median < MEDIAN_GATE_US) {
-        b.write("PASS (");
-        b.writeFixed(median, 3);
-        b.write(" ms)\n");
+    const gate = ciGateUs();
+
+    b.write("\n");
+    gateLine(&b, "local gate", LOCAL_MEDIAN_GATE_US, median);
+    if (gate != LOCAL_MEDIAN_GATE_US) gateLine(&b, "CI gate   ", gate, median);
+
+    if (median < gate) {
         flush(&b);
         return;
     }
@@ -160,6 +188,19 @@ pub fn main(init: std.process.Init.Minimal) void {
     b.write("      regression going unnoticed, not to be negotiated.\n");
     flush(&b);
     _exit(CHILD_FAILED);
+}
+
+/// One "label (median under N ms) -> VERDICT (median ms)" line.
+fn gateLine(b: *buf.Buf, label: []const u8, gate_us: u64, median: u64) void {
+    b.write("  ");
+    b.write(label);
+    b.write(" (median under ");
+    b.writeFixed(gate_us, 3);
+    b.write(" ms) -> ");
+    b.write(if (median < gate_us) "PASS" else "EXCEEDED");
+    b.write(" (");
+    b.writeFixed(median, 3);
+    b.write(" ms)\n");
 }
 
 /// Spawn the binary once with its output discarded. Returns false if it did not
