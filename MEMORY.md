@@ -22,12 +22,14 @@ Delete claims that stopped being true rather than annotating them.
 and verified on macOS arm64, Linux x86_64, and a GitHub Actions
 `ubuntu-latest` runner. Commits `9ce02b4` (skeleton + invariants), `62985a6`
 (one command for every gate), `c8e2923` (docs + licence), `06d1062` + `950c7ec`
-+ `e992d3e` (run the gates on any host, and CI). Feature work not started.
++ `e992d3e` (run the gates on any host, and CI), `13f0c5e` (record CI in
+AGENTS.md). Feature work not started.
 
-CI runs exactly `zig build check` on **one** Linux runner, in 2m52s wall
-(install 8s, build 2m36s). First green run:
-<https://github.com/AlphaTechnolog/satori/actions/runs/37343357084>, commit
-`e992d3e`.
+CI runs exactly `zig build check` on **one** Linux runner, in 2m52s and 2m03s
+wall across the two green runs. First green run:
+<https://github.com/AlphaTechnolog/satori/actions/runs/37343357084> (commit
+`e992d3e`); second: <https://github.com/AlphaTechnolog/satori/actions/runs/37344427595>
+(commit `13f0c5e`, the documentation change).
 
 Getting there took four fixes that none of the local testing could have found,
 because every one of them only bites on a host that is not the maintainer's
@@ -43,19 +45,25 @@ median of end-to-end `fork`+`exec`+`exit`:
 |---|---|---|---|---|
 | macOS arm64 (this machine) | 1.611 ms | 1.521 | 2.006 | 2.177 |
 | Linux x86_64 Debian 14 (`ssh clementine`) | 1.400 ms | 1.297 | 1.475 | 1.619 |
-| **GitHub Actions `ubuntu-latest`** | **0.729 ms** | 0.680 | 0.964 | **3.067** |
+| **GitHub Actions `ubuntu-latest`** (2 runs) | **0.729 / 0.540 ms** | 0.680 / 0.511 | 0.964 / 0.680 | **3.067** / 0.812 |
 
 The local re-measurement on 2026-10-05 while making these changes put macOS at
 1.560–1.741 ms depending on background load, so the macOS row above is a
 mid-range figure, not a fixed one.
 
-**The shared CI runner is FASTER than either dedicated box** — 0.729 ms median
-against 1.400 ms on clementine and 1.611 ms on the Mac. Runner:
+**The shared CI runner is FASTER than either dedicated box** — 0.729 and
+0.540 ms medians against 1.400 ms on clementine and 1.611 ms on the Mac. Runner:
 `Linux 6.17.0-1022-azure x86_64`, 4 cores. Do not read that as the runner being
-good hardware; read it as the local numbers being load-sensitive. The useful
-detail is the **max of 3.067 ms**, which nearly reached the 3.5 ms local gate:
-on a shared runner the median is robust and the tail is not. That is the
-measured justification for reporting rather than blocking (see Decisions).
+good hardware; read it as the local numbers being load-sensitive.
+
+The useful detail is the **spread between the two runs**. Run 1: median 0.729 ms,
+**max 3.067 ms** — a 4.2× tail, which nearly reached the 3.5 ms local gate. Run 2
+on identical code: median 0.540 ms, max 0.812 ms, a 1.5× tail. Same code, same
+gate, opposite conclusions about the max. On a shared runner the median is
+robust and the tail is not, and the tail is what a blocking gate would trip on.
+That is the measured justification for reporting rather than blocking (see
+Decisions), and it is also why the local numbers above need re-measuring rather
+than trusting.
 
 Gate is median < 3.5 ms. neofetch measured 138 ms on the Linux box (~194×).
 The plan records 0.71 ms for Linux from the milestone-0 session; that did not
@@ -129,10 +137,12 @@ The current sequence is in `/Users/alpha/.opencode/plan/satori-phase-2.md`.
 Also worth doing soon, cheap and now unblocked:
 
 - **Set a real blocking CI perf threshold.** 25 ms was chosen before there was
-  any runner data and the observed median is 0.729 ms, so the current gate only
-  catches catastrophic regressions. `SATORI_STARTUP_GATE_US` exists for exactly
-  this retune. Collect a spread of runs first — the tail is the interesting
-  number, since one run already produced a 3.067 ms max against a 0.729 ms median.
+  any runner data and the observed medians are 0.729 and 0.540 ms, so the
+  current gate only catches catastrophic regressions. `SATORI_STARTUP_GATE_US`
+  exists for exactly this retune. Two runs is not a distribution; collect more.
+  Whatever the threshold ends up being, the tail has to be accounted for: run 1
+  produced a 3.067 ms max against a 0.729 ms median on code that run 2 ran at
+  0.540 ms / 0.812 ms max.
 - **Pin `ubuntu-24.04` instead of `ubuntu-latest`.** The runner log warns that
   `ubuntu-latest` migrates to Ubuntu 26 on 2026-10-19, which will move `/bin/sh`
   and the libc under the gates. Deliberately left as `ubuntu-latest` so a moving
@@ -213,7 +223,8 @@ but both are the expensive ones.
   justification: under 8-way CPU load the median reaches 4.030 ms and under
   32-way it reaches 5.242 ms, both on a box that is fine, which is what a shared
   runner looks like; and one real CI run's **max** was 3.067 ms against a
-  0.729 ms median. A gate at 3.5 ms on that hardware would be a coin flip.
+  0.729 ms median, where a second run of the same code gave 0.540 ms / 0.812 ms
+  max. A gate at 3.5 ms on that hardware would be a coin flip.
   A flaky red build teaches everyone to ignore CI, which costs more than the
   regression this stands in for.
 - **The committed bindings' target is a declared constant**
