@@ -24,16 +24,31 @@ and verified on macOS arm64, Linux x86_64, and a GitHub Actions
 (one command for every gate), `c8e2923` (docs + licence), `06d1062` + `950c7ec`
 + `e992d3e` (run the gates on any host, and CI), `13f0c5e` (record CI in
 AGENTS.md), `a11ca8f` + `77d146d` (runner measurements 2 and 3), `fd8a40f`
-(correct three stale records in these two files), then step 1: write
-`tools/gt.c`, drop the `--no-color` lie. Field work not started.
+(correct three stale records in these two files), `52edab2` (step 1: write
+`tools/gt.c`, drop the `--no-color` lie), then step 2 in four commits:
+`898534c` (renderer into its own module, the two live syscalls into `load()`),
+`b84943c` (comptime field registry, alignment, label colour, `unavailable`),
+`7a65371` (`--no-color` honoured and re-advertised), `702387a` (fix the Linux
+golden arm — see Landmines, it is the most reusable finding here).
 
-CI runs exactly `zig build check` on **one** Linux runner, in 2m52s, 2m03s,
-1m58s and 1m51s wall across the four green runs. First:
+CI runs exactly `zig build check` on **one** Linux runner. Green runs at 2m52s,
+2m03s, 1m58s, 1m51s and (step 2) 2m05s of actual build time. First:
 <https://github.com/AlphaTechnolog/satori/actions/runs/37343357084> (commit
 `e992d3e`); then <https://github.com/AlphaTechnolog/satori/actions/runs/37344427595>
 (`13f0c5e`), <https://github.com/AlphaTechnolog/satori/actions/runs/37344885729>
-(`a11ca8f`) and <https://github.com/AlphaTechnolog/satori/actions/runs/37345446554>
-(`77d146d`) — documentation-only changes that still ran the full gate.
+(`a11ca8f`), <https://github.com/AlphaTechnolog/satori/actions/runs/37345446554>
+(`77d146d`), and <https://github.com/AlphaTechnolog/satori/actions/runs/37364533178>
+(`702387a`).
+
+**`concurrency: cancel-in-progress` will cancel a run you are watching, and
+`gh` reports a cancelled run as a red `failure` with no log.** Step 2's first
+runner attempt looked like a red build for this reason: pushing a second commit
+mid-run cancelled the run for the first, and the run for the second was then
+cancelled too. Two runs in a row, both `conclusion: cancelled`, no job steps at
+all and `gh run view --log` returning "log not found". A cancelled job has **no
+steps**, which is the tell: a real failure has a step with a failing conclusion.
+Re-run (`gh run rerun`) and watch to completion. Two hours were lost to reading
+`gh run watch`'s `exit 0` — it exits 0 on cancel — as a pass.
 
 The Linux verification host was rebuilt on 2026-10-05 and is no longer
 trustworthy-by-accident: `~/satori` on clementine is now a clean `git clone` of
@@ -75,17 +90,26 @@ session on the correct commit. A cell is a fact about one run, not a constant.
 
 | platform | median | min | p95 | max |
 |---|---|---|---|---|
-| macOS arm64 (this machine) | 1.611 ms | 1.521 | 2.006 | 2.177 |
-| Linux x86_64 Debian forky/sid (`ssh clementine`) | **0.672–0.682 ms** (5 samples, idle) | 0.606 | 0.746–0.881 | 1.010 |
-| **GitHub Actions `ubuntu-latest`** (4 runs) | **0.729 / 0.540 / 0.433 / 0.480 ms** | 0.680 / 0.511 / 0.407 / 0.466 | 0.964 / 0.680 / 0.575 / 0.548 | **3.067** / 0.812 / 0.876 / 0.594 |
+| macOS arm64 (this machine) | 1.603 ms | 1.511 | 1.836 | 2.316 |
+| Linux x86_64 Debian forky/sid (`ssh clementine`) | **0.674 ms** | 0.605 | 0.779 | 0.820 |
+| **GitHub Actions `ubuntu-latest`** (5 runs) | **0.729 / 0.540 / 0.433 / 0.480 / 0.693 ms** | 0.680 / 0.511 / 0.407 / 0.466 / 0.651 | 0.964 / 0.680 / 0.575 / 0.548 / 0.818 | **3.067** / 0.812 / 0.876 / 0.594 / 1.821 |
 
-The Linux row is five samples of `77d146d` from a **clean `git clone`** in
-`~/satori` on an idle box (load average 0.02), all with 20 discarded warm-up runs
-and 200 measured: medians 0.682 / 0.673 / 0.677 ms from three `zig build startup`
-runs and 0.672 / 0.675 ms from two `zig build check` runs. The two entry points
-agree and the whole spread is 1.5%, which is what makes this a usable
-measurement rather than a single lucky sample — and also what makes the two
-figures it replaces unusable.
+The macOS and clementine rows are step 2's, re-measured at `702387a` on an idle
+box (`zig build check`, which prints the same 200-run figures as `zig build
+startup`). They are in the same band as the pre-step-2 figures — 1.603 vs 1.611
+ms on macOS, 0.674 vs 0.672–0.682 ms on clementine — so **the field registry
+and the `--no-color` work cost nothing measurable end to end.** Given the
+load-sensitivity documented below, "no change" is the honest reading and not
+"measured identical": these are single samples from different sessions, and the
+spread between the two is well inside the noise.
+
+The Linux row's pre-step-2 history, kept because it is what makes the row a
+measurement rather than a single lucky sample: five samples of `77d146d` from a
+**clean `git clone`** in `~/satori` on an idle box (load average 0.02), all with
+20 discarded warm-up runs and 200 measured: medians 0.682 / 0.673 / 0.677 ms from
+three `zig build startup` runs and 0.672 / 0.675 ms from two `zig build check`
+runs. The two entry points agree and the whole spread is 1.5%. Step 2's single
+`0.674 ms` sits inside it.
 
 It **replaces 1.400 ms**, which was measured on the stale rsync tree described
 under Landmines and is not a measurement of this commit at all. An earlier
@@ -97,8 +121,8 @@ figure is not a constant, and quoting one without its conditions is how 1.400 ms
 survived here for a day.
 
 The macOS row is a single figure and equally load-sensitive: re-measuring on
-2026-10-05 while making these changes gave 1.560–1.741 ms depending on
-background load.
+2026-10-05 across sessions gave 1.560, 1.603, 1.701, 1.741 and 1.769 ms
+depending on background load — a 1.13x spread on identical code.
 
 The 8-way-load measurement is the mechanism behind the caveat above, on the same
 binary and the same idle box immediately afterwards: min 0.618, **median 0.978**,
@@ -107,20 +131,21 @@ load alone on hardware that is fine. This is what a shared runner looks like, an
 it is why CI reports the median at a 25 ms gate instead of blocking at 3.5 ms.
 
 **The shared CI runner is FASTER than either dedicated box** — 0.729, 0.540,
-0.433 and 0.480 ms medians against 0.672–0.682 ms on clementine and 1.611 ms on
+0.433, 0.480 and 0.693 ms medians against 0.674 ms on clementine and 1.603 ms on
 the Mac. Runner: `Linux 6.17.0-1022-azure x86_64`, 4 cores. Do not read that as
 the runner being good hardware; read it as the local numbers being
 load-sensitive.
 
-The useful detail is the **spread across the four runs, on identical code with
-an identical job definition**. Medians 0.729 / 0.540 / 0.433 / 0.480 ms span
-1.7×, which is itself the argument against trusting a single CI number. The
-sharper detail is the tails: run 1 reached **max 3.067 ms** — a 4.2× tail, close
-enough to the 3.5 ms local gate to have failed it on luck — while runs 2, 3 and 4
-reached 0.812, 0.876 and 0.594 ms, tails of 1.5×, 2.0× and 1.2×. So the median
-is stable to within a small factor and the tail is not, and the tail is exactly
-what a blocking gate trips on. That is the measured justification for reporting
-rather than blocking (see Decisions).
+The useful detail is the **spread across the five runs**. Four are identical
+code (0.729 / 0.540 / 0.433 / 0.480 ms, spanning 1.7× on one job definition) and
+the fifth is step 2's (0.693 ms), which lands inside that spread — a small piece
+of evidence that the renderer work cost nothing on the shared runner too, from
+one sample. The sharper detail is the tails: run 1 reached **max 3.067 ms** — a
+4.2× tail, close enough to the 3.5 ms local gate to have failed it on luck —
+while the other four reached 0.812, 0.876, 0.594 and 1.821 ms, tails of 1.5×,
+2.0×, 1.2× and 2.6×. So the median is stable to within a small factor and the
+tail is not, and the tail is exactly what a blocking gate trips on. That is the
+measured justification for reporting rather than blocking (see Decisions).
 
 Gate is median < 3.5 ms. neofetch measured 138 ms on the Linux box (~205×).
 The plan records 0.71 ms for Linux from the milestone-0 session; that did not
@@ -129,9 +154,39 @@ reproduce on 2026-10-05 either (0.672–0.682 ms), though sub-millisecond figure
 Treat every sub-millisecond figure as machine- and load-dependent, quote it with
 its conditions, and re-measure before publishing one.
 
-`$ZIG build bench` — 1000 warm iterations, microseconds: `shared.load()` 4,
-`sysctl osprodversion` 1, `host_statistics64` 3, **total 8**. The plan records
-17 µs. Either way it is buried under ~1.5 ms of process startup.
+`$ZIG build bench` — 1000 warm iterations, microseconds, macOS arm64. The
+renderer is now measured too, and `load()` has changed meaning — see below.
+
+| phase | before (step 1) | after (step 2, `702387a`) |
+|---|---|---|
+| `shared.load()` | 4 (once), 6–10 (across sessions) | **6** (5 samples: 6, 6, 6, 7, 18) |
+| `sysctl osprodversion` | 1 | 1 (inside `load()`) |
+| `host_statistics64` | 3 | 1 (inside `load()`) |
+| `render()` | not measured | **1** |
+| total data gathering | 8 | **6** |
+
+Three things changed in this harness and one number moved:
+
+- **`total` no longer double-counts.** `sysctl osprodversion` and
+  `host_statistics64` used to be timed separately *and* added into the total,
+  which was only honest while `render()` called them itself. Since step 2 they
+  are components of `load()`, so `total` is `load_us` alone. The old figure of 8
+  µs therefore described two different things than the new 6 µs; do not compare
+  them as a trend.
+- **`load()` absorbed those two syscalls** (they moved out of `render()`), which
+  is why its before/after figures overlap rather than the after being larger by
+  the sum of the other two. `load()` did not get slower; the work just moved
+  across the boundary between "gathering" and "rendering", and the renderer is
+  now measurable at 1 µs because it is pure formatting.
+- **The single 18 µs sample is a real outlier** on an otherwise 6–7 µs run, and
+  is left in the table rather than dropped. A single sample of a sub-10 µs
+  quantity on a machine whose load swings 1.13x is not a measurement of the
+  code.
+
+**The renderer costs 1 µs against a ~1.6 ms startup — 0.06% of the process.**
+That is the number step 2 was supposed to produce, and it is why nothing in the
+field count is going to become a performance problem. The plan records 17 µs for
+the old total; either way all of it is buried under process startup.
 
 `$ZIG build matrix` — stripped ReleaseFast bytes, all under the 1 MB gate:
 aarch64-linux-gnu 13,624 · x86_64-linux-gnu 15,176 · x86_64-macos 29,814 ·
@@ -156,7 +211,16 @@ the real proof that the generated file is toolchain-determined and not
 machine-determined. The macOS/Linux gap is why one committed file cannot serve
 every target.
 
-Tests: 12 across 5 binaries — buf 4, fmt 3, shared 2, layout 2, platform 1.
+Tests: **19 across 6 binaries** — buf 5, fmt 3, shared 2, **render 6**, layout 2,
+platform 1. Was 12 across 5 (buf 4, fmt 3, shared 2, layout 2, platform 1).
+The six new ones are all in `src/render.zig`, which is a new module with its own
+test binary, plus one in `buf.zig`.
+
+Count them with `$ZIG build test --summary all`, which prints
+`run test render 6 pass (6 total)`. `zig build test` alone prints nothing, and
+counting `^test "` with grep does not tell you whether the tests *ran* — the
+one-binary-per-module rule exists precisely because a `test` block in a
+separately declared module does not get collected.
 
 ### CI feasibility (verified 2026-10-05, not assumed)
 
@@ -183,10 +247,14 @@ The current sequence is in `/Users/alpha/.opencode/plan/satori-phase-2.md`.
 
 1. **Step 1 — done 2026-10-05.** `tools/gt.c` written and verified on both
    hosts; `--no-color` out of `usage`.
-2. Step 2 — field registry + renderer, golden-tested, against the existing 6.
-   `--no-color` gets implemented here (`color: bool` on `Buf`, early return in
-   `sgr()`).
+2. **Step 2 — done 2026-10-05** (`898534c`, `b84943c`, `7a65371`, `702387a`).
+   `src/render.zig` owns a comptime `Field` registry; `render()` is a pure
+   function of `*const shared.Shared`; golden tests pin the exact bytes on both
+   platform arms; `--no-color` is real. All 6 fields render, aligned, with
+   `unavailable` for a missing source. See §Open for what was deliberately not
+   built.
 3. Step 3 — macOS fields through the registry to the **17** neofetch defaults.
+   The registry already exists, so this is one line and one `fn` per field.
    Start by wiring `cpuBrand`/`coreCount`/`threadCount`/`hwModel` — already
    implemented and unused, ~30 lines, 6 → 10 fields.
 4. Step 4 — Linux parity. Step 5 — logos. Step 6 — CLI/`--json` freeze, config,
@@ -268,6 +336,32 @@ but both are the expensive ones.
   the 6 working fields makes fields 7–17 mechanical rather than a second pass at
   ad-hoc rendering; and Linux parity is the real risk while logos are bulk that a
   layout change would force a redo of. Reasoning in `satori-phase-2.md`.
+  Step 2 is the evidence for the first half of that: adding a field is now one
+  line in the registry plus one formatter.
+- **The renderer is a separate module, not a private function in `main.zig`.**
+  `zig build` compiles one test binary per source module, so a function private
+  to the entry point is unreachable from every test. This is not a preference
+  for tidiness; it is the only arrangement under which the golden tests could
+  exist at all.
+- **`render()` calls no syscall.** `macos.osVersion` and `macos.vmStats` were
+  called from the renderer until step 2, which meant a golden test of it would
+  have baked in whatever machine ran it. They now live in `Shared.load()`.
+- **`Buf.field` was deleted rather than wrapped.** A second row emitter that
+  knows nothing about colour or alignment is a row emitter that can be
+  forgotten — and it *was* forgotten: the Memory row was already hand-writing
+  `"Memory: "` next to it. One function emits rows, so that is the only way a row
+  gets printed.
+- **`--no-color` is one `color` bool on `Buf` with an early return in `sgr()`.**
+  That only works because `sgr` is the *total* set of escape-producing calls,
+  which is now stated as an invariant on `sgr` rather than left implicit. The
+  alternatives (a parameter on every write method, filtering at flush time, an
+  enum instead of a bool) are recorded in `7a65371`'s message.
+- **Label width is derived from the registry at comptime**, not hardcoded, so
+  step 3's longer labels cannot silently break the alignment.
+- **A missing source prints `unavailable`, everywhere, including Linux.**
+  Today a Linux `Memory` row reads `unavailable` rather than vanishing, so the
+  gap is visible rather than silent. Same for a blank `Uptime`, which is the
+  exact symptom of the boot-time source failing — a bug that shipped once.
 - **M1 is measured against the 17 defaults `print_info` actually prints**, not
   the "20" in §15 — the plan contradicted itself and anyone counting to 20 would
   think they were finished.
@@ -309,7 +403,20 @@ but both are the expensive ones.
   Do not retry the readdir version.
 - **`dtruss`/`strace` for the no-fork gate** — requires root; fails on CI.
 - **Counting packages by forking `brew --cellar` etc.** — 37 ms in neofetch.
-- **A thread for any default-path work** — total gathering is 8–17 µs.
+- **A thread for any default-path work** — total gathering is 6–18 µs on
+  macOS arm64, and the renderer itself is 1 µs of that. Even a thousand
+  additional fields at 1 µs each would not reach the 3.5 ms gate.
+- **Streaming rows to stdout as they are produced, to save the 64 KiB
+  composition buffer.** Rejected: it breaks the "exactly one `write(2)`" project
+  invariant, which is worth more than the 64 KiB of stack, and the buffer is
+  fixed-size and never allocated.
+- **A `Scratch` type wrapping the value buffer, instead of `buf.Buf.init` over a
+  local array at each use site.** Rejected in step 2 as speculative: there are
+  two call sites (the renderer, the bench harness) and one of them is a test.
+  If a third appears, that is when the type earns itself.
+- **A `Comptime-configurable field set** (a build option selecting which fields
+  render). Rejected in step 2: it would make the golden tests target-dependent
+  and the output non-deterministic for a saving nobody has asked for.
 
 ## Landmines
 
@@ -445,9 +552,44 @@ Tooling:
   tested.** Every one of the four host-dependent landmines above passed on
   macOS *and* on clementine and failed only on the runner. Run the gate on a
   second machine — or simulate the hostile condition — before believing it.
+- **A golden test must not let its fixture impersonate a platform.**
+  Step 2's Linux arm claimed `Memory: unavailable`, reasoning that "Linux has no
+  memory source yet", so the fixture should look like a real Linux `load()`.
+  That was wrong and **only clementine found it** — 15/19 there, 19/19 on macOS,
+  because on macOS the `.macos` arm is the only one that exists to disagree.
+  `render()` is a pure function of its argument, so if the argument carries
+  memory it prints memory, on every platform; "Linux gathers no memory" is a
+  claim about `load()`. The fixture now feeds identical data to both arms and
+  they differ only where a field's *source* differs by platform (the OS row).
+  A platform-dependent expectation is a place to hide a fact about the wrong
+  layer. Fixed in `702387a`.
+- **`gh run watch` exits 0 on a cancelled run.** `concurrency:
+  cancel-in-progress: true` cancels the run for a push when a second push
+  arrives, and GitHub reports the cancelled run as a red `failure`. There is no
+  log to read, and a cancelled job has **no steps at all**, which is how to tell
+  it from a real failure (a real failure has one step with a failing
+  conclusion). Re-run with `gh run rerun` and watch the conclusion, not the
+  watcher's exit code.
 
 ## Open
 
+- **Colour blocks and bars were deliberately not built in step 2, and are step
+  5's problem.** The plan line ("label colouring, colour blocks, alignment/
+  padding, bars") predates the fields, and no field today can justify a bar: the
+  only row with a ratio is Memory, and on Linux it has no source yet (step 4), so
+  a bar would appear on one platform only — decoration that changes output for no
+  field's benefit. Colour blocks belong with the logo engine: in neofetch they
+  are part of the logo art, so building them before `logos/data/` has anything in
+  it means choosing a palette step 5 will replace. Alignment and label colouring
+  *were* built, and both are in. Recorded so this reads as a decision.
+- **The golden tests pin both platform arms from one fixture, and that has a
+  limit.** `Shared` is filled with synthetic values, so the arms differ only in
+  the OS row. This is deliberate — the point is to pin `render()`, not
+  `load()` — but it means no test covers whether the two platforms' `load()`
+  produce a `Shared` the renderer can actually use. Step 4's Linux parity is
+  where that becomes observable, and the honest test for it is running the
+  binary, not a unit test. `tools/gt.c` does not help here; there is no new
+  struct involved.
 - **`test/layout.zig` asserts a subset of what `tools/gt.c` now measures.** The
   tool is complete; the test is a chosen subset of what satori depends on.
   Unasserted but already measured, and read by `linux.zig`: `struct sysinfo`
@@ -455,14 +597,7 @@ Tooling:
   `d_name`@19). Also unasserted: `time_t`/`clock_t` on both platforms, and
   `fsid_t`/`fsblkcnt_t`/`fsfilcnt_t` on macOS. Adding them is cheap and is the
   obvious next use of the tool.
-- **`--no-color` is un-advertised but still not honoured.** It was listed in
-  `usage` while `render()` ignored it — verified at the time:
-  `./satori --no-color | cat -v` still emitted escapes. It is out of `usage` now
-  and the parser still accepts it (so a passing script does not start failing),
-  with the field's doc comment saying plainly that it does nothing. Implement it
-  in step 2 as `color: bool` on `buf.Buf` with an early return in `sgr()`, in
-  the same change that rewrites `render()`; doing it in two steps wastes the
-  rewrite.
+
 - **`README.md` does not exist**; deferred to step 6 so it does not have to claim
   parity it does not have. Its absence on a public repo is expected.
   `LICENSE` exists (MIT + attribution) and `AGENTS.md` is the entry point for
