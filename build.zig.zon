@@ -10,11 +10,16 @@
     .dependencies = .{},
 
     .paths = .{
+        "AGENTS.md",
+        "MEMORY.md",
         "build.zig",
         "build.zig.zon",
         "src",
+        "test",
         "logos",
         "tools",
+        // README.md is listed for the same reason LICENSE was: it does not exist
+        // yet, and dropping a path from this list is silent. Add it when written.
         "LICENSE",
         "README.md",
     },
