@@ -17,10 +17,22 @@ Delete claims that stopped being true rather than annotating them.
 
 ## Status: 2026-10-05
 
-Milestone 0 complete and verified on macOS arm64 and Linux x86_64. Commits
-`9ce02b4` (skeleton + invariants), `62985a6` (all gates reachable from one
-command). Feature work not started. As of this entry `AGENTS.md`, `MEMORY.md` and
-`LICENSE` are new and uncommitted, alongside a `build.zig.zon` `.paths` change.
+**Public repo live and CI green.** <https://github.com/AlphaTechnolog/satori>
+(`AlphaTechnolog/satori`, public, default branch `main`). Milestone 0 complete
+and verified on macOS arm64, Linux x86_64, and a GitHub Actions
+`ubuntu-latest` runner. Commits `9ce02b4` (skeleton + invariants), `62985a6`
+(one command for every gate), `c8e2923` (docs + licence), `06d1062` + `950c7ec`
++ `e992d3e` (run the gates on any host, and CI). Feature work not started.
+
+CI runs exactly `zig build check` on **one** Linux runner, in 2m52s wall
+(install 8s, build 2m36s). First green run:
+<https://github.com/AlphaTechnolog/satori/actions/runs/37343357084>, commit
+`e992d3e`.
+
+Getting there took four fixes that none of the local testing could have found,
+because every one of them only bites on a host that is not the maintainer's
+laptop. They are recorded under Landmines below, and all four are the kind of
+thing that will be re-introduced by a well-meaning refactor.
 
 ### Measured (re-verify with the commands before quoting)
 
@@ -30,12 +42,27 @@ median of end-to-end `fork`+`exec`+`exit`:
 | platform | median | min | p95 | max |
 |---|---|---|---|---|
 | macOS arm64 (this machine) | 1.611 ms | 1.521 | 2.006 | 2.177 |
-| Linux x86_64 Debian sid (`ssh clementine`) | 1.400 ms | 1.297 | 1.475 | 1.619 |
+| Linux x86_64 Debian 14 (`ssh clementine`) | 1.400 ms | 1.297 | 1.475 | 1.619 |
+| **GitHub Actions `ubuntu-latest`** | **0.729 ms** | 0.680 | 0.964 | **3.067** |
+
+The local re-measurement on 2026-10-05 while making these changes put macOS at
+1.560–1.741 ms depending on background load, so the macOS row above is a
+mid-range figure, not a fixed one.
+
+**The shared CI runner is FASTER than either dedicated box** — 0.729 ms median
+against 1.400 ms on clementine and 1.611 ms on the Mac. Runner:
+`Linux 6.17.0-1022-azure x86_64`, 4 cores. Do not read that as the runner being
+good hardware; read it as the local numbers being load-sensitive. The useful
+detail is the **max of 3.067 ms**, which nearly reached the 3.5 ms local gate:
+on a shared runner the median is robust and the tail is not. That is the
+measured justification for reporting rather than blocking (see Decisions).
 
 Gate is median < 3.5 ms. neofetch measured 138 ms on the Linux box (~194×).
 The plan records 0.71 ms for Linux from the milestone-0 session; that did not
-reproduce on 2026-10-05. Treat sub-millisecond figures as machine- and
-load-dependent and re-measure before publishing any of them.
+reproduce on 2026-10-05 (1.400 ms), though 0.712–0.729 ms *did* reproduce on
+clementine and on the CI runner within the same session. Treat sub-millisecond
+figures as machine- and load-dependent and re-measure before publishing any of
+them.
 
 `$ZIG build bench` — 1000 warm iterations, microseconds: `shared.load()` 4,
 `sysctl osprodversion` 1, `host_statistics64` 3, **total 8**. The plan records
@@ -49,11 +76,19 @@ aarch64-macos 51,064 · x86_64-linux-musl 104,616 (static).
 **18 symbols**: `__error __tlv_bootstrap _bzero _clock_gettime _getenv
 _gethostname _getpagesize _host_page_size _host_statistics64 _mach_host_self
 _memcpy _memmove _sigaltstack _strlen _sysctlbyname _uname _write
-dyld_stub_binder`. None can fork or allocate.
+dyld_stub_binder`. None can fork or allocate. The Linux ELF has **22**, all
+`@GLIBC_*`-versioned: `clock_gettime close __errno_location getauxval getenv
+gethostname getrlimit64 __gmon_start__ _ITM_deregisterTMCloneTable
+_ITM_registerTMCloneTable __libc_start_main memcpy memmove open read
+setrlimit64 sigaltstack strlen sysconf __tls_get_addr uname write`. The extra
+four are `open`/`read`/`close` (boot time from `/proc/uptime`) and the CRT/IFUNC
+entries, not forks. Verified on CI, not only locally.
 
 C binding line counts per target (from `tools/regen-c.sh --matrix`): x86_64-linux-gnu
 2,743 · aarch64-linux-gnu 2,760 · x86_64-linux-musl 1,451 · aarch64-macos 12,061 ·
-x86_64-macos 12,094. The macOS/Linux gap is why one committed file cannot serve
+x86_64-macos 12,094. **Reproduced byte-for-byte on the GitHub runner**, which is
+the real proof that the generated file is toolchain-determined and not
+machine-determined. The macOS/Linux gap is why one committed file cannot serve
 every target.
 
 Tests: 12 across 5 binaries — buf 4, fmt 3, shared 2, layout 2, platform 1.
@@ -66,30 +101,42 @@ generating macOS bindings from a Linux host. Separately confirmed: a trivial
 program built with `-target aarch64-macos` on clementine links successfully and
 `file` reports `Mach-O 64-bit arm64 executable`. This removes the macOS-minute
 multiplier, which is why "is CI free" is a non-question for a public repo.
+Now also verified on `ubuntu-latest` itself.
 
-`gh` is authenticated as `AlphaTechnolog` with `repo` + `workflow` scopes. There
-is **no git remote on this repo yet**, which is why step 0 exists.
+Zig in CI is the **official `zig-x86_64-linux-0.17.0.tar.xz` at a pinned
+sha256**, `1cbe9df9f27e6b78d14ccbca43b6703a404ef79ef1c463de901d7f088d4e2026`
+(57,332,648 bytes). The digest was taken from ziglang.org's `index.json` and
+then confirmed by downloading the tarball and checksumming it locally — do not
+quote it from memory.
+
+`gh` is authenticated as `AlphaTechnolog` with `repo` + `workflow` + `delete_repo`
+scopes.
 
 ### Next steps
 
-The current sequence is in `/Users/alpha/.opencode/plan/satori-phase-2.md`. In
-short: **renderer before fields**, and **Linux parity before logos** — both
-reversals of the master plan's §15 ordering, both reasoned in the phase-2 file.
+The current sequence is in `/Users/alpha/.opencode/plan/satori-phase-2.md`.
 
-1. Step 0 — public GitHub repo, push, `zig build check` in CI. Two design calls
-   still need a yes: whether CI blocks on the 3.5 ms perf gate or only reports it
-   (recommended: report always, block on a higher CI-only threshold — shared
-   runners are not dedicated hardware), and Zig install by pinned official
-   tarball + SHA256 rather than the third-party `setup-zig` action.
-2. Step 1 — write `tools/gt.c`; delete `--no-color` from `usage`.
-3. Step 2 — field registry + renderer, golden-tested, against the existing 6.
+1. Step 1 — write `tools/gt.c`; delete `--no-color` from `usage`.
+2. Step 2 — field registry + renderer, golden-tested, against the existing 6.
    `--no-color` gets implemented here (`color: bool` on `Buf`, early return in
    `sgr()`).
-4. Step 3 — macOS fields through the registry to the **17** neofetch defaults.
+3. Step 3 — macOS fields through the registry to the **17** neofetch defaults.
    Start by wiring `cpuBrand`/`coreCount`/`threadCount`/`hwModel` — already
    implemented and unused, ~30 lines, 6 → 10 fields.
-5. Step 4 — Linux parity. Step 5 — logos. Step 6 — CLI/`--json` freeze, config,
+4. Step 4 — Linux parity. Step 5 — logos. Step 6 — CLI/`--json` freeze, config,
    opt-in, e2e golden.
+
+Also worth doing soon, cheap and now unblocked:
+
+- **Set a real blocking CI perf threshold.** 25 ms was chosen before there was
+  any runner data and the observed median is 0.729 ms, so the current gate only
+  catches catastrophic regressions. `SATORI_STARTUP_GATE_US` exists for exactly
+  this retune. Collect a spread of runs first — the tail is the interesting
+  number, since one run already produced a 3.067 ms max against a 0.729 ms median.
+- **Pin `ubuntu-24.04` instead of `ubuntu-latest`.** The runner log warns that
+  `ubuntu-latest` migrates to Ubuntu 26 on 2026-10-19, which will move `/bin/sh`
+  and the libc under the gates. Deliberately left as `ubuntu-latest` so a moving
+  base gets noticed rather than silently pinned over; revisit if it turns noisy.
 
 Note M1 is not small: Packages alone is 1.0–1.2 ms against a total data-gathering
 cost of 8 µs, and Resolution needs new structs. Neither breaks the 3.5 ms gate,
@@ -101,7 +148,6 @@ but both are the expensive ones.
   than just code — IOKit runs through CoreFoundation types `translate-c` handles
   poorly, and `mach/mach.h` already fails translation outright. Allowed to slip
   rather than stall the milestone.
-- **CI, repo, push** — authorised, not yet built (step 0).
 - **`README.md`** — deferred until the CLI surface freezes. One written now
   would claim parity (false) or be an apology.
 
@@ -149,6 +195,32 @@ but both are the expensive ones.
   the "20" in §15 — the plan contradicted itself and anyone counting to 20 would
   think they were finished.
 - **Config will be a TOML subset, no deps.**
+- **Public repo, one Linux runner, no macOS runner.** Public repos get free
+  Actions on any plan, which settles the "unless it's paid" question. A macOS
+  runner would multiply the minutes for no coverage gain, because a Linux host
+  cross-builds Mach-O and generates macOS bindings correctly (verified). Flip
+  this if a macOS-only gate ever appears.
+- **Zig installed from the official tarball at a pinned sha256**, not
+  `ziglang/setup-zig`. The action is convenient and would have saved ten lines;
+  it is a third party resolving the version, which is precisely the thing this
+  project argues against. The digest is verified twice, once against
+  ziglang.org's `index.json` and once by checksumming a real download.
+- **CI runs the perf gate but does not block on it at 3.5 ms.** `zig build
+  startup` always prints the median and now prints *both* verdicts: the local
+  3.5 ms gate and a CI-only gate set by `SATORI_STARTUP_GATE_US`. The override
+  can only **raise** the threshold — `test/startup.zig` clamps it to the local
+  gate — so the escape hatch cannot turn into a way to delete the gate. Measured
+  justification: under 8-way CPU load the median reaches 4.030 ms and under
+  32-way it reaches 5.242 ms, both on a box that is fine, which is what a shared
+  runner looks like; and one real CI run's **max** was 3.067 ms against a
+  0.729 ms median. A gate at 3.5 ms on that hardware would be a coin flip.
+  A flaky red build teaches everyone to ignore CI, which costs more than the
+  regression this stands in for.
+- **The committed bindings' target is a declared constant**
+  (`COMMITTED_C_TARGET` in build.zig), and `regen-c.sh` receives it explicitly
+  instead of inferring it from `uname`. This supersedes the plan's suggestion
+  that `SATORI_TARGET` in the workflow would be enough — it is not, and
+  see Landmines.
 
 ## Rejected, with the measurement that rejected it
 
@@ -167,6 +239,41 @@ Operational:
 - **`zig` on PATH is 0.16.0 and the build fails with it.** Use
   `$HOME/.local/opt/zig-aarch64-macos-0.17.0/zig`. On clementine it is
   `~/.local/opt/zig-x86_64-linux-0.17.0/zig`.
+- **`SATORI_TARGET=aarch64-macos` does NOT make `zig build check` pass on a
+  Linux host.** This was believed to be verified and was not; it is the most
+  expensive landmine here, because it costs four build steps and looks like a
+  real regression. `SATORI_TARGET` only tells `regen-c.sh` which target to diff
+  the committed file against — it cannot change which file the *build* compiles.
+  The aarch64-macos bindings contain no `struct_sysinfo`, no `struct_statvfs`
+  and no `CLOCK_BOOTTIME`, so a Linux host cannot build the Linux platform
+  layer, `test/layout.zig`'s Linux branch, or the negative control against
+  them. `build.zig` now generates host bindings into `zig-out/bindings/` when
+  the build host is not `COMMITTED_C_TARGET`. **Test on a foreign host; a green
+  `zig build check` on one laptop proves nothing about CI.**
+- **`build.zig` must invoke the gate scripts with `bash`, not `sh`.** The
+  scripts declare `#!/usr/bin/env bash` and use `set -o pipefail`, which is not
+  POSIX; calling them as `sh` overrides their own shebang. Whether the suite
+  then works is decided by the runner image: macOS `/bin/sh` is bash, clementine
+  has dash 0.5.12 which *grew* `pipefail` in 2022, and the GitHub runner's dash
+  rejected it — `set: Illegal option -o pipefail` — failing four steps at once.
+  Reproduce the class of bug with a stand-in `sh` on PATH that reads its script
+  argument and rejects `pipefail`; the suite must pass, and reverting the five
+  call sites to `sh` must make it fail.
+- **A generated file that gets committed must not carry the generating machine's
+  paths.** `translate-c` stamps the absolute path of the Zig installation into
+  its diagnostic comments — 1,384 of them in the aarch64-macos file — so
+  `regen-c.sh --check` reported src/c.zig "stale" on every host but the
+  author's, on a diff of provenance rather than declarations. Same class as the
+  missing `-target` (Xcode SDK paths), one level further out. `regen-c.sh` now
+  rewrites the toolchain prefix to `<zig-install>` on `//` comment lines only;
+  do not let a future "simplify" drop that step, and do not widen it past
+  comments, where a path could turn out to be load-bearing.
+- **`run: "$ZIG" build check` is a YAML syntax error, not a shell one.** A
+  `run:` value starting with a double quote parses as a quoted scalar and fails
+  on the next token. GitHub then rejects the workflow *before scheduling
+  anything*: zero jobs, no log, check suite `failure` in 0s — which reads like a
+  permissions or billing problem and cost a debugging round. Single-quote the
+  whole value: `run: '"$ZIG" build check'`.
 - **`tools/regen-c.sh` with no mode flag overwrites `src/c.zig`**, inferring the
   target from `uname`. It has already replaced the macOS bindings with glibc
   ones in `~/satori` on clementine. Always pass `--check` or `--gen`.
@@ -182,7 +289,8 @@ Operational:
 - **Never `zig fmt --stdin`** on generated files — hangs on ~12k lines. Use
   `zig fmt --check`. (`zig fmt` is in-place and silent in 0.17.)
 - **`~/satori` on clementine is an rsync copy, not a git clone.** Commit locally
-  before syncing.
+  before syncing. `~/satori-citest` and `~/satori-ci-dryrun` now also exist there
+  as scratch trees for exactly this kind of check; ignore them.
 - **No `~/.ssh/config` entry for `clementine`**; it resolves by other means.
   Don't go looking for one.
 
@@ -225,10 +333,17 @@ Tooling:
   gnu and musl; both installed to the same directory and one silently overwrote
   the other. Five targets built, four artifacts.
 - **The Compile step must depend on binding generation, not the Install step**,
-  or a clean CI runner races on files left over from a previous run.
+  or a clean CI runner races on files left over from a previous run. The same
+  rule caught the negative control: it runs its own `zig build-obj` rather than
+  consuming a build-graph artifact, so nothing in the graph implied it had to
+  wait for `zig-out/bindings/`, and it lost the race on a clean tree.
 - **`regen-c.sh` defaults Linux to gnu, not musl.** Defaulting to musl produced
   bindings that disagreed with the linked libc (1,292 vs 2,743 lines) and failed
   `test/layout.zig` with `struct_statvfs` missing.
+- **A CI check that has only ever run on the author's machine has not been
+  tested.** Every one of the four host-dependent landmines above passed on
+  macOS *and* on clementine and failed only on the runner. Run the gate on a
+  second machine — or simulate the hostile condition — before believing it.
 
 ## Open
 
@@ -241,10 +356,17 @@ Tooling:
   `opts.disable_color`. Verified: `./satori --no-color | cat -v` still emits
   escapes. Delete it from `usage` now, implement in step 2.
 - **`README.md` does not exist**; deferred to step 6 so it does not have to claim
-  parity it does not have. `LICENSE` now exists (MIT + attribution).
-- **No CI workflow and no git remote.** Both step 0. Two design calls still open:
-  whether CI blocks on the 3.5 ms perf gate or only reports it, and Zig install
-  by pinned tarball + SHA256 vs the third-party `setup-zig` action.
+  parity it does not have. Its absence on a public repo is expected.
+  `LICENSE` exists (MIT + attribution) and `AGENTS.md` is the entry point for
+  anyone arriving cold — the MIT attribution obligation is currently satisfied
+  by `LICENSE` alone and must be repeated in the README when it is written.
+- **The CI perf threshold is a placeholder, not a measurement.** 25 ms was chosen
+  with zero runner data against an observed 0.729 ms median, so it currently
+  catches only catastrophic regressions. `SATORI_STARTUP_GATE_US` is the knob.
+- **`tools/check-no-fork.sh`'s embedded probe still hardcodes `-Mc=src/c.zig`.**
+  Harmless today — it is macOS-only, and on the declared target that file is
+  correct — but an x86_64-macos host would build the probe against the wrong
+  bindings. Pass the resolved bindings path if that host ever matters.
 - Plan §18 open questions are still open: whether to keep `--ascii_distro` as a
   hidden `--logo` alias, logo art fidelity (byte-for-byte migration vs
   re-normalising all 269 — settle at step 5, not now), and whether to ship

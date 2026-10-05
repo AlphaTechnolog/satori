@@ -44,12 +44,12 @@ jobs:
       SATORI_TARGET: aarch64-macos
 
       # CI REPORTS the startup median but does not block at the local 3.5 ms gate.
-      # A shared 2-core runner is not dedicated hardware: dedicated boxes measure
+      # A shared runner is not dedicated hardware: dedicated boxes measure
       # 1.4-1.6 ms, and failing CI at 3.5 ms on a noisy runner would be failing
       # for reasons that have nothing to do with the change under test. A flaky
       # red build teaches everyone to ignore CI, which costs more than the
-      # regression this is standing in for. 25 ms is ~16x the dedicated-hardware
-      # median and ~5.5x the local gate — high enough that a genuine regression
+      # regression this is standing in for. 25 ms is ~17x the dedicated-hardware
+      # median and ~7x the local gate — high enough that a genuine regression
       # (a syscall added to the startup path, an allocation creeping in) still
       # fails, low enough never to fire on scheduling noise.
       #
