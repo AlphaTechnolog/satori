@@ -29,7 +29,9 @@ four capability specs seeded and strict-green (`core-invariants`, `rendering`,
 its contracts moved into `openspec/config.yaml` as injected `context:`/`rules:`;
 plan files moved into `docs/plan/` in-repo; report + memory inflow now enforced
 by the Handoff task group every `tasks.md` must end with. CI unchanged: still
-exactly `zig build check`, no Node.
+exactly `zig build check`, no Node. Commits `c9d96dc` (spec tree + config
+contracts) and `4e8e94f` (plan in-repo, workflow docs); green run
+<https://github.com/AlphaTechnolog/satori/actions/runs/37473438573>.
 
 **Public repo live and CI green.** <https://github.com/AlphaTechnolog/satori>
 (`AlphaTechnolog/satori`, public, default branch `main`). Milestone 0 complete
@@ -52,7 +54,12 @@ CI runs exactly `zig build check` on **one** Linux runner. Green runs at 2m52s,
 (`13f0c5e`), <https://github.com/AlphaTechnolog/satori/actions/runs/37344885729>
 (`a11ca8f`), <https://github.com/AlphaTechnolog/satori/actions/runs/37345446554>
 (`77d146d`), and <https://github.com/AlphaTechnolog/satori/actions/runs/37364533178>
-(`702387a`).
+(`702387a`). Also green, build times not recorded:
+<https://github.com/AlphaTechnolog/satori/actions/runs/37351507171> (`52edab2`),
+<https://github.com/AlphaTechnolog/satori/actions/runs/37366942574> (`f525f31`),
+<https://github.com/AlphaTechnolog/satori/actions/runs/37473438573> (the
+OpenSpec migration, `4e8e94f`). Eight of eight; the one cancelled run is the
+`cancel-in-progress` story below.
 
 **`concurrency: cancel-in-progress` will cancel a run you are watching, and
 `gh` reports a cancelled run as a red `failure` with no log.** Step 2's first
@@ -106,7 +113,7 @@ session on the correct commit. A cell is a fact about one run, not a constant.
 |---|---|---|---|---|
 | macOS arm64 (this machine) | 1.603 ms | 1.511 | 1.836 | 2.316 |
 | Linux x86_64 Debian forky/sid (`ssh clementine`) | **0.674 ms** | 0.605 | 0.779 | 0.820 |
-| **GitHub Actions `ubuntu-latest`** (5 runs) | **0.729 / 0.540 / 0.433 / 0.480 / 0.693 ms** | 0.680 / 0.511 / 0.407 / 0.466 / 0.651 | 0.964 / 0.680 / 0.575 / 0.548 / 0.818 | **3.067** / 0.812 / 0.876 / 0.594 / 1.821 |
+| **GitHub Actions `ubuntu-latest`** (8 runs) | **0.729 / 0.540 / 0.433 / 0.480 / 0.552 / 0.693 / 0.687 / 1.004 ms** | 0.680 / 0.511 / 0.407 / 0.466 / 0.515 / 0.651 / 0.653 / 0.690 | 0.964 / 0.680 / 0.575 / 0.548 / 0.766 / 0.818 / 0.762 / 1.985 | **3.067** / 0.812 / 0.876 / 0.594 / 1.139 / 1.821 / 0.861 / **4.032** |
 
 The macOS and clementine rows are step 2's, re-measured at `702387a` on an idle
 box (`zig build check`, which prints the same 200-run figures as `zig build
@@ -144,22 +151,26 @@ p95 2.719, **max 4.226 ms**. That max is *over* the 3.5 ms local gate, from CPU
 load alone on hardware that is fine. This is what a shared runner looks like, and
 it is why CI reports the median at a 25 ms gate instead of blocking at 3.5 ms.
 
-**The shared CI runner is FASTER than either dedicated box** — 0.729, 0.540,
-0.433, 0.480 and 0.693 ms medians against 0.674 ms on clementine and 1.603 ms on
-the Mac. Runner: `Linux 6.17.0-1022-azure x86_64`, 4 cores. Do not read that as
-the runner being good hardware; read it as the local numbers being
-load-sensitive.
+**The shared CI runner's medians sit in the same band as the dedicated boxes**
+— 0.433–1.004 ms across eight runs, against 0.674 ms on clementine and 1.603 ms
+on the Mac. The first four runs were each faster than either dedicated box;
+run 8 (1.004 ms) was slower than clementine. Runner: `Linux
+6.17.0-1022-azure x86_64`, 4 cores. Do not read either direction as a
+hardware fact; read it as the numbers tracking the runner's load.
 
-The useful detail is the **spread across the five runs**. Four are identical
-code (0.729 / 0.540 / 0.433 / 0.480 ms, spanning 1.7× on one job definition) and
-the fifth is step 2's (0.693 ms), which lands inside that spread — a small piece
-of evidence that the renderer work cost nothing on the shared runner too, from
-one sample. The sharper detail is the tails: run 1 reached **max 3.067 ms** — a
-4.2× tail, close enough to the 3.5 ms local gate to have failed it on luck —
-while the other four reached 0.812, 0.876, 0.594 and 1.821 ms, tails of 1.5×,
-2.0×, 1.2× and 2.6×. So the median is stable to within a small factor and the
-tail is not, and the tail is exactly what a blocking gate trips on. That is the
-measured justification for reporting rather than blocking (see Decisions).
+The useful detail is the **spread across the runs**. Runs 1–4 are identical
+code (0.729 / 0.540 / 0.433 / 0.480 ms, spanning 1.7× on one job definition);
+runs 5–7 straddle steps 1 and 2 (0.552 / 0.693 / 0.687 ms — the renderer work
+again lands inside the original spread, so it cost nothing there either); and
+run 8, the OpenSpec migration whose commits leave `src/` untouched, came in at
+**1.004 ms — 2.3× above the 0.433 floor on the same code**. The tails are
+sharper: run 1 reached **max 3.067 ms** — a 4.2× tail, close enough to the
+3.5 ms local gate to have failed it on luck — and run 8 reached **max
+4.032 ms, over the local gate from runner load alone**, while runs 2–7 stayed
+between 0.594 and 1.821 ms. So the median is stable to within a small factor
+and the tail is not, and the tail is exactly what a blocking gate trips on.
+That is the measured justification for reporting rather than blocking (see
+Decisions).
 
 Gate is median < 3.5 ms. neofetch measured 138 ms on the Linux box (~205×).
 The plan records 0.71 ms for Linux from the milestone-0 session; that did not
@@ -284,14 +295,15 @@ so no asserted number is hand-entered.
 Also worth doing soon, cheap and now unblocked:
 
 - **Set a real blocking CI perf threshold.** 25 ms was chosen before there was
-  any runner data and the observed medians are 0.729 / 0.540 / 0.433 / 0.480 ms,
-  so the current gate only catches catastrophic regressions.
-  `SATORI_STARTUP_GATE_US` exists for exactly this retune. Four runs is not a
-  distribution; collect more. Whatever the threshold ends up being, the tail has
-  to be accounted for: run 1 produced a 3.067 ms max against a 0.729 ms median on
-  code that runs 2, 3 and 4 ran at 0.540 / 0.433 / 0.480 ms medians with 0.812 /
-  0.876 / 0.594 ms maxes — and 8-way CPU load on an idle dedicated box put a
-  **4.226 ms max** on the same binary, over the 3.5 ms local gate.
+  any runner data, and the eight observed medians now span 0.433–1.004 ms (the
+  table above), so the current gate only catches catastrophic regressions.
+  `SATORI_STARTUP_GATE_US` exists for exactly this retune. Eight runs is still
+  not much of a distribution; collect more. Whatever the threshold ends up
+  being, the tail has to be accounted for: run 1 produced a 3.067 ms max
+  against a 0.729 ms median, and run 8 (the OpenSpec migration, identical
+  `src/`) a **4.032 ms max against 1.004 ms — over the 3.5 ms local gate from
+  runner load alone** — while 8-way CPU load on an idle dedicated box put a
+  **4.226 ms max** on the same binary, same gate.
 - **Pin `ubuntu-24.04` instead of `ubuntu-latest`.** The runner log warns that
   `ubuntu-latest` migrates to Ubuntu 26 on 2026-10-19, which will move `/bin/sh`
   and the libc under the gates. Deliberately left as `ubuntu-latest` so a moving
@@ -651,8 +663,8 @@ Tooling:
   anyone arriving cold — the MIT attribution obligation is currently satisfied
   by `LICENSE` alone and must be repeated in the README when it is written.
 - **The CI perf threshold is a placeholder, not a measurement.** 25 ms was chosen
-  with zero runner data against observed medians of 0.729 / 0.540 / 0.433 /
-  0.480 ms, so it currently catches only catastrophic regressions.
+  with zero runner data; eight runs later the medians span 0.433–1.004 ms and
+  the maxes reach 4.032 ms, so it still catches only catastrophic regressions.
   `SATORI_STARTUP_GATE_US` is the knob.
 - **`tools/gt.c` is not wired into `zig build check`, on purpose.** It is a
   maintainer tool like `tools/regen-c.sh`. Making it a gate would tie every push

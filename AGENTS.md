@@ -6,10 +6,12 @@ package dependencies. Licensed MIT, with attribution to neofetch for the logo ar
 
 Public repo: <https://github.com/AlphaTechnolog/satori>, default branch `main`,
 remote `origin`. `zig build check` runs in CI on **one** Linux runner
-(`.github/workflows/ci.yml`) — exactly that command, no split jobs — and was
-green on 2026-10-05, four runs in a row — most recent:
-<https://github.com/AlphaTechnolog/satori/actions/runs/37345446554>. Runner
-medians, oldest to newest: 0.729 / 0.540 / 0.433 / 0.480 ms.
+(`.github/workflows/ci.yml`) — exactly that command, no split jobs — and green
+on every push since it landed, most recent 2026-10-06:
+<https://github.com/AlphaTechnolog/satori/actions/runs/37473438573>. Runner
+medians, oldest to newest (8 runs): 0.729 / 0.540 / 0.433 / 0.480 / 0.552 /
+0.693 / 0.687 / 1.004 ms — load-sensitive; read MEMORY.md §Measured before
+quoting one.
 
 The design plan lives in `docs/plan/` **in this repo**, in two files:
 `satori-rewrite.md` (research, measurements, rationale; §5 landmines, §14 style)
@@ -136,10 +138,11 @@ Two env vars matter, both set at job level:
   only raise the local gate; `test/startup.zig` clamps it, so the escape hatch
   can never become a way to delete the gate. Both verdicts are always printed.
   25 ms is a placeholder chosen before any runner data, not a measurement —
-  retune it against a spread of runs. Four runs on identical code gave medians
-  0.729 / 0.540 / 0.433 / 0.480 ms and maxes of 3.067 / 0.812 / 0.876 / 0.594 ms:
-  the median moves a little, the tail moves 12×, and the tail is what a blocking
-  gate trips on. That is why the gate reports.
+  retune it against a spread of runs. On identical code the runner's median has
+  moved ~2×, and its max has come within 0.44 ms of the local gate (3.067) and
+  then gone over it (4.032): the median moves a little, the tail moves a lot,
+  and the tail is what a blocking gate trips on. Current figures: MEMORY.md
+  §Measured. That is why the gate reports.
 
 ## Invariants
 
