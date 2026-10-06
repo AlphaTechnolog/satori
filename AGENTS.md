@@ -6,12 +6,11 @@ package dependencies. Licensed MIT, with attribution to neofetch for the logo ar
 
 Public repo: <https://github.com/AlphaTechnolog/satori>, default branch `main`,
 remote `origin`. `zig build check` runs in CI on **one** Linux runner
-(`.github/workflows/ci.yml`) — exactly that command, no split jobs — and green
-on every push since it landed, most recent 2026-10-06:
-<https://github.com/AlphaTechnolog/satori/actions/runs/37473438573>. Runner
-medians, oldest to newest (8 runs): 0.729 / 0.540 / 0.433 / 0.480 / 0.552 /
-0.693 / 0.687 / 1.004 ms — load-sensitive; read MEMORY.md §Measured before
-quoting one.
+(`.github/workflows/ci.yml`) — exactly that command, no split jobs — green on
+every push since it landed. Run history, runner medians and their caveats live
+in MEMORY.md §Measured and <https://github.com/AlphaTechnolog/satori/actions>:
+a startup figure quoted without its load conditions means nothing, so read them
+there before quoting one.
 
 The design plan lives in `docs/plan/` **in this repo**, in two files:
 `satori-rewrite.md` (research, measurements, rationale; §5 landmines, §14 style)

@@ -58,8 +58,10 @@ CI runs exactly `zig build check` on **one** Linux runner. Green runs at 2m52s,
 <https://github.com/AlphaTechnolog/satori/actions/runs/37351507171> (`52edab2`),
 <https://github.com/AlphaTechnolog/satori/actions/runs/37366942574> (`f525f31`),
 <https://github.com/AlphaTechnolog/satori/actions/runs/37473438573> (the
-OpenSpec migration, `4e8e94f`). Eight of eight; the one cancelled run is the
-`cancel-in-progress` story below.
+OpenSpec migration, `4e8e94f`), and
+<https://github.com/AlphaTechnolog/satori/actions/runs/37475533548> (this
+record's own correction, `bb67096`). Nine of nine through `bb67096` — the next
+push appends here; the one cancelled run is the `cancel-in-progress` story below.
 
 **`concurrency: cancel-in-progress` will cancel a run you are watching, and
 `gh` reports a cancelled run as a red `failure` with no log.** Step 2's first
@@ -113,7 +115,7 @@ session on the correct commit. A cell is a fact about one run, not a constant.
 |---|---|---|---|---|
 | macOS arm64 (this machine) | 1.603 ms | 1.511 | 1.836 | 2.316 |
 | Linux x86_64 Debian forky/sid (`ssh clementine`) | **0.674 ms** | 0.605 | 0.779 | 0.820 |
-| **GitHub Actions `ubuntu-latest`** (8 runs) | **0.729 / 0.540 / 0.433 / 0.480 / 0.552 / 0.693 / 0.687 / 1.004 ms** | 0.680 / 0.511 / 0.407 / 0.466 / 0.515 / 0.651 / 0.653 / 0.690 | 0.964 / 0.680 / 0.575 / 0.548 / 0.766 / 0.818 / 0.762 / 1.985 | **3.067** / 0.812 / 0.876 / 0.594 / 1.139 / 1.821 / 0.861 / **4.032** |
+| **GitHub Actions `ubuntu-latest`** (9 runs through `bb67096`) | **0.729 / 0.540 / 0.433 / 0.480 / 0.552 / 0.693 / 0.687 / 1.004 / 0.684 ms** | 0.680 / 0.511 / 0.407 / 0.466 / 0.515 / 0.651 / 0.653 / 0.690 / 0.651 | 0.964 / 0.680 / 0.575 / 0.548 / 0.766 / 0.818 / 0.762 / 1.985 / 0.803 | **3.067** / 0.812 / 0.876 / 0.594 / 1.139 / 1.821 / 0.861 / **4.032** / 1.129 |
 
 The macOS and clementine rows are step 2's, re-measured at `702387a` on an idle
 box (`zig build check`, which prints the same 200-run figures as `zig build
@@ -152,25 +154,25 @@ load alone on hardware that is fine. This is what a shared runner looks like, an
 it is why CI reports the median at a 25 ms gate instead of blocking at 3.5 ms.
 
 **The shared CI runner's medians sit in the same band as the dedicated boxes**
-— 0.433–1.004 ms across eight runs, against 0.674 ms on clementine and 1.603 ms
-on the Mac. The first four runs were each faster than either dedicated box;
-run 8 (1.004 ms) was slower than clementine. Runner: `Linux
-6.17.0-1022-azure x86_64`, 4 cores. Do not read either direction as a
+— 0.433–1.004 ms across nine runs through `bb67096`, against 0.674 ms on
+clementine and 1.603 ms on the Mac. The first four runs were each faster than
+either dedicated box; run 8 (1.004 ms) was slower than clementine. Runner:
+`Linux 6.17.0-1022-azure x86_64`, 4 cores. Do not read either direction as a
 hardware fact; read it as the numbers tracking the runner's load.
 
 The useful detail is the **spread across the runs**. Runs 1–4 are identical
 code (0.729 / 0.540 / 0.433 / 0.480 ms, spanning 1.7× on one job definition);
 runs 5–7 straddle steps 1 and 2 (0.552 / 0.693 / 0.687 ms — the renderer work
 again lands inside the original spread, so it cost nothing there either); and
-run 8, the OpenSpec migration whose commits leave `src/` untouched, came in at
-**1.004 ms — 2.3× above the 0.433 floor on the same code**. The tails are
-sharper: run 1 reached **max 3.067 ms** — a 4.2× tail, close enough to the
-3.5 ms local gate to have failed it on luck — and run 8 reached **max
-4.032 ms, over the local gate from runner load alone**, while runs 2–7 stayed
-between 0.594 and 1.821 ms. So the median is stable to within a small factor
-and the tail is not, and the tail is exactly what a blocking gate trips on.
-That is the measured justification for reporting rather than blocking (see
-Decisions).
+runs 8–9 are docs-only pushes building the same program as run 7 — they read
+1.004 and 0.684 ms, **1.5× apart on identical sources**, run 8 also being 2.3×
+above the 0.433 floor. The tails are sharper: run 1 reached **max 3.067 ms** —
+a 4.2× tail, close enough to the 3.5 ms local gate to have failed it on luck —
+and run 8 reached **max 4.032 ms, over the local gate from runner load alone**,
+while every other run's max stayed between 0.594 and 1.821 ms. So the median
+is stable to within a small factor and the tail is not, and the tail is exactly
+what a blocking gate trips on. That is the measured justification for reporting
+rather than blocking (see Decisions).
 
 Gate is median < 3.5 ms. neofetch measured 138 ms on the Linux box (~205×).
 The plan records 0.71 ms for Linux from the milestone-0 session; that did not
@@ -295,7 +297,7 @@ so no asserted number is hand-entered.
 Also worth doing soon, cheap and now unblocked:
 
 - **Set a real blocking CI perf threshold.** 25 ms was chosen before there was
-  any runner data, and the eight observed medians now span 0.433–1.004 ms (the
+  any runner data, and the nine observed medians now span 0.433–1.004 ms (the
   table above), so the current gate only catches catastrophic regressions.
   `SATORI_STARTUP_GATE_US` exists for exactly this retune. Eight runs is still
   not much of a distribution; collect more. Whatever the threshold ends up
@@ -663,7 +665,7 @@ Tooling:
   anyone arriving cold — the MIT attribution obligation is currently satisfied
   by `LICENSE` alone and must be repeated in the README when it is written.
 - **The CI perf threshold is a placeholder, not a measurement.** 25 ms was chosen
-  with zero runner data; eight runs later the medians span 0.433–1.004 ms and
+  with zero runner data; nine runs later the medians span 0.433–1.004 ms and
   the maxes reach 4.032 ms, so it still catches only catastrophic regressions.
   `SATORI_STARTUP_GATE_US` is the knob.
 - **`tools/gt.c` is not wired into `zig build check`, on purpose.** It is a
