@@ -1,0 +1,121 @@
+schema: spec-driven
+
+# Project context: shown whenever OpenSpec artifacts are created. This is the
+# successor to the retired brief format (agent-brief-spec.md): contracts that
+# used to live in a separate format document live here, so they are injected
+# into every artifact instead of drifting beside it.
+
+context: |
+  ## Project
+  satori — a native, zero-fork rewrite of neofetch. Zig 0.17.0, libc only,
+  zero package dependencies, MIT (with attribution to neofetch in LICENSE).
+  Public repo: github.com/AlphaTechnolog/satori, default branch `main`.
+
+  ## Toolchain and gates
+  - The pinned Zig is `$HOME/.local/opt/zig-aarch64-macos-0.17.0/zig`; `zig`
+    on PATH is 0.16.0 and the build fails with it. On Linux (ssh clementine):
+    `~/.local/opt/zig-x86_64-linux-0.17.0/zig`.
+  - `$ZIG build check` is the only command CI runs and the only local gate
+    that matters. Gate scripts must be invoked as `bash`, never `sh`.
+
+  ## The four stores of truth — never mix their jobs
+  - `openspec/specs/` — what satori SHALL do (intent, including behavior not
+    yet built). A capability spec is edited by a change's delta, then merged
+    by archive.
+  - `test/` + `src/` tests — what satori does today, pinned to bytes and
+    compiler-measured offsets on both platforms.
+  - `MEMORY.md` — what was measured and learned: dated numbers with their
+    conditions, landmines, decisions, rejected approaches. Never put a
+    measured number in a spec or an artifact.
+  - `AGENTS.md` — how to work in this repo: toolchain, gates, procedures.
+
+  ## Cite, never duplicate
+  Every artifact line must be either new-to-this-task information or an
+  override of what the repo would otherwise lead the reader to do. Anything
+  already in AGENTS.md, MEMORY.md, a spec, or the plan gets cited as
+  `file §section` — never restated. A restated line is a second copy waiting
+  to drift, and this project has paid for drift twice (a stale CI run id in
+  AGENTS.md; a stale scratch tree on clementine certifying pre-fix code).
+
+  ## Readers have bounded context
+  The implementor starts fresh and must also read AGENTS.md, MEMORY.md, and
+  source. Artifacts compete for that budget: point, don't paste; tables over
+  prose; no motivational prose ("be careful" → name the checkable property).
+
+  ## Verification standard
+  Load-bearing changes are verified on macOS arm64 and on clementine from a
+  clean clone (AGENTS.md §Commands documents both procedures), then pushed to
+  `main` with the CI run watched to completion — read the conclusion, not
+  `gh run watch`'s exit code (it exits 0 on cancel).
+
+  ## Delegation
+  Prefer delegating implementation to subagent sessions: the main thread
+  keeps orchestration and artifact review. An implementor session should
+  receive a change (its artifacts), not a wall of quoted context.
+
+rules:
+  proposal:
+    - One sentence: what is built and the commit it starts from. If it cannot
+      be one sentence, the task is not specified — split the change.
+    - Include a `## Read first` list: 3-5 ordered entries, each with a reason
+      clause, citing paths and section names only. Never paste contents.
+    - Include explicit non-goals (In/Out). `Out` is the half that stops scope
+      creep; cite plan sections rather than restating plan prose.
+    - Every line is kind N (new to this task) or O (overrides the repo's
+      default); nothing is a paraphrase of AGENTS.md, MEMORY.md, or a spec.
+    - Budget: 100 lines. Cut by deletion, not compression; over budget means
+      the task is not yet specified.
+    - No facts that rot: no measured numbers, run ids, or test counts — cite
+      `MEMORY.md §Measured` instead.
+
+  design:
+    - Structure: `## Context` (citations to plan §N and MEMORY.md §, not
+      re-arguments), `## Goals / Non-Goals`, `## Decisions`.
+    - Every decision is `### D<n> — <question, phrased as a question>` with
+      **Recommend**, **Why**, and **If you disagree**.
+    - No D without a recommendation: a menu or a bare question transfers the
+      work back to the reviewer instead of briefing the implementor.
+    - Every Why must be checkable, not aesthetic, and cite `file:line` for
+      the code it is about. "Cleaner" gets cut.
+    - One question per D; if a D needs two answers, it is two Ds.
+    - Record rejected alternatives with their reason — "this is better" is
+      unreviewable. D-blocks ≤ 20 lines each.
+
+  specs:
+    - Requirements use SHALL and state one observable behavior; scenarios use
+      WHEN/THEN, and THEN is an exit code, an exact string, or an exact
+      byte-level observation — never "works correctly".
+    - No platform-conditional expectation may hide a fact about the wrong
+      layer: `render()` is a pure function of `Shared`, so a fixture-fed
+      renderer must behave identically on every platform arm.
+    - Never pin volatile values (test counts, measured figures, run ids) in a
+      spec; they live in MEMORY.md and go stale.
+    - Specs state intent, tests pin bytes: do not write a scenario that merely
+      restates what a golden test already asserts verbatim — the spec says why
+      the behavior matters, the test proves it holds.
+
+  tasks:
+    - Numbered checkboxes `- [ ] N.M`, one checkable property per task;
+      sections ordered safety/baseline → specification → implementation →
+      verification → handoff.
+    - Every verify task states what passing means: an exit code or an exact
+      string. "Run the tests" is not a gate; name what a reviewer can
+      re-check in one line.
+    - Load-bearing verification lists both hosts (macOS, and clementine from a
+      clean clone per AGENTS.md) plus the push-and-watch-CI step.
+    - A golden-test task must state how to tell a real assertion from a
+      tautology (expectations are literals, never the program's own output).
+    - End every tasks.md with this Handoff group as the final section (N is
+      the last section number); each box exists whether or not it is ticked:
+
+      ## N. Handoff
+      - [ ] N.1 Report per contract: commits and the decision each embodies;
+        D1-Dn answers with every override flagged; verify table with both
+        hosts' exit codes and the CI run URL; bench/test-count
+        before-and-after where applicable; anything no D asked about
+      - [ ] N.2 MEMORY.md updated in this change for every new measurement,
+        landmine, decision, or rejected approach — dated, with conditions;
+        claims that stopped being true are deleted, not annotated
+      - [ ] N.3 `openspec validate --all --strict` exits 0
+      - [ ] N.4 Archive only after both hosts were green, or the report says
+        explicitly why not
