@@ -3,19 +3,33 @@
 Durable memory for satori. Read this before the plan and before the code.
 Update it in the same change that produces a finding.
 
-Two plan files, both under `/Users/alpha/.opencode/plan/`:
+Two plan files, both in `docs/plan/` **in this repo** (moved from
+`~/.opencode/plan/` on 2026-10-06, so every reader — including ones who are
+not me — can follow a citation to them):
 
 - `satori-rewrite.md` — the master plan. Research, measurements, rationale,
   neofetch's cost breakdown, Zig landmines. Still authoritative for all of that.
 - `satori-phase-2.md` (2026-10-05) — **the current execution order.** It
   supersedes §15 of the master plan's milestone ordering.
 
+Work is dispatched as OpenSpec changes under `openspec/` (AGENTS.md
+§Workflow): specs state intent, tests pin bytes, this file keeps what was
+measured.
+
 Entries are dated. When a number moves, replace it — do not leave two figures.
 Delete claims that stopped being true rather than annotating them.
 
 ---
 
-## Status: 2026-10-05
+## Status
+
+**2026-10-06 — dispatch migrated to OpenSpec.** `openspec init --tools opencode`;
+four capability specs seeded and strict-green (`core-invariants`, `rendering`,
+`bindings`, `cli`); the brief format retired (`agent-brief-spec.md` deleted),
+its contracts moved into `openspec/config.yaml` as injected `context:`/`rules:`;
+plan files moved into `docs/plan/` in-repo; report + memory inflow now enforced
+by the Handoff task group every `tasks.md` must end with. CI unchanged: still
+exactly `zig build check`, no Node.
 
 **Public repo live and CI green.** <https://github.com/AlphaTechnolog/satori>
 (`AlphaTechnolog/satori`, public, default branch `main`). Milestone 0 complete
@@ -243,7 +257,7 @@ scopes.
 
 ### Next steps
 
-The current sequence is in `/Users/alpha/.opencode/plan/satori-phase-2.md`.
+The current sequence is in `docs/plan/satori-phase-2.md`.
 
 1. **Step 1 — done 2026-10-05.** `tools/gt.c` written and verified on both
    hosts; `--no-color` out of `usage`.
@@ -394,6 +408,20 @@ but both are the expensive ones.
   instead of inferring it from `uname`. This supersedes the plan's suggestion
   that `SATORI_TARGET` in the workflow would be enough — it is not, and
   see Landmines.
+- **Dispatch runs on OpenSpec; the brief format retired (2026-10-06).** The
+  brief's contracts (D-decisions with checkable Why, cite-don't-duplicate,
+  verify-with-passing-meaning, budget) moved into `openspec/config.yaml` as
+  `context:`/`rules:` so they are injected into every artifact instead of
+  drifting beside it as a second format document. Plan files moved into
+  `docs/plan/` in-repo because their citations in these two files were dead
+  for anyone but this machine. OpenSpec has no report artifact (artifacts are
+  the built-in four), so the report contract is the final **Handoff** task
+  group — checkboxes apply cannot finish without, which is how the memory
+  inflow survives the migration. **`openspec validate` is a local gate only,
+  never CI**: it needs Node, which collides with the pinned-tarball hermetic
+  posture and with CI running exactly one command; validation runs at propose
+  and before archive instead. Specs/tests split: specs state intent, tests pin
+  bytes — a spec scenario that restates a golden test buys nothing.
 
 ## Rejected, with the measurement that rejected it
 
@@ -492,6 +520,25 @@ Operational:
   `~/satori-ci-dryrun` also exist there as scratch; ignore all three.
 - **No `~/.ssh/config` entry for `clementine`**; it resolves by other means.
   Don't go looking for one.
+
+OpenSpec tooling:
+
+- **Never hand-edit `.opencode/skills/` or `.opencode/commands/`** — they are
+  generated, and `openspec update` (or a re-init) regenerates them, silently
+  discarding edits. Project contracts belong in `openspec/config.yaml`
+  (`context:` and `rules:`), which is the only file init writes once and never
+  owns again. Same species as letting `regen-c.sh` infer its target.
+- **`openspec validate --strict` alone validates nothing and exits 1** in a
+  non-interactive terminal: it prints "Nothing to validate" and the usage
+  hint, which reads like a failed validation. Always name the target —
+  `openspec validate --all --strict` (or `--specs` / `--changes`).
+- **`context:`/`rules:` in `openspec/config.yaml` are injected prose, not
+  enforced rules.** `--strict` validates artifact *structure* (headers,
+  scenario form); the cite-don't-duplicate rule, the budgets, and the
+  verify-with-passing-meaning contract are honored only if the artifact
+  author follows them — a reviewer still checks them at propose time. A rule
+  that looks enforced because it sits next to a validator is the same
+  failure mode as a check that cannot fail.
 
 Correctness, all of which shipped as silent wrong answers rather than crashes:
 

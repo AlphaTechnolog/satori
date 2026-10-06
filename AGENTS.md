@@ -11,11 +11,42 @@ green on 2026-10-05, four runs in a row — most recent:
 <https://github.com/AlphaTechnolog/satori/actions/runs/37345446554>. Runner
 medians, oldest to newest: 0.729 / 0.540 / 0.433 / 0.480 ms.
 
-The design plan is at `/Users/alpha/.opencode/plan/`, in two files:
+The design plan lives in `docs/plan/` **in this repo**, in two files:
 `satori-rewrite.md` (research, measurements, rationale; §5 landmines, §14 style)
 and `satori-phase-2.md` (**current execution order**, supersedes §15 of the
 first). Code comments cite them as "plan §N". Durable findings live in
-`MEMORY.md` in this repo; read it before the plan.
+`MEMORY.md` in this repo; read it before the plan. Behavior intent lives in
+`openspec/specs/`; work is dispatched as OpenSpec changes — see Workflow.
+
+## Workflow
+
+Work is dispatched as OpenSpec changes, not ad-hoc briefs (the brief format
+retired 2026-10-06; its contracts now live in `openspec/config.yaml`, which
+injects them into every artifact as `context:` and `rules:`).
+
+- **`openspec/specs/<capability>/spec.md` is intent** — what satori SHALL do,
+  including behavior not yet built. Capabilities: `core-invariants`,
+  `rendering`, `bindings`, `cli`. Tests pin bytes; specs say why.
+- **A change** lives in `openspec/changes/<name>/`: proposal (what/why/scope),
+  design (D-numbered decisions), tasks (the checklist), specs (deltas).
+  Start one at dispatch with `/opsx:propose "<idea>"`; use `/opsx:explore`
+  first when the idea needs thinking through rather than drafting.
+- **Apply** with `/opsx:apply`. Checkboxes in `tasks.md` are the progress
+  record. The final **Handoff** group of every `tasks.md` is the report
+  contract and the memory inflow — MEMORY.md gets its line in the same change
+  that produced the finding (§MEMORY.md, bottom of this file).
+- **Validate locally, not in CI**: `openspec validate --all --strict` before
+  review and again before archive. Deliberately *not* part of
+  `zig build check` — it needs Node, and CI runs exactly one command against
+  a pinned toolchain (decision recorded in MEMORY.md §Decisions).
+- **Archive only after both hosts are green** (or the report says why not).
+  Archive merges the deltas into the main specs and files the change.
+- **Never edit `.opencode/skills/` or `.opencode/commands/` by hand** —
+  `openspec update` regenerates them. Project contracts belong in
+  `openspec/config.yaml`.
+
+Four stores, never mixed: specs = intent, tests = verified bytes,
+`MEMORY.md` = measured/learned, this file = how to work here.
 
 ## Commands
 

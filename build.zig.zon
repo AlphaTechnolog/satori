@@ -18,6 +18,11 @@
         "test",
         "logos",
         "tools",
+        // Process docs and the OpenSpec tree ship like AGENTS.md/MEMORY.md do:
+        // planning and behavior intent belong to the repo, and a path dropped
+        // from this list is silent.
+        "docs",
+        "openspec",
         // README.md is listed for the same reason LICENSE was: it does not exist
         // yet, and dropping a path from this list is silent. Add it when written.
         "LICENSE",
