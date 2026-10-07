@@ -22,11 +22,11 @@
 - [x] 4.2 Update by hand, not by copying program output, the four byte literals: default golden (`:293`, both arms), missing-memory (`:347`), every-source-absent (`:376`), `--no-color` (`:417`, both arms); `--no-color`'s escape count stays 0.
 - [x] 4.3 `$ZIG build check` exits 0 on macOS, startup gate included; the derived-width assertion (`:410`) still passes with `LABEL_COLON_WIDTH` unchanged at 7.
 - [x] 4.4 On clementine, clone the pushed SHA into a clean `~/satori` per AGENTS.md §Commands (never rsync over it) and run `~/.local/opt/zig-x86_64-linux-0.17.0/zig build check`; exits 0, with `Host: unavailable` and `CPU: unavailable` in the Linux golden.
-- [ ] 4.5 Push to `main`, watch the CI run to its conclusion, and report the run URL and conclusion (not `gh run watch`'s exit code).
+- [x] 4.5 Push to `main`, watch the CI run to its conclusion, and report the run URL and conclusion (not `gh run watch`'s exit code).
 
 ## 5. Handoff
 
-- [ ] 5.1 Report per contract: commits and the decision each embodies; D1-D7 answers with every override flagged; verify table with both hosts' exit codes and the CI run URL; bench/test-count before-and-after where applicable; anything no D asked about
-- [ ] 5.2 MEMORY.md updated in this change for every new measurement, landmine, decision, or rejected approach — dated, with conditions; claims that stopped being true are deleted, not annotated
-- [ ] 5.3 `openspec validate --all --strict` exits 0
-- [ ] 5.4 Archive only after both hosts were green, or the report says explicitly why not; then replace the generated `fields` Purpose stub with the capability's purpose
+- [x] 5.1 Report per contract: commits and the decision each embodies; D1-D7 answers with every override flagged; verify table with both hosts' exit codes and the CI run URL; bench/test-count before-and-after where applicable; anything no D asked about
+- [x] 5.2 MEMORY.md updated in this change for every new measurement, landmine, decision, or rejected approach — dated, with conditions; claims that stopped being true are deleted, not annotated
+- [x] 5.3 `openspec validate --all --strict` exits 0
+- [x] 5.4 Archive only after both hosts were green, or the report says explicitly why not; then replace the generated `fields` Purpose stub with the capability's purpose
