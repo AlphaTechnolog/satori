@@ -98,10 +98,12 @@ const palette = struct {
 /// alignment or colour needs to change.
 const fields = [_]Field{
     .{ .label = "OS", .color = palette.identity, .fmtFn = os },
+    .{ .label = "Host", .color = palette.identity, .fmtFn = host },
     .{ .label = "Kernel", .color = palette.identity, .fmtFn = kernel },
     .{ .label = "Arch", .color = palette.identity, .fmtFn = arch },
     .{ .label = "Shell", .color = palette.identity, .fmtFn = shell },
     .{ .label = "Uptime", .color = palette.state, .fmtFn = uptime },
+    .{ .label = "CPU", .color = palette.identity, .fmtFn = cpu },
     .{ .label = "Memory", .color = palette.state, .fmtFn = memory },
 };
 
@@ -214,6 +216,23 @@ fn os(scratch: *buf.Buf, sh: *const shared.Shared) void {
     }
 }
 
+fn host(scratch: *buf.Buf, sh: *const shared.Shared) void {
+    scratch.write(text(sh.hw_model.slice()));
+}
+
+fn cpu(scratch: *buf.Buf, sh: *const shared.Shared) void {
+    const brand = sh.cpu_brand.slice();
+    if (brand.len == 0) {
+        return scratch.write("unavailable");
+    }
+    scratch.write(brand);
+    if (sh.cpu_threads > 0) {
+        scratch.write(" (");
+        _ = fmt.uint(scratch, sh.cpu_threads);
+        scratch.writeByte(')');
+    }
+}
+
 fn kernel(scratch: *buf.Buf, sh: *const shared.Shared) void {
     scratch.write(text(sh.release.slice()));
 }
@@ -287,6 +306,9 @@ fn fixture() shared.Shared {
     // Exactly 1.5 GiB and 8.0 GiB, so the expectation reads "1.5 GiB / 8.0 GiB"
     // rather than a truncated 1.3/1.4 that would be harder to check by eye.
     sh.mem = .{ .used = 1_610_612_736, .total = 8_589_934_592 };
+    sh.hw_model.set("MacBookAir10,1");
+    sh.cpu_brand.set("Apple M1");
+    sh.cpu_threads = 8;
     return sh;
 }
 
@@ -309,10 +331,12 @@ test "golden: the default report" {
             break :blk ESC ++ "[1;36mtester" ++ ESC ++ "[1;34m@" ++
                 ESC ++ "[0mtestbox\n" ++
                 ESC ++ "[1;32mOS" ++ ESC ++ "[0m:     26.6.2\n" ++ // osVersion
+                ESC ++ "[1;32mHost" ++ ESC ++ "[0m:   MacBookAir10,1\n" ++ // hw.model
                 ESC ++ "[1;32mKernel" ++ ESC ++ "[0m: 25.6.0\n" ++ // uname release
                 ESC ++ "[1;32mArch" ++ ESC ++ "[0m:   arm64\n" ++ // uname machine
                 ESC ++ "[1;32mShell" ++ ESC ++ "[0m:  zsh\n" ++ // basename of $SHELL
                 ESC ++ "[1;33mUptime" ++ ESC ++ "[0m: 1h 1m 1s\n" ++ // fmt.duration(3661)
+                ESC ++ "[1;32mCPU" ++ ESC ++ "[0m:    Apple M1 (8)\n" ++ // brand (logical cores)
                 ESC ++ "[1;33mMemory" ++ ESC ++ "[0m: 1.5 GiB / 8.0 GiB\n"; // used / total
         },
         // Linux: the OS row is the ONLY difference, because it is the only field
@@ -334,10 +358,12 @@ test "golden: the default report" {
             break :blk ESC ++ "[1;36mtester" ++ ESC ++ "[1;34m@" ++
                 ESC ++ "[0mtestbox\n" ++
                 ESC ++ "[1;32mOS" ++ ESC ++ "[0m:     Linux\n" ++
+                ESC ++ "[1;32mHost" ++ ESC ++ "[0m:   MacBookAir10,1\n" ++
                 ESC ++ "[1;32mKernel" ++ ESC ++ "[0m: 25.6.0\n" ++
                 ESC ++ "[1;32mArch" ++ ESC ++ "[0m:   arm64\n" ++
                 ESC ++ "[1;32mShell" ++ ESC ++ "[0m:  zsh\n" ++
                 ESC ++ "[1;33mUptime" ++ ESC ++ "[0m: 1h 1m 1s\n" ++
+                ESC ++ "[1;32mCPU" ++ ESC ++ "[0m:    Apple M1 (8)\n" ++
                 ESC ++ "[1;33mMemory" ++ ESC ++ "[0m: 1.5 GiB / 8.0 GiB\n";
         },
     };
@@ -365,10 +391,12 @@ test "a missing source is reported, not hidden" {
         else => "OS:     Linux\n",
     };
     const want = "tester@testbox\n" ++ os_row ++
+        "Host:   MacBookAir10,1\n" ++
         "Kernel: 25.6.0\n" ++
         "Arch:   arm64\n" ++
         "Shell:  zsh\n" ++
         "Uptime: 1h 1m 1s\n" ++
+        "CPU:    Apple M1 (8)\n" ++
         "Memory: unavailable\n";
     try std.testing.expectEqualStrings(want, out.written());
 }
@@ -391,18 +419,20 @@ test "golden: every source absent" {
     const expected = ESC ++ "[1;36munavailable" ++ ESC ++ "[1;34m@" ++
         ESC ++ "[0munavailable\n" ++
         ESC ++ "[1;32mOS" ++ ESC ++ "[0m:     unavailable\n" ++
+        ESC ++ "[1;32mHost" ++ ESC ++ "[0m:   unavailable\n" ++
         ESC ++ "[1;32mKernel" ++ ESC ++ "[0m: unavailable\n" ++
         ESC ++ "[1;32mArch" ++ ESC ++ "[0m:   unavailable\n" ++
         ESC ++ "[1;32mShell" ++ ESC ++ "[0m:  unavailable\n" ++
         ESC ++ "[1;33mUptime" ++ ESC ++ "[0m: unavailable\n" ++
+        ESC ++ "[1;32mCPU" ++ ESC ++ "[0m:    unavailable\n" ++
         ESC ++ "[1;33mMemory" ++ ESC ++ "[0m: unavailable\n";
     try std.testing.expectEqualStrings(expected, out.written());
 }
 
 test "the registry is the only thing that decides row order and labels" {
     // Pins the registry itself, so a reordering or a renamed label cannot slip
-    // past by also updating the golden literal. Cheap: 6 labels.
-    const labels = [_][]const u8{ "OS", "Kernel", "Arch", "Shell", "Uptime", "Memory" };
+    // past by also updating the golden literal. Cheap: 8 labels.
+    const labels = [_][]const u8{ "OS", "Host", "Kernel", "Arch", "Shell", "Uptime", "CPU", "Memory" };
     try std.testing.expectEqual(labels.len, fields.len);
     for (fields, labels) |f, want| {
         try std.testing.expectEqualStrings(want, f.label);
@@ -424,19 +454,23 @@ test "golden: --no-color emits the same report with zero escapes" {
     const expected = switch (builtin.os.tag) {
         .macos => "tester@testbox\n" ++
             "OS:     26.6.2\n" ++
+            "Host:   MacBookAir10,1\n" ++
             "Kernel: 25.6.0\n" ++
             "Arch:   arm64\n" ++
             "Shell:  zsh\n" ++
             "Uptime: 1h 1m 1s\n" ++
+            "CPU:    Apple M1 (8)\n" ++
             "Memory: 1.5 GiB / 8.0 GiB\n",
         // Only the OS value differs by platform; see the same reasoning in
         // "golden: the default report".
         else => "tester@testbox\n" ++
             "OS:     Linux\n" ++
+            "Host:   MacBookAir10,1\n" ++
             "Kernel: 25.6.0\n" ++
             "Arch:   arm64\n" ++
             "Shell:  zsh\n" ++
             "Uptime: 1h 1m 1s\n" ++
+            "CPU:    Apple M1 (8)\n" ++
             "Memory: 1.5 GiB / 8.0 GiB\n",
     };
     try std.testing.expectEqualStrings(expected, plain.written());

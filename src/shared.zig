@@ -42,6 +42,10 @@ pub const Shared = struct {
     /// `uname().sysname` already carries the distribution name, so the OS row
     /// reads that instead. See render.zig's `osValue`.
     os_version: Str = .{},
+    /// Hardware model identifier, e.g. "MacBookAir10,1". Empty when unavailable.
+    hw_model: Str = .{},
+    /// CPU brand string. Empty when unavailable.
+    cpu_brand: Str = .{},
 
     // --- scalars ---
     page_size: u64 = 0,
@@ -49,6 +53,8 @@ pub const Shared = struct {
     /// prints "unavailable" rather than a plausible "0 B / 0 B". It is also
     /// today's encoding on Linux, where no memory source is gathered yet (step 4).
     mem: MemStats = .{},
+    /// Logical CPU core count. `cpu_threads == 0` is the absence encoding.
+    cpu_threads: u64 = 0,
     /// Boot time as seconds since the Unix epoch, 0 if unavailable.
     boot_unix: i64 = 0,
     /// CLOCK_MONOTONIC reading taken at the same moment as boot_unix, so
@@ -111,6 +117,9 @@ pub const Shared = struct {
                 const macos = @import("macos");
                 var scratch: [256]u8 = undefined;
                 self.os_version.set(macos.osVersion(&scratch));
+                self.hw_model.set(macos.hwModel(&scratch));
+                self.cpu_brand.set(macos.cpuBrand(&scratch));
+                self.cpu_threads = macos.threadCount();
                 const vm = macos.vmStats();
                 self.mem.used = vm.used();
                 self.mem.total = vm.total;

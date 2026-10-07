@@ -66,6 +66,13 @@ pub fn duration(out: *buf.Buf, seconds: i64) []const u8 {
     return out.written()[start..];
 }
 
+/// Unsigned integer.
+pub fn uint(out: *buf.Buf, v: u64) []const u8 {
+    const start = out.len;
+    out.writeUint(v);
+    return out.written()[start..];
+}
+
 /// Percentage with one decimal, e.g. `46.2%`.
 pub fn percent(out: *buf.Buf, numerator: u64, denominator: u64) []const u8 {
     const start = out.len;
